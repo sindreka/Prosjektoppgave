@@ -32,7 +32,7 @@ Method & Separable $p$ & Non separable $p$ \\
 \label{tab:cc}
 \end{table}
 
-From table \ref{tab:cc} it is clear that KPM is not going to be the best, not only is it terrible when $p$ is non separable, it also need to perform all operations DM needs in addition to Arnoldi, if $p$ is separable. KPM$(n)$ is the only method that can outperform DM, but it is difficult to say without knowing how $\gamma$ scales with $m$ and $n$. Notice that if $n = 1$ or $n = m$ then KPM and KPM$(n)$ have the same computational complexity if we assume $\gamma \propto m^2/n^2$.
+From table \ref{tab:cc} it is clear that KPM is not going to be the best, not only is it terrible when $p$ is non separable, it also need to perform all operations DM needs in addition to Arnoldi, if $p$ is separable. KPM$(n)$ is the only method that can outperform DM, but it is difficult to say without knowing how $\gamma$ scales with $m$ and $n$. %Notice that if $n = 1$ or $n = m$ then KPM and KPM$(n)$ have the same computational complexity if we assume $\gamma \propto m^2/n^2$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Memory requirement} \label{sec:mr}
@@ -67,4 +67,4 @@ KPM$(n)$ & $ mk +2n^2+k+11m+nm $ &  $ 2(mk + n^2)+k+11m+nm $
 \caption{Memory requirements for the methods discussed. The values are not given asymptotically to make it easier to distinguish between the different methods.}
 \label{tab:mr}
 \end{table}
-From table \ref{tab:mr} it is clear that KPM$(n)$ requires the least amount of memory for small $n$, small $n$ is the key, if $n$ is to big, we just have KPM, which uses the most amount of storage. DM is somewhere in the middle, depending on $n$. 
+From table \ref{tab:mr} it is clear that KPM$(n)$ requires the least amount of memory of the three if $n$ is small, small $n$ is the key, if $n$ is to big we just have KPM, which uses the largest amount of memory of the three. DM is somewhere in the middle, depending on $n$. 
