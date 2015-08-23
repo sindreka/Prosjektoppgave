@@ -1,0 +1,133 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Implementation}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:imp}
+This section will explain the implementation of the methods. We start by discretization in space and time in section \ref{sec:space} and \ref{sec:time} respectively, and introduce the method we will compare KPM to in section \ref{sec:DM}. 
+In section \ref{sec:not} we present what and how we want to measure interesting factor, together with some information about computers and programs used to generate data.
+In section \ref{sec:test} we state some test problems.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Discretisation in space} \label{sec:space}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+We consider the square $[0,1] \times [0,1]$ and divide each spacial direction into $\rho+2$ piece, each piece having a length of $h_s = 1/(\rho+1)$. Let $x_i = h_s \cdot i$ and $y_i = h_s \cdot j$ . Since the boundary conditions are known, we will only calculate with $\rho$ numbers, leaving room on each side for the boundary. $v$ and $P(t)$ need to be found in an ordered fashion. We let  $v_{i+\rho j} = g(x_i, y_j)$, and 
+$P(t)_{i+\rho j} = p(t,x_i, y_j)$, where $i,j = 1,2,\cdots \rho+1$.
+The Laplacian will be approximated by the five point formula given in equation \eqref{eqn:fivepoint} as the matrix $A$. This is a second order approximation.
+\begin{equation} \label{eqn:fivepoint} 
+\begin{aligned} 
+A = \frac{1}{h_s^2} 
+\begin{bmatrix}
+T & I & & &\\
+I& T & I & &\\
+& \ddots & \ddots & \ddots & \\
+& & I& T & I\\
+& & & I & T
+\end{bmatrix}
+, T  &= 
+\begin{bmatrix}
+-4 & 1 & & &\\
+1 & -4 & 1 & &  \\
+& \ddots & \ddots & \ddots & \\
+&  & 1 & -4 & 1 \\
+ & & & 1 & -4
+\end{bmatrix},
+I &= 
+\begin{bmatrix}
+1 & &\\
+& \ddots & \\
+& & 1 \\
+\end{bmatrix}
+\end{aligned}
+\end{equation}
+Notice that $m = \rho ^2$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Discretisation in time} \label{sec:time}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+We will consider the time domain $t \in [0,1] $, and divide it in $k$ pieces, giving each piece a length $h_t = 1/(k-1)$, let $t_l = h_t\cdot l$.
+Trapezoidal rule\cite{trap}, given in equation \eqref{eqn:trap} will be used to integrate in time. 
+\begin{equation} \label{eqn:trap}
+\int \limits_a^b f(t) dt \approx \frac{h}{2} \sum \limits_{l = 1}^N(f(t_{l+1})+f((t_l))
+\end{equation}
+We will only derive the iteration scheme for equation \eqref{eqn:numheat}, but since all the differential equations are similar, it should be easy to make the few changes necessary to solve the other differential equations discussed.
+To obtain the iteration scheme we write $q$ instead of $f$, use equation \eqref{eqn:heat} and insert the numerical simplifications above.
+\begin{equation}
+q(t_{l+1}) - q(t_l) = \int \limits_{t_l}^{t_{l+1}} \frac{\partial q}{\partial t} dt \approx \frac{h}{2}(A q(t_{l+1})+f(t_{l+1})v +A q(t_l)+f(t_l) v) 
+\end{equation}
+%We here use $G$ as a generic right hand side of equation \eqref{eqn:heat}.
+Solving for $q(t_{l+1})$ gives the Crank-Nicholson scheme for the heat equation
+\begin{equation} \label{eqn:trapscheme}
+\begin{aligned}
+q(t_{l+1}) \approx (I-h_t/2 A)^{-1}(q(t_l) + \frac{h_t}{2}( A q(t_{l}) + f(t_l)v+f(t_{l+1})v))\\
+%U^{l+1} = (I-h_t/2 A)^{-1}(U^l + \frac{h_t}{2}( A U^l + G^l+G^{l+1}))
+\end{aligned}
+\end{equation} 
+This is a second order method.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Direct method} \label{sec:DM}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+We need to compare KPM to a well known and easy to implement method. For this we will solve equation \eqref{eqn:DI} straight forward with trapezoidal rule.
+\begin{equation} \label{eqn:DI}
+q'(t) -A q(t) = P(t)
+\end{equation}
+we denote it DM for direct method.
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Measurements and computers} \label{sec:not}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+We divide implementations in two cases, separable $p$, and non separable $p$. Parallel computations were only implemented for non separable $p$. For both cases three solvers were implemented: KPM, KPM$(n)$, and DM. \\
+
+The convergence criteria used in algorithm \ref{alg:restkry} is to stop when the maximum absolute difference in $q_n$ is less than $\delta$. The error is denoted as $\epsilon$ and is defined as the largest absolute difference between the correct solution and the estimated solution. 
+The number of iterations needed for convergence in algorithm \ref{alg:restkry} is denoted by $\gamma$. 
+We will in general be looking at computation time and error, and how this scales with $\delta$. \\
+
+If nothing else is stated assume $\rho = k = 40$, $n = 1$, $\delta = 10^{-15}$. All timed results are averaged over 2 runs, $A$ was implemented as a sparse matrix\\
+
+
+All solvers and problems were implemented in MATLAB R2014b. The computer used runs Ubuntu 14.04 LTS with intel  i7-4770 CPU, and 16 GB ram. \\
+
+The parallel implementations were done with MATLAB's commands \texttt{parpool} and \texttt{parfor}, see \cite{parpool} and \cite{parfor} for more information, \texttt{nP} denotes the number of processing units used. We will use speedup and parallel efficiency to investigate the gain by using parallel computation. Speedup is defined as
+\begin{align*}
+S_\texttt{nP} = \frac{\tau_1}{\tau_\texttt{nP}}
+\end{align*}
+and parallel efficiency as
+\begin{align*}
+\eta_\texttt{nP} = \frac{S_\texttt{nP}}{\texttt{nP}}
+\end{align*}
+where $\tau_\texttt{nP}$ is run time with \texttt{nP} processors, $S_\texttt{nP}$ is speedup with \texttt{nP} processors, and $\eta_\texttt{nP}$ is parallel efficiency for \texttt{nP} processors. Speedup measures how much faster a program runs with \texttt{nP} processors, ideal speedup is when $S_\texttt{nP} = \texttt{nP}$. Parallel efficiency measures how well each processor is used. Perfect parallel efficiency occurs when $\eta_\texttt{nP} = 1$.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Test problems} \label{sec:test}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Two test problems are implemented for the separable case. Equation \eqref{eqn:sep1} is a symmetric problem, and separable for each variable, we will denote it as \texttt{P1}. 
+\begin{equation} \label{eqn:sep1}
+\begin{aligned}
+ u(t,x,y)&= \frac{t}{t+1} x(x-1)y(y-1) \\
+ f_1(t)&=\frac{1}{t+1^2} & g_1(x,y)&= x(x-1)y(y-1) \\
+ f_2(t) &= \frac{-t}{t+1} & g_2(x,y)& = 2x(x-1) +2y(y-1)
+ \end{aligned}
+\end{equation}
+Equation \eqref{eqn:sep2} is not symmetric, and non separable for $x$ and $y$, it also has a combination of polynomials and exponential functions, just to make it test a more general case. 
+This problem will be denoted as \texttt{P2}.\\
+\begin{equation} \label{eqn:sep2}
+\begin{aligned}
+ u(t,x,y)=& e^{xy}y(y-1) \sin( \pi x)t \cos(t)& \\
+ f_1(t) =& \cos(t)-t \sin(t)  & g_1(x,y) =&e^{xy}y(y-1) \sin( \pi x)\\
+ f_2(t) =& -t \cos(t) \\ g_2(x,y) =&(y-1)y^3e^{xy} \sin ( \pi x)
+ \end{aligned}
+\end{equation}
+\begin{equation*}
+\begin{aligned}
+&+e^{xy}(x^2(y-1)y+x(4y-2)+2) \sin( \pi x) \\&+2 \pi (y-1) y^2 e^{xy} \cos( \pi x)- \pi^2 (y-1)y e^{xy} \sin( \pi x )
+ \end{aligned}
+\end{equation*}
+
+To obtain the solutions, we need to solve for $f_i(t) g_i(x,y)$, $i = 1,2 $ and add the solutions together. Clearly parallel computations could be used to solve these, but this will not be done in this text. \\
+
+\texttt{P1} will also be used in the non separable case with $p(t) = f_1(t) g_1(x,y) + f_2(t) g_2(x,y)$.
+One additional test problem is implemented for non separable $p$, this is a symmetric problem consisting of both polynomial and exponential functions, it is given in equation \eqref{eqn:non1}, and will be denoted as \texttt{P3}.
+\begin{equation} \label{eqn:non1}
+\begin{aligned}
+ u(t,x,y) = & \sin(x y t) (x-1) (y-1)\\
+ p(t,x,y) = & t^2 (x-1) (y-1) y^2 \sin(t x y)\\ & -2 t (y-1) y \cos(t x y)+(x-1) x (y-1) y \cos(t x y)\\ & -t (x-1) x (2 \cos(t x y)-t x (y-1) \sin(t x y))
+\end{aligned}
+\end{equation}

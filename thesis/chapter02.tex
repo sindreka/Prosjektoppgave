@@ -1,0 +1,153 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Krylov subspace and methods}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+We present the Krylov subspace in section \ref{sec:subspace}, derive KPM for the heat equation in section \ref{sec:fullKPM} and \ref{sec:rest}, and show how we can use KPM when $p$ is not separable in section \ref{sec:DM}.
+\label{sec:krylov}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Krylov subspace} \label{sec:subspace}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The Krylov subspace is the space consisting of orthonormal vectors $W_n (A,v) = \{v,Av, \cdots, A^{n-1}v\} = \{v_1,v_2,\cdots v_n\} $, where $n \leq m$. %Define $\nu$ as the $W_\nu(A,v)$ span $A$. 
+The vectors $v_i$ together with $h_{i,j} = v_i^\top Av_j$, are found by using Arnoldi's algorithm, shown in algorithm \ref{alg:arnoldi}. Letting $V_n$ be the $m \times n$ matrix consisting of column vectors $\{v_1,v_2,\cdots,v_n \}$ and $H_n$ be the $n \times n$ upper Hessenberg matrix containing all elements $(h_{i,j})_{i,j=1,\cdots,n}$, the following hold \cite{krylovprop}
+\begin{align}\
+AV_n & = V_n H_n + h_{n+1,n}v_{n+1}e^\top_n \label{eqn:prop1} \\
+V^{\top}_n AV_n &= H_n \label{eqn:prop2} \\
+v_i^{\top} v_j &= \delta_{i,j} \label{eqn:prop3}
+\end{align}
+Here, $e_n$ is the $n$th canonical vector in $\mathbb{R}^n$ and $\delta_{i,j}$ is Kronecker's delta.\\
+
+
+
+
+\begin{algorithm} 
+\begin{algorithmic} \caption{\cite{arnold}Arnoldi's algorithm} \label{alg:arnoldi}  
+\STATE Start with $A$, $v_1 = v/\|v \|_2$, n
+\FOR{$j = 1,2,\cdots n $} 
+   \STATE Compute $h_{i,j} = \langle Av_j,v_i \rangle $ for $i = 1,2,\cdots j$
+    \STATE Compute $w_j := A v_j - \Sigma_{i=1}^{j} h_{i,j}v_i $
+    \STATE $h_{j+1,j} = \| w_j \|_2$
+    \IF{$h_{j+1,j} = 0$} 
+        \STATE\textbf{STOP}
+    \ENDIF 
+   \STATE $v_{j+1} = w_j/h_{j+1,j}$
+\ENDFOR
+\end{algorithmic} 
+\end{algorithm}
+Let us define $\nu  \leq m$ as the constant where $W_\nu(A,v)$ spans $A$, meaning we run Arnoldi's algorithm until the stopping criteria is met.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Krylov projection method} \label{sec:fullKPM}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Let $z(t) = [z_1(t), z_2(t), \cdots, z_\nu(t)] \in \mathbb{R}^\nu $ be the vector satisfying $q(t) = V_\nu z(t)$. 
+We derive KPM by writing this into equation \eqref{eqn:numheat}, that is
+\begin{equation}  \begin{aligned} \label{eqn:KPMtemp1}
+V_\nu z'(t) - A V_\nu z(t) &= f(t) v \\
+z(0)& = 0
+\end{aligned} \end{equation}
+Multiplying by $V_\nu^{\top}$ and using equation \eqref{eqn:prop2} gives
+\begin{equation*} 
+\begin{aligned} \label{eqn:KPMtemp2}
+z'(t)-H_\nu z(t) &= f(t) V_\nu^{\top}  v  \\
+z(0)& = 0
+\end{aligned}
+\end{equation*}
+Using equation \eqref{eqn:prop3} and $v = \|v \|_2 v_1 $, we get
+\begin{equation} 
+\begin{aligned} \label{eqn:krylov}
+z'(t) -H_\nu z(t) &=  \|v \|_2 e_1 f(t)\\
+z(0)& = 0
+\end{aligned}
+\end{equation}
+And we are done. By solving equation \eqref{eqn:krylov} for $z(t)$ and approximate $q(t)$ by $ q_\nu(t) = V_\nu z(t) $ we get the solution. A step by step description of the algorithm is given in algorithm \ref{alg:fullkry}. 
+%\end{proof}
+ We will denote the method KPM.\\
+\begin{algorithm}
+\begin{algorithmic} \caption{Krylov projection method} \label{alg:fullkry} 
+\STATE Start with $A$,$f(t)$ and $v$.
+\STATE Compute $[V_\nu ,H_\nu] = \texttt{arnoldi}(A,v)$
+\STATE Solve $  z'(t) = H_\nu z + f(t) \| v \|_2 e_1  $ for $z$
+\STATE $ q_\nu (t) \leftarrow  V_\nu z(t) $
+\end{algorithmic} 
+\end{algorithm}
+
+Let us now consider the residual of equation \eqref{eqn:numheat} at $q_n(t)$, that is
+\begin{equation*}
+r_n(t) = f(t) v - q_n'(t) +Aq_n(t)
+\end{equation*}
+Since
+\begin{equation*}
+r_n(t) = f(t)v -V_n z'(t) + A V_n z(t)
+\end{equation*}
+using equation \eqref{eqn:prop1} and \eqref{eqn:krylov} we get
+\begin{equation} \label{eqn:rn}
+r_n(t) = h_{n+1,n}e_n^\top z(t) v_{n+1}
+\end{equation}
+
+Since $h_{n+1,n} = 0$ for some $n = \nu \leq m$, this shows the finite termination of the procedure.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Restarting the Krylov projection method} \label{sec:rest}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+If we use a $n < \nu$ so that $h_{n+1,n} \neq 0$ we need to restart the procedure described above. Consider first the following equation
+\begin{equation}\label{eqn:restkry}
+\begin{aligned}
+ (q-q_n)'(t) -A (q-q_n)(t) &= r_n \\
+(q-q_n)(0)& = 0
+\end{aligned}
+\end{equation}
+where $r_n$ is as in equation \eqref{eqn:rn}. If we can solve this equation for $(q-q_n)$ we can approach the solution $q$ in an iterative manner.
+
+Let us do this by writing $V_\nu z$ in place of $q$, and $V_n \zeta $ in place of $q_n$
+
+\begin{equation*}%\label{eqn:restkry1}
+\begin{aligned}
+ (V_\nu z-V_n \zeta)'(t)-A (V_\nu z-V_n \zeta)(t) &=  h_{n+1,n}e_n^\top \zeta(t) v_{n+1}  \\
+(z-\zeta)(0)& = 0
+\end{aligned}
+\end{equation*}
+Multiplying by $V_\nu^{\top}$ and using equation \eqref{eqn:prop2} gives
+\begin{equation*}
+\begin{aligned}
+ (z-\zeta)'(t)-H_\nu (z-\zeta)(t) &= V_\nu^\top h_{n+1,n}e_n^\top \zeta(t) v_{n+1}  \\
+(z-\zeta)(0)& = 0
+\end{aligned}
+\end{equation*}
+Let $\xi(t) = (z-\zeta)(t)$, and simplify
+\begin{equation}\label{eqn:restkry2}
+\begin{aligned}
+ \xi '(t) -H_\nu \xi(t) &= h_{n+1,n}e_n^\top \zeta (t)  \\
+\xi(0)& = 0
+\end{aligned}
+\end{equation}
+This a formula we can solve. Each restart we generate a new Krylov subspace $W_n(A,v_{n+1})$, solve equation \eqref{eqn:restkry2} for $\xi(t)$ and approximate the solution $q$ by $ q_n =  V_n\xi(t)$. By summing together $q_n$, we converge towards the solution $q_\nu$. Note that the current value of $\zeta(t)$ equals the previous value of $\xi(t)$, and that $h_{n+1,n}$ is from the previous $H_n$. See algorithm \ref{alg:restkry} for a step by step description. We will call $n$ a restart variable, and denote the method with KPM$(n)$.
+\begin{algorithm}
+\begin{algorithmic} \caption{Restarting the Krylov projection method} \label{alg:restkry} 
+\STATE Start with $A$,$f(t)$,$v$, $n$ and $i = 0$
+\STATE Compute $[V_n,H_n,h_{n+1,n}^i,v_{n+1}] = \texttt{arnoldi}(A,v)$
+\STATE Solve $  z' = H_n z + f(t) \| v \|_2 e_1  $ for $z$
+\STATE $ q_n \leftarrow  V z $
+\STATE $\xi_i \leftarrow z$
+\WHILE{convergence criteria not satisfied} 
+    \STATE $i \leftarrow i + 1$
+    \STATE Compute $[V_n,H_n,h_{n+1,n}^i,v_{n+1}] = \texttt{arnoldi}(A,v_{n+1},n)$
+    \STATE Solve $ \xi_i'(t) = H_n \xi_i(t) + h_{n+1,n}^{i-1}e_n^\top \xi_{i-1}(t)  $ for $\xi_i$
+    \STATE $ q_n(t) \leftarrow q_n + V_n \xi_i(t) $
+\ENDWHILE
+\end{algorithmic} 
+\end{algorithm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{When $p$ is not seperable}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+If We let $P(t)$ be a vector consisting of elements $p(t, x_i, y_j)$, so that $P(t) = [P_1(t),P_2(t),\cdots, P_m(t)]$, and write equation \eqref{eqn:numheat} as
+
+\begin{equation}
+\begin{aligned}
+q'_j(t) -A q_j(t) &= P_j(t) e_j \\
+q_j(0) &= 0\\
+q(t) &= \sum \limits_{i = 1}^m q_j(t)
+\end{aligned}
+\end{equation}
+where $e_j$ is the $j$th canonical vector in $\mathbb{R}^{m}$, we can solve the original equation without requiring separability. 
+An important thing to note here is the need for parallel processing power since we need to solve $m$ problems and not just one.

@@ -1,0 +1,70 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Computational complexity}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:comp}
+We will in section \ref{sec:cc} and \ref{sec:mr} briefly compare the computational and memory costs of the different solution strategies discussed.% This will be presented  respectivly. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Computational complexity} \label{sec:cc}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[h!]
+\centering
+\begin{tabular}{r | l}
+ Matrix vector multiplication & $\mathcal{O}(m^2)$ \cite{complex} \\
+ Matrix inversion  & $ \mathcal{O}(m^3)$ \cite{complex} \\
+ Arnoldi's algorithm & $ \mathcal{O}(n^2 m)$ \cite{numop} \\
+ Integration & $\mathcal{O}(k)$
+\end{tabular}
+\caption{Computational complexity for some operations. Dimension of the matrices is assumed to be $m \times m$ while $n$ is the restart variable and $k$ is the number of steps in time.}
+\label{tab:runtime}
+\end{table}
+All methods need to preform a matrix inversion, and $k$ matrix vector multiplication, if KPM$(n)$ is used the matrix inversion will be cheaper due to smaller dimensions. If KPM or KPM$(n)$ is used we also need to use Arnoldi's algorithm. If $p$ is not separable and we use KPM or KPM$(n)$ we need to perform all operations mentioned $m$ times, instead of one. An overview over the computational cost of these operations is given in table \ref{tab:runtime}. A list of asymptotic computational complexity for the methods is given in table \ref{tab:cc}.
+\begin{table}[h!]
+\centering
+\begin{tabular}{l | l l}
+
+Method & Separable $p$ & Non separable $p$ \\
+\hline
+ DM & $\mathcal{O}(km^2+m^3)$ & $\mathcal{O}(km^2+m^3)$  \\
+ KPM& $\mathcal{O}(km^2 +m^3)$ & $\mathcal{O}(km^3 +m^4)$ \\
+ KPM$(n)$& $\mathcal{O}((kn^2 +n^2m+n^3)\gamma)$  & $\mathcal{O}((kn^2m +n^2m^2+n^3m)\gamma)$
+\end{tabular}
+\caption{Computational complexity for the methods discussed, $\gamma$ denotes the number of restarts needed to converge.}
+\label{tab:cc}
+\end{table}
+
+From table \ref{tab:cc} it is clear that KPM is not going to be the best, not only is it terrible when $p$ is non separable, it also need to perform all operations DM needs in addition to Arnoldi, if $p$ is separable. KPM$(n)$ is the only method that can outperform DM, but it is difficult to say without knowing how $\gamma$ scales with $m$ and $n$. Notice that if $n = 1$ or $n = m$ then KPM and KPM$(n)$ have the same computational complexity if we assume $\gamma \propto m^2/n^2$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Memory requirement} \label{sec:mr}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{table}[H]
+\centering
+\begin{tabular}{r|l}
+ $A$    & $ \sim 10 m$ \\
+ $y$    & $ m\times k$ \\
+ $P$ & $ m \times k$ \\
+ $f$ & $ k $ \\
+ $v$    & $ m$ \\
+ $V_n$  & $ n \times n $ \\
+ $H_n$  & $ n \times n $  \\
+ Inverted matrix, with size $n \times n$ & $n \times n$ \\
+\end{tabular}
+\caption{List over number needed to store for large variables.}
+\label{tab:memreq}
+\end{table}
+
+All methods need to store $A$, $y$ and an inverted matrix. DM also need to store $P$. KPM and KPM$(n)$ need to remember $f$, $v$, $H_n$ and $V_n$. In addition KPM and KPM$(n)$ need to remember $P$ if $p$ is non separable. An overview over the memory requirement for the different variables is given in table \ref{tab:memreq}. A complete list over memory requirements for the methods is given in table \ref{tab:mr}. 
+\begin{table}[H]
+\centering
+\begin{tabular}{l| l l}
+Method & Separable $p$ & Non separable $p$ \\
+\hline
+DM & $m^2+2mk+10m$ & $m^2+2mk + 10 m$ \\
+KPM & $mk+3m^2+11m+k$ & $2mk+3m^2+11m+k$ \\
+KPM$(n)$ & $ mk +2n^2+k+11m+nm $ &  $ 2(mk + n^2)+k+11m+nm $
+\end{tabular}
+\caption{Memory requirements for the methods discussed. The values are not given asymptotically to make it easier to distinguish between the different methods.}
+\label{tab:mr}
+\end{table}
+From table \ref{tab:mr} it is clear that KPM$(n)$ requires the least amount of memory for small $n$, small $n$ is the key, if $n$ is to big, we just have KPM, which uses the most amount of storage. DM is somewhere in the middle, depending on $n$. 

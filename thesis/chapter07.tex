@@ -1,0 +1,80 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Discussion and conclusion}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Regarding convergence all methods can perform equally well, the drawback is the need to choose an appropriate $\delta$ for KPM and KPM$(n)$. With a larger $\delta$ KPM and KPM$(n)$ is less accurate, but with smaller $\delta$ we might restart too many times, making the methods inefficient. 
+
+
+The theoretical results shows that the only real candidate to outperform DM is KPM$(n)$, KPM is only near when $p$ is separable. This also holds for memory requirements. In practise it is much the same. KPM did perform overall worst, while KPM$(n)$ and DM was close to each other. KPM$(n)$ is asymptotically better if $\rho$ is large, $n$ is chosen appropriate and $p$ is separable. If $p$ is not separable  KPM$(n)$ and DM is asymptotically equal if we keep $\rho$ and $n$ constant, but DM is better. You need several processing units before switching to KPM$(n)$ pays off. Luckily KPM$(n)$ works very well with many processing units. The reason for the high parallel performance is the natural independence in the method. The only communication needed between processors is when adding results, this can be done in $\log_2(\texttt{nP})$ additions. It is also interesting that a good restart variable is also a good value to use with parallel computations.
+
+
+
+There is no clear rule to find the best $n$ for each $\rho$, the only thing that is clear is that larger $\rho$ performs better with larger $n$. It is worth noting that DM did not work when $\rho>300$ due to memory shortage, while KPM$(n)$ had no problem with $\rho = 1000$ and $n = 40$, except for excessive computation time. \\
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter*{Further work}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+KPM should be implement in a more parallel friendly language, like \texttt{C} with a larger computer to get better results regarding parallel computations and larger systems. 
+KPM should also be implemented for other function then the heat equation. 
+There should also be a test where $\delta$ and $ n $ increases with $\rho$ and $k$ to see how this impacts the results.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter*{My code}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+If you are interested in using any of the code presented here you can find it at: \\
+\emph{https://github.com/sindreka/Prosjektoppgave}
+
+
+
+
+%\vspace{5cm}
+\newpage
+\begin{thebibliography}{9}
+
+    \bibitem{elena}
+    
+    E. Celledoni, I. Moret
+    \emph{A Krylov projection method for system of ODEs}
+    \emph{http://www.sciencedirect.com/science/article/pii/S0168927497000330}
+    \bibitem{trap}
+    
+    \emph{https://en.wikipedia.org/wiki/Trapezoidal\_rule}
+
+    \bibitem{arnold}
+    Yousef Saad,
+    \emph{Iterative methods for sparse linear systems, second edition},
+    Page 154,
+    Algorithm 6.1,
+    2003
+    \bibitem{krylovprop}
+    Yousef Saad,
+    \emph{Iterative methods for sparse linear systems, second edition},
+    Page 154,
+    Proposition 6.5,
+    2003
+        \bibitem{numop}
+    Yousef Saad,
+    \emph{Iterative methods for sparse linear systems, second edition},
+    Page 160,
+    2003
+        \bibitem{kryconv}
+    Yousef Saad,
+    \emph{Iterative methods for sparse linear systems, second edition},
+    Page 171, 
+    Proposition 6.10,
+    2003
+        \bibitem{parpool}
+    
+    \emph{http://se.mathworks.com/help/distcomp/parpool.html}
+    \bibitem{parfor}
+    
+    \emph{http://se.mathworks.com/help/matlab/ref/parfor.html}
+    \bibitem{complex}
+    
+    \emph{http://en.wikipedia.org/wiki/Computational\_complexity\_of\_mathematical\_operations}
+    
+    
+\end{thebibliography}
+\end{document}
