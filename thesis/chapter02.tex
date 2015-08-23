@@ -89,7 +89,7 @@ Since $h_{n+1,n} = 0$ for some $n = \nu \leq m$, this shows the finite terminati
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Restarting the Krylov projection method} \label{sec:rest}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-If we use a $n < \nu$ so that $h_{n+1,n} \neq 0$ we need to restart the procedure described above. Consider first the following equation
+If $n < \nu$ so that $h_{n+1,n} \neq 0$, we need to restart the procedure described above. Consider first the following equation
 \begin{equation}\label{eqn:restkry}
 \begin{aligned}
  (q-q_n)'(t) -A (q-q_n)(t) &= r_n \\
@@ -120,7 +120,7 @@ Let $\xi(t) = (z-\zeta)(t)$, and simplify
 \xi(0)& = 0
 \end{aligned}
 \end{equation}
-This a formula we can solve. Each restart we generate a new Krylov subspace $W_n(A,v_{n+1})$, solve equation \eqref{eqn:restkry2} for $\xi(t)$ and approximate the solution $q$ by $ q_n =  V_n\xi(t)$. By summing together $q_n$, we converge towards the solution $q_\nu$. Note that the current value of $\zeta(t)$ equals the previous value of $\xi(t)$, and that $h_{n+1,n}$ is from the previous $H_n$. See algorithm \ref{alg:restkry} for a step by step description. We will call $n$ a restart variable, and denote the method with KPM$(n)$.
+This is a formula we can solve. Each restart we generate a new Krylov subspace $W_n(A,v_{n+1})$, solve equation \eqref{eqn:restkry2} for $\xi(t)$ and approximate the solution $q$ by $ q_n =  V_n\xi(t)$. By summing together $q_n$, we converge towards the solution $q_\nu$. Note that the current value of $\zeta(t)$ equals the previous value of $\xi(t)$, and that $h_{n+1,n}$ is from the previous $H_n$. See algorithm \ref{alg:restkry} for a step by step description. We will call $n$ a restart variable, and denote the method with KPM$(n)$.
 \begin{algorithm}
 \begin{algorithmic} \caption{Restarting the Krylov projection method} \label{alg:restkry} 
 \STATE Start with $A$,$f(t)$,$v$, $n$ and $i = 0$
@@ -140,7 +140,7 @@ This a formula we can solve. Each restart we generate a new Krylov subspace $W_n
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{When $p$ is not seperable}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-If We let $P(t)$ be a vector consisting of elements $p(t, x_i, y_j)$, so that $P(t) = [P_1(t),P_2(t),\cdots, P_m(t)]$, and write equation \eqref{eqn:numheat} as
+If we let $P(t)$ be a vector consisting of elements $p(t, x_i, y_j)$, so that $P(t) = [P_1(t),P_2(t),\cdots, P_m(t)]$, and write equation \eqref{eqn:numheat} as
 
 \begin{equation}
 \begin{aligned}

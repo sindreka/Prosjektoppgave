@@ -23,7 +23,7 @@
 \contentsline {section}{\numberline {5.4}Computation time for $m$}{19}{section.5.4}
 \contentsline {section}{\numberline {5.5}Computation time for $k$}{20}{section.5.5}
 \contentsline {section}{\numberline {5.6}Comparing $\delta $ with $\gamma $ and $\epsilon $}{21}{section.5.6}
-\contentsline {section}{\numberline {5.7}Results for non separable $p$}{23}{section.5.7}
-\contentsline {section}{\numberline {5.8}Convergence}{23}{section.5.8}
-\contentsline {section}{\numberline {5.9}Speedup}{24}{section.5.9}
-\contentsline {section}{\numberline {5.10}Comparison}{26}{section.5.10}
+\contentsline {chapter}{\numberline {6}Results for non separable $p$}{23}{chapter.6}
+\contentsline {section}{\numberline {6.1}Convergence}{23}{section.6.1}
+\contentsline {section}{\numberline {6.2}Speedup}{24}{section.6.2}
+\contentsline {section}{\numberline {6.3}Comparison}{26}{section.6.3}
