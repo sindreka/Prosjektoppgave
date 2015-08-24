@@ -33,13 +33,13 @@ Here, $e_n$ is the $n$th canonical vector in $\mathbb{R}^n$ and $\delta_{i,j}$ i
 \ENDFOR
 \end{algorithmic} 
 \end{algorithm}
-Let us define $\nu  \leq m$ as the constant where $W_\nu(A,v)$ spans $A$, meaning we run Arnoldi's algorithm until the stopping criteria is met.
+Let us define $\nu  \leq m$ as the constant where $W_\nu(A,v)$ spans $A$, meaning we run Arnoldi's algorithm until the stopping criterium is met.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Krylov projection method} \label{sec:fullKPM}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Let $z(t) = [z_1(t), z_2(t), \cdots, z_\nu(t)] \in \mathbb{R}^\nu $ be the vector satisfying $q(t) = V_\nu z(t)$. 
-We derive KPM by writing this into equation \eqref{eqn:numheat}, that is
+Let $z(t) = [z_1(t), z_2(t), \cdots, z_\nu(t)] \in \mathbb{R}^\nu $ be the vector satisfying $q(t) \approx V_\nu z(t)$. 
+We derive KPM by replacing $q$ with $q_\nu$ in equation \eqref{eqn:numheat}, that is
 \begin{equation}  \begin{aligned} \label{eqn:KPMtemp1}
 V_\nu z'(t) - A V_\nu z(t) &= f(t) v \\
 z(0)& = 0
@@ -58,7 +58,7 @@ z'(t) -H_\nu z(t) &=  \|v \|_2 e_1 f(t)\\
 z(0)& = 0
 \end{aligned}
 \end{equation}
-And we are done. By solving equation \eqref{eqn:krylov} for $z(t)$ and approximate $q(t)$ by $ q_\nu(t) = V_\nu z(t) $ we get the solution. A step by step description of the algorithm is given in algorithm \ref{alg:fullkry}. 
+By solving equation \eqref{eqn:krylov} for $z(t)$ and approximate $q(t)$ by $ q_\nu(t) = V_\nu z(t) $ we get the the desired approximation. A step by step description of the algorithm is given in algorithm \ref{alg:fullkry}. 
 %\end{proof}
  We will denote the method KPM.\\
 \begin{algorithm}

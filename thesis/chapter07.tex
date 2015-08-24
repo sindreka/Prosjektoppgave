@@ -7,7 +7,7 @@ Regarding convergence all methods can perform equally well, the drawback is the 
 The theoretical results shows that the only real candidate to outperform DM is KPM$(n)$, KPM is only near when $p$ is separable. This also holds for memory requirements. In practise it is much the same. KPM did perform overall worst, while KPM$(n)$ and DM was close to each other. KPM$(n)$ is asymptotically better if $\rho$ is large, $n$ is chosen appropriate and $p$ is separable. If $p$ is not separable  KPM$(n)$ and DM is asymptotically equal if we keep $\rho$ and $n$ constant, but DM is better. You need several processing units before switching to KPM$(n)$ pays off. Luckily KPM$(n)$ works very well with many processing units. The reason for the high parallel performance is the natural independence in the method. The only communication needed between processors is when adding results, this can be done in $\log_2(\texttt{nP})$ additions. It is also interesting that a good restart variable is also a good value to use with parallel computations.
 
 
-
+It seams that the optimal restart variable is when $n = \rho$, this gives sense if we assume $\gamma \propto m^2/n^2$, and actually KPM$(\rho)$ is . 
 There is no clear rule to find the best $n$ for each $\rho$, the only thing that is clear is that larger $\rho$ performs better with larger $n$. It is worth noting that DM did not work when $\rho>300$ due to memory shortage, while KPM$(n)$ had no problem with $\rho = 1000$ and $n = 40$, except for excessive computation time. \\
 
 

@@ -107,7 +107,7 @@ Figure \ref{fig:speed} shows good speedup for all methods. Table \ref{tab:speedu
                 \caption{function \texttt{P3}}
                 \label{fig:c4comp2k}
         \end{subfigure}
-        \caption{A plot of the computation times tuned to be as efficient as possible for KPM$(n)$. Values are as follows: $n = \rho = k = 40$, $\delta = 10^{-4}$, $\texttt{nP} = 4$ when nothing else is stated. The helpline for figure \ref{fig:c1comp1m} and \ref{fig:c2comp2m} increases with $\rho^6 = m^3$, while the helpline for figure \ref{fig:c3comp1k} and \ref{fig:c4comp2k} increases with $k$.}\label{fig:comp}
+        \caption{A plot of the computation times tuned to be as efficient as possible for KPM$(n)$. Values are as follows: $n = \rho = k$, $\delta = 10^{-3}$ and decreases with an order of magnitude for each point. Assume $\texttt{nP} = 4$ for KPM$(n)$ and $\texttt{nP} = 1$ for DM. The helpline for figure \ref{fig:c1comp1m} and \ref{fig:c2comp2m} increases with $\rho^6 = m^3$, while the helpline for figure \ref{fig:c3comp1k} and \ref{fig:c4comp2k} increases with $k$.}\label{fig:comp}
         
 \end{figure}
 From figure \ref{fig:comp} it is clear that DM is better in all scenarios simulated here, but KPM$(n)$ is not far behind, with more processing units KPM$(40)$ could have been faster. The other important thing to note here is that computation time for KPM$(n)$ does not increase faster than for DM. It is difficult to say what would happen with larger $\rho$ or $k$, but they would probably follow the helpline.
