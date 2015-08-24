@@ -3,7 +3,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 In this text we will investigate how well the Krylov projection method (KPM) can be used to solve linear differential equations in the form $q'(t)=Aq(t)+f(t)$. These problems arise for example when discretizing time dependent, linear partial differential equations with the method of lines, and have therefore a wide range of applications. 
-KPM is an orthogonal projection technique, the method is explained in detail in section \ref{sec:krylov}. We use Arnoldi's which allows us to construct an orthonormal basis for a given Krylov subspace, this gives rise to two slightly different methods, presented in detail in section \ref{sec:fullKPM} and \ref{sec:rest} respectively.
+KPM is an orthogonal projection technique, the method is explained in detail in section \ref{sec:krylov}. We use Arnoldi's method which allows us to construct an orthonormal basis for a given Krylov subspace, this gives rise to two slightly different methods, presented in detail in section \ref{sec:fullKPM} and \ref{sec:rest} respectively.
 
 The main focus of this report is to solve the heat equation with KPM, and compare convergence and computation time with an alternative solution technique, the alternative will be presented in section \ref{sec:DM}.
 We state the heat equation here with boundary conditions for future references. \\

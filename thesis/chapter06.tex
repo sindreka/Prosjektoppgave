@@ -95,21 +95,21 @@ Figure \ref{fig:speed} shows good speedup for all methods. Table \ref{tab:speedu
                 \caption{function \texttt{P3}}
                 \label{fig:c2comp2m}
         \end{subfigure}
-        
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{fig/c3comp1k}
-                \caption{function \texttt{P1}}
-                \label{fig:c3comp1k}
-        \end{subfigure}%
-        ~
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{fig/c4comp2k}
-                \caption{function \texttt{P3}}
-                \label{fig:c4comp2k}
-        \end{subfigure}
-        \caption{A plot of the computation times tuned to be as efficient as possible for KPM$(n)$. Values are as follows: $n = \rho = k$, $\delta = 10^{-3}$ and decreases with an order of magnitude for each point. Assume $\texttt{nP} = 4$ for KPM$(n)$ and $\texttt{nP} = 1$ for DM. The helpline for figure \ref{fig:c1comp1m} and \ref{fig:c2comp2m} increases with $\rho^6 = m^3$, while the helpline for figure \ref{fig:c3comp1k} and \ref{fig:c4comp2k} increases with $k$.}\label{fig:comp}
+%        
+%        \begin{subfigure}[b]{0.45\textwidth}
+%                \includegraphics[width=\textwidth]{fig/c3comp1k}
+%                \caption{function \texttt{P1}}
+%                \label{fig:c3comp1k}
+%        \end{subfigure}%
+%        ~
+%        \begin{subfigure}[b]{0.45\textwidth}
+%                \includegraphics[width=\textwidth]{fig/c4comp2k}
+%                \caption{function \texttt{P3}}
+%                \label{fig:c4comp2k}
+%        \end{subfigure}
+        \caption{A plot of the computation times tuned to be as efficient as possible for KPM$(n)$. Values are as follows: $n = \rho = k$, $\delta = 10^{-3}$ and decreases with an order of magnitude for each point. Assume $\texttt{nP} = 4$ for KPM$(n)$ and $\texttt{nP} = 1$ for DM. The helpline increases with $\rho^6 = m^3$.\\!!!!!!!!!!Her kommer det noen mye penere bilder!!!!!!!!!!!!!!}\label{fig:comp}
         
 \end{figure}
-From figure \ref{fig:comp} it is clear that DM is better in all scenarios simulated here, but KPM$(n)$ is not far behind, with more processing units KPM$(40)$ could have been faster. The other important thing to note here is that computation time for KPM$(n)$ does not increase faster than for DM. It is difficult to say what would happen with larger $\rho$ or $k$, but they would probably follow the helpline.
+From figure \ref{fig:comp} it is clear that DM is better in all scenarios simulated here, but KPM$(n)$ is not far behind, with more processing units KPM$(\rho)$ would have been faster. The other important thing to note here is that computation time for KPM$(n)$ does not increase faster than for DM. It is difficult to say what would happen with larger $\rho$ or $k$, but they would probably follow the helpline.
 
-One unfortunate simplification done is keeping $\delta$ constant while increasing $\rho$. This might not have a great impact in the result, but as shown in figure \ref{fig:errant} and \ref{fig:errtolk} it is of no use to increase $\rho$ and $k$ without decreasing $\delta$. It would also be of interest to increase $n$ while increasing $\rho$, as suggested by figure \ref{fig:rest}.
+%One unfortunate simplification done is keeping $\delta$ constant while increasing $\rho$. This might not have a great impact in the result, but as shown in figure \ref{fig:errant} and \ref{fig:errtolk} it is of no use to increase $\rho$ and $k$ without decreasing $\delta$. It would also be of interest to increase $n$ while increasing $\rho$, as suggested by figure \ref{fig:rest}.
