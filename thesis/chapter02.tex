@@ -34,7 +34,7 @@ Here, $e_n$ is the $n$th canonical vector in $\mathbb{R}^n$ and $\delta_{i,j}$ i
 \end{algorithmic} 
 \end{algorithm}
 Let us assume that $\nu \leq m$ is the index such that $W_v(A,v)=\mathbb{R}^m$.
-Let us define $\nu  \leq m$ as the constant where $W_\nu(A,v)$ spans $A$, meaning we run Arnoldi's algorithm until the stopping criterium is met.
+%Let us define $\nu  \leq m$ as the constant where $W_\nu(A,v)$ spans $A$, meaning we run Arnoldi's algorithm until the stopping criterium is met.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Krylov projection method} \label{sec:fullKPM}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -122,7 +122,7 @@ Let $\xi(t) = (z-\zeta)(t)$, and simplify
 \xi(0)& = 0
 \end{aligned}
 \end{equation}
-This is a formula we can solve. Each restart we generate a new Krylov subspace $W_n(A,v_{n+1})$, solve equation \eqref{eqn:restkry2} for $\xi(t)$ and approximate the solution $q$ by $ q_n =  V_n\xi(t)$. By summing together $q_n$, we converge towards the solution $q_\nu$. Note that the current value of $\zeta(t)$ equals the previous value of $\xi(t)$, and that $h_{n+1,n}$ is from the previous $H_n$. See algorithm \ref{alg:restkry} for a step by step description. We will call $n$ a restart variable, and denote the method with KPM$(n)$.
+Each restart we generate a new Krylov subspace $W_n(A,v_{n+1})$, solve equation \eqref{eqn:restkry2} for $\xi(t)$ and approximate the solution $q$ by $ q_n =  V_n\xi(t)$. By summing together $q_n$, we converge towards the solution $q_\nu$. Note that the current value of $\zeta(t)$ equals the previous value of $\xi(t)$, and that $h_{n+1,n}$ is from the previous $H_n$. See algorithm \ref{alg:restkry} for a step by step description. We will call $n$ a restart variable, and denote the method with KPM$(n)$.
 \begin{algorithm}
 \begin{algorithmic} \caption{Restarting the Krylov projection method} \label{alg:restkry} 
 \STATE Start with $A$,$f(t)$,$v$, $n$ and $i = 0$

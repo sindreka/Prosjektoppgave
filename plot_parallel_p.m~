@@ -175,7 +175,7 @@ end
 
 %compare
 
-avg = 2; k = 40; m = 40; p = [20,40,100,200]; para = 4;
+avg = 2; k = 40; m = 40; p = [20,40,100,200]; tol = 10^-7; para = 4;
 % parallel(m,k,n,prob,func,conv,para)
 
 if 1 % time vs m and m % bare for funksjon 1
