@@ -3,7 +3,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:imp}
 This section will explain the implementation of the methods. We start by discretization in space and time in section \ref{sec:space} and \ref{sec:time} respectively, and introduce the method we will compare KPM to in section \ref{sec:DM}. 
-In section \ref{sec:not} we present what and how we want to measure interesting factor, together with some information about computers and programs used to generate data.
+In section \ref{sec:not} we present what and how we want to measure interesting factors, together with some information about computers and programs used to generate data.
 In section \ref{sec:test} we state some test problems.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -54,7 +54,7 @@ To obtain the iteration scheme we write $q$ instead of $f$, use equation \eqref{
 q(t_{l+1}) - q(t_l) = \int \limits_{t_l}^{t_{l+1}} \frac{\partial q}{\partial t} dt \approx \frac{h}{2}(A q(t_{l+1})+f(t_{l+1})v +A q(t_l)+f(t_l) v) 
 \end{equation}
 %We here use $G$ as a generic right hand side of equation \eqref{eqn:heat}.
-Solving for $q(t_{l+1})$ gives the Crank-Nicholson scheme for the heat equation
+Solving for $q(t_{l+1})$ gives the Crank-Nicholson scheme for the heat equation.
 \begin{equation} \label{eqn:trapscheme}
 \begin{aligned}
 q(t_{l+1}) \approx (I-h_t/2 A)^{-1}(q(t_l) + \frac{h_t}{2}( A q(t_{l}) + f(t_l)v+f(t_{l+1})v))\\
@@ -77,11 +77,11 @@ We denote it DM for direct method.
 
 We divide implementations in two cases, separable $p$, and non separable $p$. Parallel computations were only implemented for non separable $p$. For both cases three solvers were implemented: KPM, KPM$(n)$, and DM. \\
 
-The convergence criteria used in algorithm \ref{alg:restkry} is to stop when the maximum absolute difference in $q_n$ is less than $\delta$. The error is denoted as $\epsilon$ and is defined as the largest absolute difference between the correct solution and the estimated solution. 
+The convergence criterium used in algorithm \ref{alg:restkry} is to stop when the maximum absolute difference in $q_n$ is less than $\delta$. The error is denoted as $\epsilon$ and is defined as the largest absolute difference between the correct solution and the approximation. 
 The number of iterations needed for convergence in algorithm \ref{alg:restkry} is denoted by $\gamma$. 
 We will in general be looking at computation time and error, and how this scales with $\delta$. \\
 
-If nothing else is stated assume $\rho = k = 40$, $n = 1$, $\delta = 10^{-15}$. All timed results are averaged over 2 runs, $A$ was implemented as a sparse matrix\\
+If nothing else is stated assume $\rho = k = 40$, $n = 1$, $\delta = 10^{-15}$. All timed results are averaged over 2 runs, preferably this should have been higher, but that was too time consuming. $A$ was implemented as a sparse matrix\\
 
 
 All solvers and problems were implemented in MATLAB R2014b. The computer used runs Ubuntu 14.04 LTS with intel  i7-4770 CPU, and 16 GB ram. \\

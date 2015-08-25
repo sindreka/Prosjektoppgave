@@ -2,7 +2,7 @@
 \chapter{Computational complexity}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:comp}
-We will in section \ref{sec:cc} and \ref{sec:mr} briefly compare the computational and memory costs of the different solution strategies discussed.% This will be presented  respectivly. 
+We will in section \ref{sec:cc} and \ref{sec:mr} briefly compare the computational and memory costs of the different methods discussed.% This will be presented  respectivly. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Computational complexity} \label{sec:cc}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -17,7 +17,10 @@ We will in section \ref{sec:cc} and \ref{sec:mr} briefly compare the computation
 \caption{Computational complexity for some operations. Dimension of the matrices is assumed to be $m \times m$ while $n$ is the restart variable and $k$ is the number of steps in time.}
 \label{tab:runtime}
 \end{table}
-All methods need to preform a matrix inversion, and $k$ matrix vector multiplication, if KPM$(n)$ is used the matrix inversion will be cheaper due to smaller dimensions. If KPM or KPM$(n)$ is used we also need to use Arnoldi's algorithm. If $p$ is not separable and we use KPM or KPM$(n)$ we need to perform all operations mentioned $m$ times, instead of one. An overview over the computational cost of these operations is given in table \ref{tab:runtime}. A list of asymptotic computational complexity for the methods is given in table \ref{tab:cc}.
+
+
+All methods need to preform a matrix inversion, and $k$ matrix vector multiplication.
+If KPM or KPM$(n)$ is used we need to use Arnoldi's algorithm, if $p$ is not separable we need to perform all operations mentioned $m$ times, instead of one. An overview over the computational cost of these operations is given in table \ref{tab:runtime}. A list of asymptotic computational complexity for the methods is given in table \ref{tab:cc}.
 \begin{table}[h!]
 \centering
 \begin{tabular}{l | l l}
@@ -32,7 +35,8 @@ Method & Separable $p$ & Non separable $p$ \\
 \label{tab:cc}
 \end{table}
 
-From table \ref{tab:cc} it is clear that KPM is not going to be the best, not only is it terrible when $p$ is non separable, it also need to perform all operations DM needs in addition to Arnoldi, if $p$ is separable. KPM$(n)$ is the only method that can outperform DM, but it is difficult to say without knowing how $\gamma$ scales with $m$ and $n$. Notice that if $n = 1$ or $n = m$ then KPM and KPM$(n)$ have the same computational complexity if we assume $\gamma \propto m^2/n^2$.
+From table \ref{tab:cc} it is clear that KPM is not going to be the best, leaving
+KPM$(n)$ to be the only method that can outperform DM, but it is difficult to say without knowing how $\gamma$ scales with $m$ and $n$. Notice that if $n = 1$ or $n = m$ then KPM and KPM$(n)$ have the same computational complexity if we assume $\gamma \propto m^2/n^2$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Memory requirement} \label{sec:mr}

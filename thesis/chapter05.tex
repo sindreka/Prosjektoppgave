@@ -44,7 +44,7 @@ As can be seen from figure \ref{fig:conv}, all method converges quadratically an
         \end{subfigure}
         \caption{Computation times plotted against restart variable $n$.}\label{fig:rest}
 \end{figure}
-As we can see from figure \ref{fig:rest}, the optimal restart variable changes as a function of $\rho$ so that larger $\rho$ needs larger $n$ to preform optimally. One point is missing from KPM$(n)$, $\rho = 10$ this is because the last point plotted is the same as KPM. $n = 40$ seams like a good restart variable for these $\rho$.
+As we can see from figure \ref{fig:rest}, the optimal restart variable changes as a function of $\rho$ so that larger $\rho$ needs larger $n$ to preform optimally. One point is missing from KPM$(n)$, $\rho = 10$, this is because the last point plotted is the same as KPM. $n = \rho$ seams like a good restart variable.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Comparing $\gamma$ and $n$} \label{sec:rrest}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -63,7 +63,7 @@ As we can see from figure \ref{fig:rest}, the optimal restart variable changes a
         \end{subfigure}
         \caption{The number of restarts, $\gamma$ needed for KPM$(n)$ to converge as a function of $n$. The helpline decreases with $n^2$.}\label{fig:ant}
 \end{figure}
-As we can see from figure \ref{fig:ant}, $\gamma$ decreases quadratically when $n$ is small, but decreases less when $n$ is larger. If we put this together with the estimated complexity found in section \ref{sec:rrest}, we get that KPM$(n)$ has at most the same estimated complexity as KPM. Notice that the Helpline follows $m^2/n^2$, as suggested in section \ref{sec:cc}.
+As we can see from figure \ref{fig:ant}, $\gamma$ decreases quadratically when $n$ is small, but decreases less when $n$ is larger. If we put this together with the estimated complexity found in section \ref{sec:rrest}, we get that KPM$(n)$ has at most the same estimated complexity as KPM. Notice that the Helpline follows $1/n^2$, as suggested in section \ref{sec:cc}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Computation time for $m$} \label{sec:stimem}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -82,7 +82,7 @@ As we can see from figure \ref{fig:ant}, $\gamma$ decreases quadratically when $
         \end{subfigure}
         \caption{A plot of computation time as a function of $\rho$, the helpline increases with $\rho^6 = m^3$.}\label{fig:timem}
 \end{figure}
-As we can see from figure \ref{fig:timem}, the computation time for KPM increases as expected, while DM and KPM$(n)$ increases slower, perhaps due to MATLAB's efficient inversion algorithm and less memory demand. 
+As we can see from figure \ref{fig:timem}, the computation time for KPM increases as expected, while DM and KPM$(n)$ increases slower, perhaps due to MATLAB's efficient inversion algorithm or less memory demand. 
 Even more interesting is it that KPM$(n)$ is both asymptotically better, and faster than DM for large $\rho$, so clearly KPM$(n)$ is better in some cases.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Computation time for $k$} \label{sec:stimek}
