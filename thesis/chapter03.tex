@@ -53,7 +53,6 @@ To obtain the iteration scheme we write $q$ instead of $f$, use equation \eqref{
 \begin{equation}
 q(t_{l+1}) - q(t_l) = \int \limits_{t_l}^{t_{l+1}} \frac{\partial q}{\partial t} dt \approx \frac{h}{2}(A q(t_{l+1})+f(t_{l+1})v +A q(t_l)+f(t_l) v) 
 \end{equation}
-%We here use $G$ as a generic right hand side of equation \eqref{eqn:heat}.
 Solving for $q(t_{l+1})$ gives the Crank-Nicholson scheme for the heat equation.
 \begin{equation} \label{eqn:trapscheme}
 \begin{aligned}
@@ -77,9 +76,9 @@ We denote it DM for direct method.
 
 We divide implementations in two cases, separable $p$, and non separable $p$. Parallel computations were only implemented for non separable $p$. For both cases three solvers were implemented: KPM, KPM$(n)$, and DM. \\
 
-The convergence criterium used in algorithm \ref{alg:restkry} is to stop when the maximum absolute difference in $q_n$ is less than $\delta$. The error is denoted as $\epsilon$ and is defined as the largest absolute difference between the correct solution and the approximation. 
+The convergence criterium used in algorithm \ref{alg:restkry} is to stop when the maximum absolute difference in $q_n$ is less than a given tolerance $\delta$. The error is denoted as $\epsilon$ and is defined as the largest absolute difference between the correct solution and the approximation. 
 The number of iterations needed for convergence in algorithm \ref{alg:restkry} is denoted by $\gamma$. 
-We will in general be looking at computation time and error, and how this scales with $\delta$. \\
+We will in general be looking at computation time and error, and how this scale with $\delta$. \\
 
 If nothing else is stated assume $\rho = k = 40$, $n = 1$, $\delta = 10^{-15}$. All timed results are averaged over 2 runs, preferably this should have been higher, but that was too time consuming. $A$ was implemented as a sparse matrix\\
 

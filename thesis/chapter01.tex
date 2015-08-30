@@ -2,10 +2,10 @@
 \chapter{Introduction}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-In this text we will investigate how well the Krylov projection method (KPM) can be used to solve linear differential equations in the form $q'(t)=Aq(t)+f(t)$. These problems arise for example when discretizing time dependent, linear partial differential equations with the method of lines, and have therefore a wide range of applications. 
-KPM is an orthogonal projection technique, the method is explained in detail in section \ref{sec:krylov}. We use Arnoldi's method which allows us to construct an orthonormal basis for a given Krylov subspace, this gives rise to two slightly different methods, presented in detail in section \ref{sec:fullKPM} and \ref{sec:rest} respectively.
+In this report we will investigate how the Krylov projection method (KPM)  can be used to solve linear differential equations in the form $q'(t)=Aq(t)+f(t)$. These problems arise for example when discretizing time dependent, linear partial differential equations with the method of lines, and have therefore a wide range of applications. 
+KPM is an orthogonal projection technique, the method is explained in detail in section \ref{sec:krylov}. See \textit{A krylov projection method for systems of ODEs} by E. Celledoni and I. Moret \cite{elena} for a more detailed explanation. We use Arnoldi's method which allows us to construct an orthonormal basis for a given Krylov subspace, this gives rise to two slightly different methods, presented in detail in section \ref{sec:fullKPM} and \ref{sec:rest} respectively.
 
-The main focus of this report is to solve the heat equation with KPM, and compare convergence and computation time with an alternative solution technique, the alternative will be presented in section \ref{sec:DM}.
+The main focus of this report is to solve the heat equation with KPM, and compare convergence and computational time with an alternative solution technique, the alternative will be presented in section \ref{sec:DM}.
 We state the heat equation here with boundary conditions for future references. \\
 \begin{equation} \label{eqn:heat}
 \begin{aligned}
@@ -17,7 +17,7 @@ u & = 0 			&\text{ on } \partial [0,L] \times [0,L]
 $p(t,x,y)$ is a smooth function, and $u(t,x,y)$ is the solution we seek.\\
 
 Let us for now assume that the right hand side of equation \eqref{eqn:heat} is separable, so that $p(t,x,y) = f(t)g(x,y) $. 
-Given a vector $v = [v_1,v_2, \cdots, v_m] \in \mathbb{R}^m $ with elements $ g(x_i,y_j)$, $x_i,y_j \in [0,L]$ and a matrix $A$ as an approximation of the Laplacian, we can write the heat equation on the form
+Given a vector $v = [v_1,v_2, \cdots, v_m] \in \mathbb{R}^m $ with elements $ g(x_i,y_j)$, $x_i,y_j \in [0,L]$ and a matrix $A$ as an approximation of the Laplacian, we can discretize the heat equation and obtain its space-discrete version as
 
 
 \begin{equation} \label{eqn:numheat}
