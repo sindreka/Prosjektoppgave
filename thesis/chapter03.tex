@@ -43,15 +43,18 @@ Notice that $m = \rho ^2$.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discretisation in time} \label{sec:time}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 We will consider the time domain $t \in [0,1] $, and divide it in $k$ pieces, giving each piece a length $h_t = 1/(k-1)$, let $t_l = h_t\cdot l$.
-Trapezoidal rule\cite{trap}, given in equation \eqref{eqn:trap} will be used to integrate in time. 
+Algorithm \ref{alg:fullkry}, \ref{alg:restkry} and \ref{eqn:DI} all contain a differential equation in time,
+trapezoidal rule\cite{trap}, given in equation \eqref{eqn:trap} will be used to solve these equations. 
 \begin{equation} \label{eqn:trap}
 \int \limits_a^b f(t) dt \approx \frac{h}{2} \sum \limits_{l = 1}^N(f(t_{l+1})+f((t_l))
 \end{equation}
-We will only derive the iteration scheme for equation \eqref{eqn:numheat}, but since all the differential equations are similar, it should be easy to make the few changes necessary to solve the other differential equations discussed.
+We will only derive the iteration scheme for equation \eqref{eqn:numheat}, but 
+this it is easily generalizable to the other differential equations discussed.
 To obtain the iteration scheme we write $q$ instead of $f$, use equation \eqref{eqn:heat} and insert the numerical simplifications above.
 \begin{equation}
-q(t_{l+1}) - q(t_l) = \int \limits_{t_l}^{t_{l+1}} \frac{\partial q}{\partial t} dt \approx \frac{h}{2}(A q(t_{l+1})+f(t_{l+1})v +A q(t_l)+f(t_l) v) 
+q(t_{l+1}) - q(t_l) = \int \limits_{t_l}^{t_{l+1}} \frac{d q}{d t} dt \approx \frac{h}{2}(A q(t_{l+1})+f(t_{l+1})v +A q(t_l)+f(t_l) v) 
 \end{equation}
 Solving for $q(t_{l+1})$ gives the Crank-Nicholson scheme for the heat equation.
 \begin{equation} \label{eqn:trapscheme}
@@ -74,14 +77,11 @@ We denote it DM for direct method.
 \section{Measurements and computers} \label{sec:not}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-We divide implementations in two cases, separable $p$, and non separable $p$. Parallel computations were only implemented for non separable $p$. For both cases three solvers were implemented: KPM, KPM$(n)$, and DM. \\
+%We divide implementations in two cases, separable $p$, and non separable $p$. Parallel computations were only implemented for non separable $p$. For both cases three solvers were implemented: KPM, KPM$(n)$, and DM. \\
 
-The convergence criterium used in algorithm \ref{alg:restkry} is to stop when the maximum absolute difference in $q_n$ is less than a given tolerance $\delta$. The error is denoted as $\epsilon$ and is defined as the largest absolute difference between the correct solution and the approximation. 
-The number of iterations needed for convergence in algorithm \ref{alg:restkry} is denoted by $\gamma$. 
-We will in general be looking at computation time and error, and how this scale with $\delta$. \\
+Algorithm \ref{alg:arnoldi}, \ref{alg:fullkry}, \ref{alg:restkry}, together with equation \ref{eqn:DI} was implemented as solves for equation \ref{eqn:heat}, with equation \ref{eqn:trapscheme} solving the differential equations. 
 
-If nothing else is stated assume $\rho = k = 40$, $n = 1$, $\delta = 10^{-15}$. All timed results are averaged over 2 runs, preferably this should have been higher, but that was too time consuming. $A$ was implemented as a sparse matrix\\
-
+Each solver was implemented in two versions, one where $p$ was assumed separable, and one where $p$ was assumed to be non separable. Parallel computations was only implemented for $p$ non separable.
 
 All solvers and problems were implemented in MATLAB R2014b. The computer used runs Ubuntu 14.04 LTS with intel  i7-4770 CPU, and 16 GB ram. \\
 
@@ -93,6 +93,16 @@ and parallel efficiency as
 \begin{align*}
 \eta_\texttt{nP} = \frac{S_\texttt{nP}}{\texttt{nP}}
 \end{align*}
+
+
+The convergence criterium used in algorithm \ref{alg:restkry} is to stop when the maximum absolute difference in $q_n$ is less than a given tolerance $\delta$. The error is denoted as $\epsilon$ and is defined as the largest absolute difference between the correct solution and the approximation. 
+The number of iterations needed for convergence in algorithm \ref{alg:restkry} is denoted by $\gamma$. 
+We will in general be looking at computation time and error, and how this scale with $\delta$. \\
+
+If nothing else is stated, assume that $\rho = k = 40$, $n = 1$, $\delta = 10^{-15}$. All timed results are averaged over 2 runs, preferably this should have been higher, but that was too time consuming. $A$ was implemented as a sparse matrix.\\
+
+
+
 where $\tau_\texttt{nP}$ is run time with \texttt{nP} processors, $S_\texttt{nP}$ is speedup with \texttt{nP} processors, and $\eta_\texttt{nP}$ is parallel efficiency for \texttt{nP} processors. Speedup measures how much faster a program runs with \texttt{nP} processors, ideal speedup is when $S_\texttt{nP} = \texttt{nP}$. Parallel efficiency measures how well each processor is used. Perfect parallel efficiency occurs when $\eta_\texttt{nP} = 1$.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Test problems} \label{sec:test}
@@ -120,7 +130,7 @@ This problem will be denoted as \texttt{P2}.\\
  \end{aligned}
 \end{equation*}
 
-To obtain the solutions, we need to solve for $f_i(t) g_i(x,y)$, $i = 1,2 $ and add the solutions together. Clearly parallel computations could be used to solve these, but this will not be done in this text. \\
+To obtain the solutions, we need to solve for $f_i(t) g_i(x,y)$, $i = 1,2 $ and add the solutions together. Clearly parallel computations could be used to solve these, but this will not be done in this text. The reason for this is that MATLAB uses a significant amount of time to prepare parallel computation, .\\
 
 \texttt{P1} will also be used in the non separable case with $p(t) = f_1(t) g_1(x,y) + f_2(t) g_2(x,y)$.
 One additional test problem is implemented for non separable $p$, this is a symmetric problem consisting of both polynomial and exponential functions, it is given in equation \eqref{eqn:non1}, and will be denoted as \texttt{P3}.

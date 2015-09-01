@@ -6,7 +6,7 @@
 \contentsline {section}{\numberline {2.1}Krylov subspace}{4}{section.2.1}
 \contentsline {section}{\numberline {2.2}Krylov projection method}{5}{section.2.2}
 \contentsline {section}{\numberline {2.3}Restarting the Krylov projection method}{6}{section.2.3}
-\contentsline {section}{\numberline {2.4}When $p$ is not seperable}{7}{section.2.4}
+\contentsline {section}{\numberline {2.4}When $p$ is not seperable}{8}{section.2.4}
 \contentsline {chapter}{\numberline {3}Implementation}{9}{chapter.3}
 \contentsline {section}{\numberline {3.1}Discretisation in space}{9}{section.3.1}
 \contentsline {section}{\numberline {3.2}Discretisation in time}{10}{section.3.2}

@@ -71,7 +71,7 @@ By solving equation \eqref{eqn:krylov} for $z(t)$ and calculating $ q(t) = V_m z
 \end{algorithmic} 
 \end{algorithm}
 
-Let us now consider the residual of equation \eqref{eqn:numheat} at $q_n(t) = V_n z_(t)$, that is
+Let us now consider the residual of equation \eqref{eqn:numheat} at $q_n(t) = V_n z (t)$, that is
 \begin{equation*}
 r_n(t) = f(t) v - q_n'(t) +Aq_n(t)
 \end{equation*}
@@ -97,31 +97,38 @@ If $n < m$ so that $h_{n+1,n} \neq 0$, we need to restart the procedure describe
 (q-q_n)(0)& = 0
 \end{aligned}
 \end{equation}
-where $r_n$ is as in equation \eqref{eqn:rn}. If we can solve this equation for $(q-q_n)$ we can improve the approximation of $q$ via iterative refinement.
+where $r_n$ is as in equation \eqref{eqn:rn}. If we can solve this equation for $(q-q_n)$, we can improve the approximation of $q$ via iterative refinement.
 
-Equation \eqref{eqn:restkry} is of the same form as equation \eqref{eqn:krylov}. We derive KPM as we did before, by writing $q(t) = V_m z(t)$ and $q_n = V_n \zeta $.
-%Let us do this by writing $V_\nu z$ in place of $q$, and  in place of $q_n$
+Equation \eqref{eqn:restkry} is of the same form as equation \eqref{eqn:krylov}. We derive KPM as we did before, by writing $q(t) = V_m z(t)$ and $q_n = \tilde{V}_n \tilde{\zeta} $, where $\tilde{V}_n$ is an $m \times m$ matrix with the first $n$ columns equal to the first $n$ columns of $V_m$, with all additional elements zero. The first $n$ rows of  $\tilde{\zeta}$ is equal to $\zeta$, where $q_n = V_n \zeta$ , the rest of the elements are zero.
 
-\begin{equation*}%\label{eqn:restkry1}
+\begin{equation*}
 \begin{aligned}
- (V_m z-V_n \zeta)'(t)-A (V_m z-V_n \zeta)(t) &=  h_{n+1,n}e_n^\top \zeta(t) v_{n+1}  \\
-(z-\zeta)(0)& = 0
+ (V_m z-\tilde{V}_n \tilde{\zeta})'(t)-A (V_m z-\tilde{V}_n \tilde{\zeta})(t) &=  h_{n+1,n}e_n^\top \tilde{\zeta}(t) v_{n+1}  \\
+(z-\tilde{\zeta})(0)& = 0 
 \end{aligned}
 \end{equation*}
 Multiplying by $V_m^{\top}$ and using equation \eqref{eqn:prop2} gives
 \begin{equation*}
 \begin{aligned}
- (z-\zeta)'(t)-H_m (z-\zeta)(t) &= V_m^\top h_{n+1,n}e_n^\top \zeta(t) v_{n+1}  \\
-(z-\zeta)(0)& = 0
+ (z-\tilde{\zeta})'(t)-\tilde{H_n} (z-\tilde{\zeta})(t) &= V_m^\top h_{n+1,n}e_n^\top \tilde{\zeta}(t) v_{n+1}  \\
+(z-\tilde{\zeta})(0)& = 0
 \end{aligned}
 \end{equation*}
-Let $\xi(t) = (z-\zeta)(t)$, and simplify
+Let $\tilde{\xi}(t) = (z-\tilde{\zeta})(t)$, and simplify
 \begin{equation}\label{eqn:restkry2}
 \begin{aligned}
- \xi '(t) -H_m \xi(t) &= h_{n+1,n}e_n^\top \zeta (t)  \\
+ \tilde{\xi} '(t) -\tilde{H_n} \tilde{\xi}(t) &= h_{n+1,n}e_n^\top \tilde{\zeta} (t)  \\
+\tilde{\xi}(0)& = 0
+\end{aligned}
+\end{equation}
+If we drop all the zero rows $\xi(t)$ we are left with
+\begin{equation}\label{eqn:restkry2}
+\begin{aligned}
+ \xi '(t) -H_n \xi(t) &= h_{n+1,n}e_n^\top \zeta (t)  \\
 \xi(0)& = 0
 \end{aligned}
 \end{equation}
+
 Each restart we generate a new Krylov subspace $W_n(A,v_{n+1})$, solve equation \eqref{eqn:restkry2} for $\xi(t)$ and approximate the solution $q$ by $ q_n =  V_n\xi(t)$. By summing together $q_n$, we converge towards the approximation $q_m$. Note that the current value of $\zeta(t)$ equals the previous value of $\xi(t)$, and that $h_{n+1,n}$ is from the previous $H_n$. See algorithm \ref{alg:restkry} for a step by step description. We will call $n$ a restart variable, and denote the method with KPM$(n)$.
 \begin{algorithm}
 \begin{algorithmic} \caption{Restarting the Krylov projection method} \label{alg:restkry} 
