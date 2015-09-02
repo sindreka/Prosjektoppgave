@@ -9,7 +9,8 @@ We will in section \ref{sec:cc} and \ref{sec:mr} briefly compare the computation
 \begin{table}[h!]
 \centering
 \begin{tabular}{r | l}
- Matrix vector multiplication & $\mathcal{O}(m^2)$ \cite{complex} \\
+ Matrix vector multiplication (full) & $\mathcal{O}(m^2)$ \cite{complex} \\
+ Matrix vector multiplication (sparse) & $\mathcal{O}(m)$ \\
  Matrix inversion  & $ \mathcal{O}(m^3)$ \cite{complex} \\
  Arnoldi's algorithm & $ \mathcal{O}(n^2 m)$ \cite{numop} \\
  Integration & $\mathcal{O}(k)$
@@ -17,27 +18,25 @@ We will in section \ref{sec:cc} and \ref{sec:mr} briefly compare the computation
 \caption{Computational complexity for some operations. Dimension of the matrices is assumed to be $m \times m$ while $n$ is the restart variable and $k$ is the number of steps in time.}
 \label{tab:runtime}
 \end{table}
+DM need to perform $k$ matrix vector multiplications, with a sparse matrix, and one matrix inversion. 
+KPM and KPM$(n)$ needs to perform $k$ matrix vector multiplications, with a full matrix, and one matrix inversion. It also need to run Arnoldi's algorithm. If $p$ is non separable this needs to be done $m$ times, if $p$ is separable, one time i enough. KPM$(n)$ uses smaller matrices and vectors, with size $n$, which reduces the cost of these operations, but it needs to restart. We will denote the number of restarts KPM$(n)$ needs to converge as $\gamma$. \\
 
-
-All methods need to preform a matrix inversion, and $k$ matrix vector multiplication.
-If KPM or KPM$(n)$ is used we need to use Arnoldi's algorithm, if $p$ is not separable we need to perform all operations mentioned $m$ times, instead of one. An overview over the computational cost of these operations is given in table \ref{tab:runtime}. A list of asymptotic computational complexity for the methods is given in table \ref{tab:cc}.
+An overview over the computational cost of these operations is given in table \ref{tab:runtime}. A list of asymptotic computational complexity for the methods is given in table \ref{tab:cc}.
 \begin{table}[h!]
 \centering
 \begin{tabular}{l | l l}
 
 Method & Separable $p$ & Non separable $p$ \\
 \hline
- DM & $\mathcal{O}(km^2+m^3)$ & $\mathcal{O}(km^2+m^3)$  \\
+ DM & $\mathcal{O}(km+m^3)$ & $\mathcal{O}(km+m^3)$  \\
  KPM& $\mathcal{O}(km^2 +m^3)$ & $\mathcal{O}(km^3 +m^4)$ \\
  KPM$(n)$& $\mathcal{O}((kn^2 +n^2m+n^3)\gamma)$  & $\mathcal{O}((kn^2m +n^2m^2+n^3m)\gamma)$
 \end{tabular}
-\caption{Computational complexity for the methods discussed, $\gamma$ denotes the number of restarts needed to converge.}
+\caption{Computational complexity for the methods discussed, $\gamma$ denotes the number of restarts needed to converge. Parallel computations will be done for non separable $p$.}
 \label{tab:cc}
 \end{table}
 
-From table \ref{tab:cc} it is clear that KPM is not going to be the best, leaving
-KPM$(n)$ to be the only method that can outperform DM, but it is difficult to say without knowing how $\gamma$ scales with $m$ and $n$. Notice that if $n = 1$ or $n = m$ then KPM and KPM$(n)$ have the same computational complexity if we assume $\gamma \propto m^2/n^2$.
-
+We assume that KPM$(m)$ and KPM has the same complexity, so that $\gamma = 1$ when $n = m$. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Memory requirement} \label{sec:mr}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -50,15 +49,18 @@ KPM$(n)$ to be the only method that can outperform DM, but it is difficult to sa
  $P$ & $ m \times k$ \\
  $f$ & $ k $ \\
  $v$    & $ m$ \\
- $V_n$  & $ n \times n $ \\
+ $V_n$  & $ m \times n $ \\
  $H_n$  & $ n \times n $  \\
- Inverted matrix, with size $n \times n$ & $n \times n$ \\
+ Inverted matrix, with size $m \times m$ & $m \times m$ \\
 \end{tabular}
-\caption{List over number needed to store large variables.}
+\caption{List over memory demanding variables. All variables are assumed to be discretized with $k$ points in time, and $m$ points in space.}
 \label{tab:memreq}
 \end{table}
+DM need to store $A$, $q$ ,$P$, and an inverted matrix with size $m \times m$.
+KPM and KPM$(n)$ needs to store $A$, $q$, $V_n$, $H_n$, and an inverted matrix. For KPM $n = m$. If $p$ is separable we need to store $v$ and $f$, if $p$ is non separable we need to store $P$ instead. \\
 
-All methods need to store $A$, $y$ and an inverted matrix. DM also need to store $P$. KPM and KPM$(n)$ need to remember $f$, $v$, $H_n$ and $V_n$. In addition KPM and KPM$(n)$ need to remember $P$ if $p$ is non separable. An overview over the memory requirement for the different variables is given in table \ref{tab:memreq}. A complete list over memory requirements for the methods is given in table \ref{tab:mr}. 
+An overview over the memory demand for the different variables is given in table \ref{tab:memreq}. A list of memory demand for the different methods is given in table \ref{tab:mr}.
+
 \begin{table}[H]
 \centering
 \begin{tabular}{l| l l}
@@ -71,4 +73,5 @@ KPM$(n)$ & $ mk +2n^2+k+11m+nm $ &  $ 2(mk + n^2)+k+11m+nm $
 \caption{Memory requirements for the methods discussed. The values are not given asymptotically to make it easier to distinguish between the different methods.}
 \label{tab:mr}
 \end{table}
-From table \ref{tab:mr} it is clear that KPM$(n)$ requires the least amount of memory of the three if $n$ is small. Small $n$ is the key, if $n$ is to big we just have KPM, which uses the largest amount of memory of the three. DM is somewhere in the middle, depending on $n$. 
+
+We see that KPM$(m)$ and KPM requires the same amount of memory.

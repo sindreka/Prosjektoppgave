@@ -43,7 +43,7 @@ Notice that $m = \rho ^2$.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discretisation in time} \label{sec:time}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+!!!!!!!!!!!!!!!!!!!!!det må komme tydeldig fram at $P$ og slikt trenger størrelse $m \times k$ !!!!!!!!!!!!!\\
 We will consider the time domain $t \in [0,1] $, and divide it in $k$ pieces, giving each piece a length $h_t = 1/(k-1)$, let $t_l = h_t\cdot l$.
 Algorithm \ref{alg:fullkry}, \ref{alg:restkry} and \ref{eqn:DI} all contain a differential equation in time,
 trapezoidal rule\cite{trap}, given in equation \eqref{eqn:trap} will be used to solve these equations. 
@@ -76,9 +76,8 @@ We denote it DM for direct method.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Measurements and computers} \label{sec:not}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%We divide implementations in two cases, separable $p$, and non separable $p$. Parallel computations were only implemented for non separable $p$. For both cases three solvers were implemented: KPM, KPM$(n)$, and DM. \\
-
+%!!!!!!!!!!!!!!!!!!!Skrive mer om hva vi er på jakt etter av resultater i forhold til $p$!!!!!!!!!!!!!!!!!!!\\
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Skrive at vi bruker alle iterasjonene når vi bruker KPM!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\\
 Algorithm \ref{alg:arnoldi}, \ref{alg:fullkry}, \ref{alg:restkry}, together with equation \ref{eqn:DI} was implemented as solves for equation \ref{eqn:heat}, with equation \ref{eqn:trapscheme} solving the differential equations. 
 
 Each solver was implemented in two versions, one where $p$ was assumed separable, and one where $p$ was assumed to be non separable. Parallel computations was only implemented for $p$ non separable.
@@ -97,7 +96,7 @@ and parallel efficiency as
 
 The convergence criterium used in algorithm \ref{alg:restkry} is to stop when the maximum absolute difference in $q_n$ is less than a given tolerance $\delta$. The error is denoted as $\epsilon$ and is defined as the largest absolute difference between the correct solution and the approximation. 
 The number of iterations needed for convergence in algorithm \ref{alg:restkry} is denoted by $\gamma$. 
-We will in general be looking at computation time and error, and how this scale with $\delta$. \\
+ for seperable $p$, we will in general be looking at computation time and error, and how this scale with $\delta$. When $p$ is separable we are still interested in convergence, and computation time, but also parallel efficiency. \\
 
 If nothing else is stated, assume that $\rho = k = 40$, $n = 1$, $\delta = 10^{-15}$. All timed results are averaged over 2 runs, preferably this should have been higher, but that was too time consuming. $A$ was implemented as a sparse matrix.\\
 
@@ -130,7 +129,7 @@ This problem will be denoted as \texttt{P2}.\\
  \end{aligned}
 \end{equation*}
 
-To obtain the solutions, we need to solve for $f_i(t) g_i(x,y)$, $i = 1,2 $ and add the solutions together. Clearly parallel computations could be used to solve these, but this will not be done in this text. The reason for this is that MATLAB uses a significant amount of time to prepare parallel computation, .\\
+To obtain the solutions, we need to solve for $f_i(t) g_i(x,y)$, $i = 1,2 $ and add the solutions together. Clearly parallel computations could be used to solve these, but this will not be done in this text. The reason for this is that MATLAB uses a significant amount of time to prepare parallel computation, often much larger time than the computation itself.\\
 
 \texttt{P1} will also be used in the non separable case with $p(t) = f_1(t) g_1(x,y) + f_2(t) g_2(x,y)$.
 One additional test problem is implemented for non separable $p$, this is a symmetric problem consisting of both polynomial and exponential functions, it is given in equation \eqref{eqn:non1}, and will be denoted as \texttt{P3}.
