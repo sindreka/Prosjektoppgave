@@ -43,7 +43,7 @@ Notice that $m = \rho ^2$.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discretisation in time} \label{sec:time}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-!!!!!!!!!!!!!!!!!!!!!det må komme tydeldig fram at $P$ og slikt trenger størrelse $m \times k$ !!!!!!!!!!!!!\\
+%!!!!!!!!!!!!!!!!!!!!!det må komme tydeldig fram at $P$ og slikt trenger størrelse $m \times k$ !!!!!!!!!!!!!\\
 We will consider the time domain $t \in [0,1] $, and divide it in $k$ pieces, giving each piece a length $h_t = 1/(k-1)$, let $t_l = h_t\cdot l$.
 Algorithm \ref{alg:fullkry}, \ref{alg:restkry} and \ref{eqn:DI} all contain a differential equation in time,
 trapezoidal rule\cite{trap}, given in equation \eqref{eqn:trap} will be used to solve these equations. 
@@ -63,7 +63,7 @@ q(t_{l+1}) \approx (I-h_t/2 A)^{-1}(q(t_l) + \frac{h_t}{2}( A q(t_{l}) + f(t_l)v
 %U^{l+1} = (I-h_t/2 A)^{-1}(U^l + \frac{h_t}{2}( A U^l + G^l+G^{l+1}))
 \end{aligned}
 \end{equation} 
-This is a second order method.
+This is a second order method. Because of this discretion, $P(t)$ and $f(t)$ needs to have $k$ columns, so that $P$ becomes an $m \times k $ matrix, and $f$ becomes an $1 \times k$ vector.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Direct method} \label{sec:DM}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -72,15 +72,15 @@ We need to compare KPM to a well known and easy to implement method. For this we
 q'(t) -A q(t) = P(t)
 \end{equation}
 We denote it DM for direct method.
-\newpage
+%\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Measurements and computers} \label{sec:not}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %!!!!!!!!!!!!!!!!!!!Skrive mer om hva vi er på jakt etter av resultater i forhold til $p$!!!!!!!!!!!!!!!!!!!\\
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Skrive at vi bruker alle iterasjonene når vi bruker KPM!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\\
+%!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Skrive at vi bruker alle iterasjonene når vi bruker KPM!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\\
 Algorithm \ref{alg:arnoldi}, \ref{alg:fullkry}, \ref{alg:restkry}, together with equation \ref{eqn:DI} was implemented as solves for equation \ref{eqn:heat}, with equation \ref{eqn:trapscheme} solving the differential equations. 
 
-Each solver was implemented in two versions, one where $p$ was assumed separable, and one where $p$ was assumed to be non separable. Parallel computations was only implemented for $p$ non separable.
+Each solver was implemented in two versions, one where $p$ was assumed separable, and one where $p$ was assumed to be non separable. Parallel computations was only implemented for $p$ non separable, because in this case we need solve $m$ independent problems, and not just one as when $p$ is separable. 
 
 All solvers and problems were implemented in MATLAB R2014b. The computer used runs Ubuntu 14.04 LTS with intel  i7-4770 CPU, and 16 GB ram. \\
 
@@ -93,12 +93,11 @@ and parallel efficiency as
 \eta_\texttt{nP} = \frac{S_\texttt{nP}}{\texttt{nP}}
 \end{align*}
 
+We let KPM$(n)$ be the method where we perform the $n$ first iterations of Arnoldi's algorithm, and we let KPM be short for KPM$(m)$. We also denote $n$ as a restart variable. The number of restarts needed for convergence in algorithm \ref{alg:restkry} is denoted by $\gamma$. The convergence criterion used in algorithm \ref{alg:restkry} is to stop when the maximum absolute difference in $q_n$ is less than a given tolerance $\delta$. The error is denoted as $\epsilon$ and is defined as the largest absolute difference between the correct solution and the approximation. 
+ 
+For separable $p$, we will in general be looking at computation time and error, and how this scale with $\delta$. When $p$ is not separable we are still interested in convergence, and computation time, but also parallel efficiency. \\
 
-The convergence criterium used in algorithm \ref{alg:restkry} is to stop when the maximum absolute difference in $q_n$ is less than a given tolerance $\delta$. The error is denoted as $\epsilon$ and is defined as the largest absolute difference between the correct solution and the approximation. 
-The number of iterations needed for convergence in algorithm \ref{alg:restkry} is denoted by $\gamma$. 
- for seperable $p$, we will in general be looking at computation time and error, and how this scale with $\delta$. When $p$ is separable we are still interested in convergence, and computation time, but also parallel efficiency. \\
-
-If nothing else is stated, assume that $\rho = k = 40$, $n = 1$, $\delta = 10^{-15}$. All timed results are averaged over 2 runs, preferably this should have been higher, but that was too time consuming. $A$ was implemented as a sparse matrix.\\
+If nothing else is stated, assume that $\rho = k = 40$, $n = 1$, $\delta = 10^{-15}$, these numbers was chosen as large as possible, while still giving an answer in a timely manner. All timed results are averaged over 2 runs, preferably this should have been higher, but that was too time consuming. $A$ was implemented as a sparse matrix.\\
 
 
 
@@ -139,3 +138,6 @@ One additional test problem is implemented for non separable $p$, this is a symm
  p(t,x,y) = & t^2 (x-1) (y-1) y^2 \sin(t x y)\\ & -2 t (y-1) y \cos(t x y)+(x-1) x (y-1) y \cos(t x y)\\ & -t (x-1) x (2 \cos(t x y)-t x (y-1) \sin(t x y))
 \end{aligned}
 \end{equation}
+There is no other reason the problems for non separable $p$ is not symmetric, except for laziness.
+
+%!!!!!!!!!!!!!!!Skrive at ting fungerer for ikke symetriske problemer også, og at det var tilfedligheter som gjorde at det ble slik det ble!!!!!!!!!!!!!!!!!!!!!!!!!!!\\

@@ -1,7 +1,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Results for non separable $p$} \label{sec:para}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Results for non separable $p$} \label{sec:para}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-We start by showing convergence in section \ref{sec:pconv}, and proceed with looking into speedup and parallel efficiency in section \ref{sec:speed}. We end by investigating how computation time for the best possible case of KPM compares to DM. 
+We will now try to use what we learned from the previous section in a parallel setting with $p$ non separable and see if we can make KPM outperform DM.
+We start by showing convergence in section \ref{sec:pconv}, and proceed with looking into speedup and parallel efficiency in section \ref{sec:speed}. We end by investigating how computation time for the best possible case of KPM compares to DM, in section \ref{sec:compare}. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Convergence} \label{sec:pconv}
@@ -21,9 +22,9 @@ We start by showing convergence in section \ref{sec:pconv}, and proceed with loo
                 \caption{function \texttt{P3}}
                 \label{fig:conv2p}
         \end{subfigure}
-        \caption{A convergence plot for several method with $\rho = k$. The helpline shows quadratic convergence.}\label{fig:convp}
+        \caption{A convergence plot for several methods with $\rho = k$. The helpline shows quadratic convergence.}\label{fig:convp}
 \end{figure}
-As can be seen from figure \ref{fig:convp}, all methods converges quadratically and identically, as in the serial case. 
+As can be seen from figure \ref{fig:convp}, all methods converges quadratically and identically, as in section \ref{sec:sconv}. All methods therefore perform as expected regarding convergence.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Speedup} \label{sec:speed}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -43,14 +44,24 @@ As can be seen from figure \ref{fig:convp}, all methods converges quadratically 
                 \label{fig:speed2}
         \end{subfigure}
         \caption{Computation times for several methods with different number of processors. The helpline shows perfect speedup.}\label{fig:speed}
-        
+
 \end{figure}
 
 \begin{table}[H]
 \centering
-\begin{tabular}{l| l l | l l}
+\begin{tabular}{l | l l | l l}
 %\textrhoticity Skriv påskeegg her!
 $\Pluto$
+%\textrhoticity
+%$\textrhoticity$
+%\textpalhookvar
+%$\textpalhookvar$
+%\closedniomega $\closedniomega$
+%\underwedge $\underwedge$
+$\pluto$ $\Pluto$
+$\libra$
+$\neptune$ $\Neptune$
+$\llcorner$
  &\texttt{P1} & & \texttt{P3} & \\
 &\texttt{nP = 2} & \texttt{nP = 4} & \texttt{nP = 2} & \texttt{nP = 4} \\
 \hline
@@ -66,7 +77,7 @@ KPM$(100)$ & 2.0083  &  3.8618 & 1.9437&    3.8362\\
 
 \begin{table}[H]
 \centering
-\begin{tabular}{l|l l| l l}
+\begin{tabular}{l | l l | l l}
 &\texttt{P1} & & \texttt{P3} & \\
 &\texttt{nP = 2} & \texttt{nP = 4} & \texttt{nP = 2} & \texttt{nP = 4} \\
 \hline
@@ -79,10 +90,13 @@ KPM$(100)$ & 1.0042  &  0.9655 & 0.9719&    0.9591\\
 \caption{Parallel efficiency for several cases of KPM. }
 \label{tab:eff}
 \end{table}
-%!!!!!!!!!!!!!!!!!!!!!!!!!!IKKE FORNØYD MED DENNE!!!!!!!!!!!!!!!!!!\\
-Figure \ref{fig:speed} shows good speedup for all methods. Table \ref{tab:speedup} and \ref{tab:eff} shows that KPM$(n)$ has almost perfect speedup. It is definitely efficient to use several processors on these types of problems. KPM and KPM$(1)$ is not as well suited for this, they probably uses to much memory or too many iterations to be efficient. The optimal value for $n$ with parallel computations seems to be to $n = 100$.
+
+From figure \ref{fig:speed} together with table \ref{tab:speedup} and \ref{tab:eff} we can observe the gain by using several processing units. Parallel efficiency and speedup is high for all cases of KPM tested here, it is definitely efficient to use several processing units on this type of problem. \\%All values of $n < m$ seams to give good parallel gain. \\
+
+These experiments was only done with $m = k = 40$, this is because the experiments took a long time with this computer. I see no reason why parallel gain should change significantly with other $m$ or $k$. 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Comparison}
+\section{Comparison} \label{sec:compare}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[H]
         \centering
@@ -97,21 +111,10 @@ Figure \ref{fig:speed} shows good speedup for all methods. Table \ref{tab:speedu
                 \caption{function \texttt{P3}}
                 \label{fig:c2comp2m}
         \end{subfigure}
-%        
-%        \begin{subfigure}[b]{0.45\textwidth}
-%                \includegraphics[width=\textwidth]{fig/c3comp1k}
-%                \caption{function \texttt{P1}}
-%                \label{fig:c3comp1k}
-%        \end{subfigure}%
-%        ~
-%        \begin{subfigure}[b]{0.45\textwidth}
-%                \includegraphics[width=\textwidth]{fig/c4comp2k}
-%                \caption{function \texttt{P3}}
-%                \label{fig:c4comp2k}
-%        \end{subfigure}
-        \caption{A plot of the computation times tuned to be as efficient as possible for KPM$(n)$. We have $n = \rho = k$. $\delta = 10^{-3}$ for the first point, and decreases with an order of magnitude for each additional point. Assume $\texttt{nP} = 4$ for KPM$(n)$ and $\texttt{nP} = 1$ for DM. The helpline increases with $\rho^6 = m^3$.}\label{fig:comp}
-        
+        \caption{A plot of the computation times KPM$(n)$ and DM. We have used the values $n = \rho = k$, $\delta = 10^{-3}$ for the first point, and decreases with an order of magnitude for each additional point. Assume $\texttt{nP} = 4$ for KPM$(n)$ and $\texttt{nP} = 1$ for DM. These values are choosen to make KPM$(n)$ perform as efficiently as possible. The helpline increases with $\rho^6 = m^3$.}\label{fig:comp}
 \end{figure}
-From figure \ref{fig:comp} it is clear that DM is better in all scenarios simulated here, but KPM$(n)$ is not far behind, with more processing units KPM$(\rho)$ would have been faster. The other important thing to note here is that computation time for KPM$(n)$ does not increase faster than for DM. It is difficult to say what would happen with larger $\rho$ or $k$, but they would probably follow the helpline.
+From figure \ref{fig:comp} it is clear that DM is better in all cases simulated, but KPM$(n)$ is not far behind. We know from section \ref{sec:stimem} and\ref{sec:stimek} that one iteration of KPM$(n)$ is faster than DM, we therefore conclude that with enough processing units KPM$(\rho)$ would have been faster than DM. \\
 
-%One unfortunate simplification done is keeping $\delta$ constant while increasing $\rho$. This might not have a great impact in the result, but as shown in figure \ref{fig:errant} and \ref{fig:errtolk} it is of no use to increase $\rho$ and $k$ without decreasing $\delta$. It would also be of interest to increase $n$ while increasing $\rho$, as suggested by figure \ref{fig:rest}.
+The other important thing to note here is that computation time for KPM$(n)$ does not increase faster than for DM. It is difficult to say what would happen with larger $\rho$ or $k$, but they would probably follow the helpline.\\
+
+The first point of KPM$(n)$ in both figures are very high compared to the trend, perhaps the problem size is to small to be used efficiently with several processing units. 

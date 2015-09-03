@@ -369,8 +369,8 @@ if 0 % time vs k %  function 2
     set(h,'Location','Best');
 end
 
-n = 10;
-if 1 %convergencekriteria: ant vs tol for different m, function 1 % Merkelig
+n
+if 0 %convergencekriteria: ant vs tol for different m, function 1 % Merkelig
     p = [1,10^-1,10^-2,10^-3,10^-5,10^-7,10^-9,10^-11,10^-13,10^-15];
 
     k = 40;
@@ -381,9 +381,9 @@ if 1 %convergencekriteria: ant vs tol for different m, function 1 % Merkelig
     utdata3  = zeros(length(p),3);
     
     for i = p
-            utdata1(j,:) = seriell( 10,k,n,1,1,i);
-            utdata2(j,:) = seriell( 50,k,n,1,1,i);
-            utdata3(j,:) = seriell( 100,k,n,1,1,i);
+            utdata1(j,:) = seriell( 10,k,1,1,1,i);
+            utdata2(j,:) = seriell( 50,k,1,1,1,i);
+            utdata3(j,:) = seriell( 100,k,1,1,1,i);
         j = j + 1;
     end
     figure(11)
@@ -397,7 +397,7 @@ if 1 %convergencekriteria: ant vs tol for different m, function 1 % Merkelig
     set(h,'Location','Best');
 end
 
-if 1 %convergencekriteria: ant vs tol for different m, function 2
+if 0 %convergencekriteria: ant vs tol for different m, function 2
     p = [1,10^-1,10^-2,10^-3,10^-5,10^-7,10^-9,10^-11,10^-13,10^-15];
 
     k = 40;
@@ -408,9 +408,9 @@ if 1 %convergencekriteria: ant vs tol for different m, function 2
     utdata3  = zeros(length(p),3);
     
     for i = p
-            utdata1(j,:) = seriell(10,k,n,1,2,i);
-            utdata2(j,:) = seriell( 50,k,n,1,2,i);
-            utdata3(j,:) = seriell( 100,k,n,1,2,i);
+            utdata1(j,:) = seriell(10,k,1,1,2,i);
+            utdata2(j,:) = seriell( 50,k,1,1,2,i);
+            utdata3(j,:) = seriell( 100,k,1,1,2,i);
         j = j + 1;
         
     end
@@ -425,7 +425,7 @@ if 1 %convergencekriteria: ant vs tol for different m, function 2
     set(h,'Location','Best');
 end
 
-if 1 %convergencekriteria: err vs tol for different m, function 1
+if 0 %convergencekriteria: err vs tol for different m, function 1
     p = [1,10^-1,10^-2,10^-3,10^-5,10^-7,10^-9,10^-11,10^-13,10^-15];
 
     k = 40;
@@ -436,9 +436,9 @@ if 1 %convergencekriteria: err vs tol for different m, function 1
     utdata3  = zeros(length(p),3);
     
     for i = p
-            utdata1(j,:) = seriell( 10,k,n,1,1,i);
-            utdata2(j,:) = seriell( 50,k,n,1,1,i);
-            utdata3(j,:) = seriell( 100,k,n,1,1,i);
+            utdata1(j,:) = seriell( 10,k,1,1,1,i);
+            utdata2(j,:) = seriell( 50,k,1,1,1,i);
+            utdata3(j,:) = seriell( 100,k,1,1,1,i);
         j = j + 1;
         
     end
@@ -453,7 +453,7 @@ if 1 %convergencekriteria: err vs tol for different m, function 1
     set(h,'Location','Best');
 end
 
-if 1 %convergencekriteria: err vs tol for different m, function 2
+if 0 %convergencekriteria: err vs tol for different m, function 2
     p = [1,10^-1,10^-2,10^-3,10^-5,10^-7,10^-9,10^-11,10^-13,10^-15];
 
     k = 40;
@@ -464,9 +464,9 @@ if 1 %convergencekriteria: err vs tol for different m, function 2
     utdata3  = zeros(length(p),3);
     
     for i = p
-            utdata1(j,:) = seriell( 10,k,n,1,2,i);
-            utdata2(j,:) = seriell( 50,k,n,1,2,i);
-            utdata3(j,:) = seriell( 100,k,n,1,2,i);
+            utdata1(j,:) = seriell( 10,k,1,1,2,i);
+            utdata2(j,:) = seriell( 50,k,1,1,2,i);
+            utdata3(j,:) = seriell( 100,k,1,1,2,i);
         j = j + 1;
         
     end
@@ -481,7 +481,7 @@ if 1 %convergencekriteria: err vs tol for different m, function 2
     set(h,'Location','Best');
 end
 
-if 1 %convergencekriteria: ant vs tol for different k, function 1 % Merkelig
+if 0 %convergencekriteria: ant vs tol for different k, function 1 % Merkelig
     p = [1,10^-1,10^-2,10^-3,10^-5,10^-7,10^-9,10^-11,10^-13,10^-15];
     
     m = 40;
@@ -492,9 +492,9 @@ if 1 %convergencekriteria: ant vs tol for different k, function 1 % Merkelig
     utdata3  = zeros(length(p),3);
     
     for i = p
-        utdata1(j,:) = seriell( m,10,n,1,1,i);
-        utdata2(j,:) = seriell( m,50,n,1,1,i);
-        utdata3(j,:) = seriell( m,100,n,1,1,i);
+        utdata1(j,:) = seriell( m,10,1,1,1,i);
+        utdata2(j,:) = seriell( m,50,1,1,1,i);
+        utdata3(j,:) = seriell( m,100,1,1,1,i);
         j = j + 1;
     end
     figure(15)
@@ -509,7 +509,7 @@ if 1 %convergencekriteria: ant vs tol for different k, function 1 % Merkelig
 end
 
 %%% Done
-if 1 %convergencekriteria: ant vs tol for different k, function 2
+if 0 %convergencekriteria: ant vs tol for different k, function 2
     p = [1,10^-1,10^-2,10^-3,10^-5,10^-7,10^-9,10^-11,10^-13,10^-15];
     
     k = 40;
@@ -520,9 +520,9 @@ if 1 %convergencekriteria: ant vs tol for different k, function 2
     utdata3  = zeros(length(p),3);
     
     for i = p
-        utdata1(j,:) = seriell( m,10,n,1,2,i);
-        utdata2(j,:) = seriell( m,50,n,1,2,i);
-        utdata3(j,:) = seriell( m,100,n,1,2,i);
+        utdata1(j,:) = seriell( m,10,1,1,2,i);
+        utdata2(j,:) = seriell( m,50,1,1,2,i);
+        utdata3(j,:) = seriell( m,100,1,1,2,i);
         j = j + 1;
         
     end
@@ -538,7 +538,7 @@ if 1 %convergencekriteria: ant vs tol for different k, function 2
 end
 
 
-if 1 %convergencekriteria: err vs tol for different k, function 1
+if 0 %convergencekriteria: err vs tol for different k, function 1
     p = [1,10^-1,10^-2,10^-3,10^-5,10^-7,10^-9,10^-11,10^-13,10^-15];
     
     m = 40;
@@ -549,9 +549,9 @@ if 1 %convergencekriteria: err vs tol for different k, function 1
     utdata3  = zeros(length(p),3);
     
     for i = p
-        utdata1(j,:) = seriell( m,10,n,1,1,i);
-        utdata2(j,:) = seriell( m,50,n,1,1,i);
-        utdata3(j,:) = seriell( m,100,n,1,1,i);
+        utdata1(j,:) = seriell( m,10,1,1,1,i);
+        utdata2(j,:) = seriell( m,50,1,1,1,i);
+        utdata3(j,:) = seriell( m,100,1,1,1,i);
         j = j + 1;
         
     end
@@ -566,7 +566,7 @@ if 1 %convergencekriteria: err vs tol for different k, function 1
     set(h,'Location','Best');
 end
 
-if 1 %convergencekriteria: err vs tol for different k, function 2
+if 0 %convergencekriteria: err vs tol for different k, function 2
     p = [1,10^-1,10^-2,10^-3,10^-5,10^-7,10^-9,10^-11,10^-13,10^-15];
     
     m = 40;
@@ -577,9 +577,9 @@ if 1 %convergencekriteria: err vs tol for different k, function 2
     utdata3  = zeros(length(p),3);
     
     for i = p
-        utdata1(j,:) = seriell( m,10,n,1,2,i);
-        utdata2(j,:) = seriell( m,50,n,1,2,i);
-        utdata3(j,:) = seriell( m,100,n,1,2,i);
+        utdata1(j,:) = seriell( m,10,1,1,2,i);
+        utdata2(j,:) = seriell( m,50,1,1,2,i);
+        utdata3(j,:) = seriell( m,100,1,1,2,i);
         j = j + 1;
         
     end
