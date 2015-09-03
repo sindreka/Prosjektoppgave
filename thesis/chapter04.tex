@@ -6,13 +6,13 @@ We will in section \ref{sec:cc} and \ref{sec:mr} briefly compare the computation
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Computational complexity} \label{sec:cc}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{table}[h!]
+\begin{table}[H]
 \centering
 \begin{tabular}{r | l}
  Matrix vector multiplication (full) & $\mathcal{O}(m^2)$ \cite{complex} \\
  Matrix vector multiplication (sparse) & $\mathcal{O}(m)$ \\
  Matrix inversion  & $ \mathcal{O}(m^3)$ \cite{complex} \\
- Arnoldi's algorithm & $ \mathcal{O}(n^2 m)$ \cite{numop} \\
+ Arnoldi's algorithm & $ \mathcal{O}(n^2 m)$ \cite{saad} \\
  Integration & $\mathcal{O}(k)$
 \end{tabular}
 \caption{Computational complexity for some operations. Dimension of the matrices is assumed to be $m \times m$ while $n$ is the restart variable and $k$ is the number of steps in time.}
@@ -22,7 +22,7 @@ DM need to perform $k$ matrix vector multiplications, with a sparse matrix, and 
 KPM and KPM$(n)$ needs to perform $k$ matrix vector multiplications, with a full matrix, and one matrix inversion. It also need to run Arnoldi's algorithm. If $p$ is non separable this needs to be done $m$ times, if $p$ is separable, one time i enough. KPM$(n)$ uses smaller matrices and vectors, with size $n$, which reduces the cost of these operations, but it needs to restart. We will denote the number of restarts KPM$(n)$ needs to converge as $\gamma$. \\
 
 An overview over the computational cost of these operations is given in table \ref{tab:runtime}. A list of asymptotic computational complexity for the methods is given in table \ref{tab:cc}.
-\begin{table}[h!]
+\begin{table}[H]
 \centering
 \begin{tabular}{l | l l}
 

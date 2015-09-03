@@ -8,7 +8,7 @@ We present the Krylov subspace in section \ref{sec:subspace}, derive KPM for the
 \section{Krylov subspace} \label{sec:subspace}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 The Krylov subspace is the space $W_n (A,v) = \{v,Av, \cdots, A^{n-1}v\} = \{v_1,v_2,\cdots v_n\} $, where $n \leq m$. %Define $\nu$ as the $W_\nu(A,v)$ span $A$. 
-The vectors $v_i$ together with $h_{i,j} = v_i^\top Av_j$, are found by using Arnoldi's algorithm, shown in algorithm \ref{alg:arnoldi}. Letting $V_n$ be the $m \times n$ matrix consisting of column vectors $\{v_1,v_2,\cdots,v_n \}$ and $H_n$ be the $n \times n$ upper Hessenberg matrix containing all elements $(h_{i,j})_{i,j=1,\cdots,n}$, the following holds \cite{krylovprop}
+The vectors $v_i$ together with $h_{i,j} = v_i^\top Av_j$, are found by using Arnoldi's algorithm, shown in algorithm \ref{alg:arnoldi}. Letting $V_n$ be the $m \times n$ matrix consisting of column vectors $\{v_1,v_2,\cdots,v_n \}$ and $H_n$ be the $n \times n$ upper Hessenberg matrix containing all elements $(h_{i,j})_{i,j=1,\cdots,n}$, the following holds \cite{saad}
 \begin{align}\
 AV_n & = V_n H_n + h_{n+1,n}v_{n+1}e^\top_n \label{eqn:prop1} \\
 V^{\top}_n AV_n &= H_n \label{eqn:prop2} \\
@@ -20,7 +20,7 @@ Here, $e_n$ is the $n$th canonical vector in $\mathbb{R}^n$ and $\delta_{i,j}$ i
 
 
 \begin{algorithm} 
-\begin{algorithmic} \caption{Arnoldi's algorithm\cite{arnold}} \label{alg:arnoldi}  
+\begin{algorithmic} \caption{Arnoldi's algorithm\cite{saad}} \label{alg:arnoldi}  
 \STATE Start with $A$, $v_1 = v/\|v \|_2$, n
 \FOR{$j = 1,2,\cdots n $} 
    \STATE Compute $h_{i,j} = \langle Av_j,v_i \rangle $ for $i = 1,2,\cdots j$

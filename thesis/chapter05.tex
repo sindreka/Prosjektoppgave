@@ -112,7 +112,7 @@ With larger $n$ I expect that all method would follow the helpline.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Comparing $\delta$, $\gamma$ and $\epsilon$ } \label{sec:div}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Remember that $\gamma$ is the number of restarts, $\delta$ is tolerance, and $\epsilon$ is our measure for the error.
+Remember that $\gamma$ is the number of restarts, $\delta$ is tolerance, and $\epsilon$ is a measure for the error.
 \begin{figure}[H]
         \centering
         \begin{subfigure}[b]{0.45\textwidth}
@@ -141,8 +141,8 @@ Remember that $\gamma$ is the number of restarts, $\delta$ is tolerance, and $\e
         
         \caption{A plot of $\gamma$ as a function of $\delta$, with several $\rho$ and $n$.} \label{fig:gammadelta}
 \end{figure}
-!!!!!!!!!!!!!!!!!Skriv masse om bildet over her!!!!!!!!!!!!!!!!!!!!!!!!!\\
-We see from figure \ref{fig:gammadelta} that $\gamma$ changes significantly with $\rho$, the constant part with $ 10^-5<\delta< 10^0 $ shows that the precision with very few iterations of KPM$(1)$ and KPM$(10)$ is about $10^-4$. The figure also show a log linear dependence between $\gamma$ and $\delta$. It also shows that $\gamma \propto 1/n^2$. 
+%!!!!!!!!!!!!!!!!!Skriv masse om bildet over her!!!!!!!!!!!!!!!!!!!!!!!!!\\
+We see from figure \ref{fig:gammadelta} that $\gamma$ changes significantly with $\rho$, the constant part with $ 10^{-5}<\delta< {10^0} $ shows that the precision with very few iterations of KPM$(1)$ and KPM$(10)$ is about $10^{-4}$. The figure also show a log linear dependence between $\gamma$ and $\delta$. It also shows that $\gamma \propto 1/n^2$. 
 \begin{figure}[H]
         \centering
         \begin{subfigure}[b]{0.45\textwidth}
@@ -171,18 +171,19 @@ We see from figure \ref{fig:gammadelta} that $\gamma$ changes significantly with
         
         \caption{A plot of $\epsilon$ as a function of $\delta$, with several $\rho$ and $n$.} \label{fig:epsilondelta}
 \end{figure}
-!!!!!!!!!!!!!!!!!Skriv masse om bildet over her!!!!!!!!!!!!!!!!!!!!!!!!!\\
+%!!!!!!!!!!!!!!!!!Skriv masse om bildet over her!!!!!!!!!!!!!!!!!!!!!!!!!\\
 
 
 
 
-Figure \ref{fig:errtol1} and \ref{fig:errtol2} shows $\epsilon$ as a function of $\delta$. We see that there is no gain in precision with increasing one of either $\rho$ or $k$ or decreasing $\delta$ without changing the others appropriately. In figure \ref{fig:errtol1} all graphs has obtained the threshold precision possible with $k=40$. 
-Figure \ref{fig:errtol2} shows the precision possible with the different $\rho$. Before the constant part, $\epsilon$ is decided by $\delta$ alone. In all cases a lot of time can be saved by choosing $\delta$ appropriate. If $\delta$ is to large we get inaccurate answers, if $\delta$ is to small we perform to many restarts to use the algorithm efficiently. There does not seam to be a simple rule to choose $\delta$, since the results for \textbf{P1} and \textbf{P2} differs, the rule I will use is to start at $\delta=10^-3$ and decrease $\delta$ with one order of magnitude each time you double $k$ and $\rho$. \\
+Figure \ref{fig:epsilondelta} shows $\epsilon$ as a function of $\delta$. In figure \ref{fig:epsilondelta1} and \ref{fig:epsilondelta3} all graphs has obtained the threshold precision possible with $k=40$. In
+figure \ref{fig:epsilondelta2} and \ref{fig:epsilondelta4} the precision possible with the different $\rho$ os obtained.
 
-There is no reason this was not performed with other than $n = 1$ except for laziness. \\
-!!!!!!!!!!!!!!!!!!!!!!!!!Arg, jeg må lage nye figurer for andre $n$!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\\
-!!!!!!!!!!!!!!!!Her kan burde skrive noe om hvor bra KPM$(n)$ uten restart ville vært!!!!!!!!!!!!!!!!\\
-!!!!!!!!!!!!!!!!!!!!!Fjern alle forekomster av ordet "shows" fra avsnittet!!!!!!!!!!!!!!!!!!!!!!!!!!!!\\
+
+%There is no reason this was not performed with other than $n = 1$ except for laziness. \\
+%!!!!!!!!!!!!!!!!!!!!!!!!!Arg, jeg må lage nye figurer for andre $n$!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\\
+%!!!!!!!!!!!!!!!!Her kan burde skrive noe om hvor bra KPM$(n)$ uten restart ville vært!!!!!!!!!!!!!!!!\\
+%!!!!!!!!!!!!!!!!!!!!!Fjern alle forekomster av ordet "shows" fra avsnittet!!!!!!!!!!!!!!!!!!!!!!!!!!!!\\
 %!!!!!!!!!!!!!!!!!!!!!Forklare hva alle variablene er over alt!!!!!!!!!!!!!!!!!!!!!!!!!!\\
 %!!!!!!!!!!!!!!!!!!!!!Skrive hvorfor vi ikke har med noe annet enn KPM$(1)$!!!!!!!!!!!!!!!!!!\\
 %!!!!!!!!!!!!!!!!!!!!!!!!!!!Går videre så jeg ikke trenger å lage nye figurer med en gang!!!!!!!!!!!!!!!!!!!!!!!!!!\\
@@ -213,7 +214,7 @@ There is no reason this was not performed with other than $n = 1$ except for laz
         \end{subfigure}
         \caption{A plot of $\gamma$ as a function of $\delta$, with several $k$ and $n$.} \label{fig:gammadeltak}
 \end{figure}
-!!!!!!!!!!!!!!!!!Skriv masse om bildet over her!!!!!!!!!!!!!!!!!!!!!!!!!\\
+%!!!!!!!!!!!!!!!!!Skriv masse om bildet over her!!!!!!!!!!!!!!!!!!!!!!!!!\\
 Figure \ref{fig:gammadeltak} shows that $\gamma$ is nearly independent of $k$. The figures also shows a log linear dependence between $\delta$ and $\epsilon$. \\
 
 
@@ -223,25 +224,29 @@ Figure \ref{fig:gammadeltak} shows that $\gamma$ is nearly independent of $k$. T
         \begin{subfigure}[b]{0.45\textwidth}
                 \includegraphics[width=\textwidth]{fig/s22errvstol1k}
                 \caption{function \texttt{P1}}
-                \label{fig:anttol1k}
+                \label{fig:epsilondelta1k}
         \end{subfigure}
 ~
         \begin{subfigure}[b]{0.45\textwidth}
                 \includegraphics[width=\textwidth]{fig/s23errvstol2k}
                 \caption{ function \texttt{P2}}
-                \label{fig:anttol2k}
+                \label{fig:epsilondelta2k}
         \end{subfigure}
                 \begin{subfigure}[b]{0.45\textwidth}
                 \includegraphics[width=\textwidth]{fig/s22errvstol1k10}
                 \caption{function \texttt{P1}}
-                \label{fig:errtol1k}
+                \label{fig:epsilondelta3k}
         \end{subfigure}
 ~
         \begin{subfigure}[b]{0.45\textwidth}
                 \includegraphics[width=\textwidth]{fig/s23errvstol2k10}
                 \caption{ function \texttt{P2}}
-                \label{fig:errtol2k}
+                \label{fig:epsilondelta4k}
         \end{subfigure}
-        \caption{A plot of $\epsilon$ as a function of $\delta$, with several $k$ and $n$.} \label{fig:errtolk}
+        \caption{A plot of $\epsilon$ as a function of $\delta$, with several $k$ and $n$.} \label{fig:epsilondeltak}
 \end{figure}
-!!!!!!!!!!!!!!!!!Skriv masse om bildet over her!!!!!!!!!!!!!!!!!!!!!!!!!\\
+Figure \ref{fig:epsilondeltak} shows much the same as figure \ref{fig:epsilondelta}. Maximum precision for different $k$ is shown in figure \ref{fig:epsilondelta1k} and \ref{fig:epsilondelta2k}.
+Threshold precision for $\rho = 40$ is obtained in figure \ref{fig:epsilondelta2k} and \ref{fig:epsilondelta4k}, although we see that there is a difference between $k = 10$ and the other $k$, thus this must be the threshold precision with $k=10$. \\
+
+We see that there is no gain in precision with increasing one of either $\rho$ or $k$ or decreasing $\delta$ without changing the others appropriately. 
+Before the constant part, $\epsilon$ is decided by $\delta$ alone. In all cases a lot of time can be saved by choosing $\delta$ appropriate. If $\delta$ is to large we get inaccurate answers, if $\delta$ is to small we perform to many restarts to use the algorithm efficiently. There does not seam to be a simple rule to choose $\delta$, since the results for \textbf{P1} and \textbf{P2} differs, the rule I will use is to start at $\delta=10^-3$ and decrease $\delta$ with one order of magnitude each time you double $k$ and $\rho$. \\

@@ -2,32 +2,11 @@
 % Encoding: UTF-8
 
 
-@Article{trap,
-  Title                    = {SHARP ERROR BOUNDS FOR THE TRAPEZOIDAL RULE AND SIMPSON’S RULE},
-  Author                   = {D. CRUZ-URIBE AND C.J. NEUGEBAUER},
-  Journal                  = {Journal of Inequalities in Pure and Applied Mathematics},
-  Year                     = {2002},
-  Volume                   = {Volume 3, Issue 4, Article 49, 2002},
-
-  Owner                    = {sindreka},
-  Timestamp                = {2015.09.03}
-}
-
 @Article{elena,
   Title                    = {A Krylov projection method for system of ODEs},
   Author                   = {E. Celledoni, I. Moret},
   Journal                  = {Applied Numerical Mathematics 23 (1997) 365-378},
   Year                     = {1997},
-
-  Owner                    = {sindreka},
-  Timestamp                = {2015.09.03}
-}
-
-@Article{,
-  Title                    = {Group-theoretic Algorithms for Matrix Multiplication},
-  Author                   = {Henry Cohn, Robert Kleinberg, Bal ́azs Szegedy, Christopher Umans},
-  Journal                  = {Proceedings of the 46th Annual Symposium on Foundations of Computer Science, 23-25 October 2005, Pittsburgh, PA, IEEE Computer Society, pp. 379-388},
-  Year                     = {2005},
 
   Owner                    = {sindreka},
   Timestamp                = {2015.09.03}
