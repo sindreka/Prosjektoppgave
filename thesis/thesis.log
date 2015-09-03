@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.6.17)  2 SEP 2015 20:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.6.17)  3 SEP 2015 11:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1457,79 +1457,154 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 File: fig/s13antvstol1m.jpg Graphic file (type jpg)
 
 <use fig/s13antvstol1m.jpg>
-Package pdftex.def Info: fig/s13antvstol1m.jpg used on input line 118.
+Package pdftex.def Info: fig/s13antvstol1m.jpg used on input line 119.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
 
 <fig/s14antvstol2m.jpg, id=437, 562.1pt x 421.575pt>
 File: fig/s14antvstol2m.jpg Graphic file (type jpg)
 
 <use fig/s14antvstol2m.jpg>
-Package pdftex.def Info: fig/s14antvstol2m.jpg used on input line 124.
+Package pdftex.def Info: fig/s14antvstol2m.jpg used on input line 125.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
 
-<fig/s15errvstol1m.jpg, id=438, 562.1pt x 421.575pt>
+<fig/s13antvstol1m10.jpg, id=438, 562.1pt x 421.575pt>
+File: fig/s13antvstol1m10.jpg Graphic file (type jpg)
+
+<use fig/s13antvstol1m10.jpg>
+Package pdftex.def Info: fig/s13antvstol1m10.jpg used on input line 131.
+(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
+
+<fig/s14antvstol2m10.jpg, id=439, 562.1pt x 421.575pt>
+File: fig/s14antvstol2m10.jpg Graphic file (type jpg)
+
+<use fig/s14antvstol2m10.jpg>
+Package pdftex.def Info: fig/s14antvstol2m10.jpg used on input line 137.
+(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
+
+<fig/s15errvstol1m.jpg, id=441, 562.1pt x 421.575pt>
 File: fig/s15errvstol1m.jpg Graphic file (type jpg)
 
 <use fig/s15errvstol1m.jpg>
-Package pdftex.def Info: fig/s15errvstol1m.jpg used on input line 130.
+Package pdftex.def Info: fig/s15errvstol1m.jpg used on input line 149.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
 
-<fig/s16errvstol2m.jpg, id=439, 562.1pt x 421.575pt>
+<fig/s16errvstol2m.jpg, id=442, 562.1pt x 421.575pt>
 File: fig/s16errvstol2m.jpg Graphic file (type jpg)
 
 <use fig/s16errvstol2m.jpg>
-Package pdftex.def Info: fig/s16errvstol2m.jpg used on input line 136.
+Package pdftex.def Info: fig/s16errvstol2m.jpg used on input line 155.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 143--144
+<fig/s15errvstol1m10.jpg, id=443, 562.1pt x 421.575pt>
+File: fig/s15errvstol1m10.jpg Graphic file (type jpg)
+
+<use fig/s15errvstol1m10.jpg>
+Package pdftex.def Info: fig/s15errvstol1m10.jpg used on input line 161.
+(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
+
+<fig/s16errvstol2m10.jpg, id=444, 562.1pt x 421.575pt>
+File: fig/s16errvstol2m10.jpg Graphic file (type jpg)
+
+<use fig/s16errvstol2m10.jpg>
+Package pdftex.def Info: fig/s16errvstol2m10.jpg used on input line 167.
+(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
+ [21 <./fig/s13antvstol1m.jpg> <./fig/s14antvstol2m.jpg> <./fig/s13antvstol1m10
+.jpg> <./fig/s14antvstol2m10.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 174--175
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 145--146
+LaTeX Warning: Reference `fig:errtol1' on page 22 undefined on input line 179.
+
+
+LaTeX Warning: Reference `fig:errtol2' on page 22 undefined on input line 179.
+
+
+LaTeX Warning: Reference `fig:errtol1' on page 22 undefined on input line 179.
+
+
+LaTeX Warning: Reference `fig:errtol2' on page 22 undefined on input line 180.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 179--181
 
  []
 
-[21 <./fig/s13antvstol1m.jpg> <./fig/s14antvstol2m.jpg> <./fig/s15errvstol1m.jp
-g> <./fig/s16errvstol2m.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 147--149
-
- []
-
-<fig/s20antvstol1k.jpg, id=453, 562.1pt x 421.575pt>
+[22 <./fig/s15errvstol1m.jpg> <./fig/s16errvstol2m.jpg> <./fig/s15errvstol1m10.
+jpg> <./fig/s16errvstol2m10.jpg>]
+<fig/s20antvstol1k.jpg, id=455, 562.1pt x 421.575pt>
 File: fig/s20antvstol1k.jpg Graphic file (type jpg)
 
 <use fig/s20antvstol1k.jpg>
-Package pdftex.def Info: fig/s20antvstol1k.jpg used on input line 161.
+Package pdftex.def Info: fig/s20antvstol1k.jpg used on input line 193.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
 
-<fig/s21antvstol2k.jpg, id=454, 570.13pt x 422.57875pt>
+<fig/s21antvstol2k.jpg, id=456, 570.13pt x 422.57875pt>
 File: fig/s21antvstol2k.jpg Graphic file (type jpg)
 
 <use fig/s21antvstol2k.jpg>
-Package pdftex.def Info: fig/s21antvstol2k.jpg used on input line 167.
+Package pdftex.def Info: fig/s21antvstol2k.jpg used on input line 199.
 (pdftex.def)             Requested size: 212.41261pt x 157.43495pt.
 
-<fig/s22errvstol1k.jpg, id=455, 562.1pt x 421.575pt>
-File: fig/s22errvstol1k.jpg Graphic file (type jpg)
+<fig/s20antvstol1k10.jpg, id=457, 562.1pt x 421.575pt>
+File: fig/s20antvstol1k10.jpg Graphic file (type jpg)
 
-<use fig/s22errvstol1k.jpg>
-Package pdftex.def Info: fig/s22errvstol1k.jpg used on input line 172.
+<use fig/s20antvstol1k10.jpg>
+Package pdftex.def Info: fig/s20antvstol1k10.jpg used on input line 204.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
 
-<fig/s23errvstol2k.jpg, id=456, 562.1pt x 421.575pt>
-File: fig/s23errvstol2k.jpg Graphic file (type jpg)
+<fig/s21antvstol2k10.jpg, id=458, 562.1pt x 421.575pt>
+File: fig/s21antvstol2k10.jpg Graphic file (type jpg)
 
-<use fig/s23errvstol2k.jpg>
-Package pdftex.def Info: fig/s23errvstol2k.jpg used on input line 178.
+<use fig/s21antvstol2k10.jpg>
+Package pdftex.def Info: fig/s21antvstol2k10.jpg used on input line 210.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 150--183
+Underfull \hbox (badness 10000) in paragraph at lines 182--215
 
  []
 
-) [22] [23 <./fig/s20antvstol1k.jpg> <./fig/s21antvstol2k.jpg> <./fig/s22errvst
-ol1k.jpg> <./fig/s23errvstol2k.jpg>]
+
+Underfull \hbox (badness 10000) in paragraph at lines 216--218
+
+ []
+
+<fig/s22errvstol1k.jpg, id=460, 562.1pt x 421.575pt>
+File: fig/s22errvstol1k.jpg Graphic file (type jpg)
+
+<use fig/s22errvstol1k.jpg>
+Package pdftex.def Info: fig/s22errvstol1k.jpg used on input line 224.
+(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
+
+<fig/s23errvstol2k.jpg, id=461, 562.1pt x 421.575pt>
+File: fig/s23errvstol2k.jpg Graphic file (type jpg)
+
+<use fig/s23errvstol2k.jpg>
+Package pdftex.def Info: fig/s23errvstol2k.jpg used on input line 230.
+(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
+
+<fig/s22errvstol1k10.jpg, id=462, 562.1pt x 421.575pt>
+File: fig/s22errvstol1k10.jpg Graphic file (type jpg)
+
+<use fig/s22errvstol1k10.jpg>
+Package pdftex.def Info: fig/s22errvstol1k10.jpg used on input line 235.
+(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
+
+<fig/s23errvstol2k10.jpg, id=463, 562.1pt x 421.575pt>
+File: fig/s23errvstol2k10.jpg Graphic file (type jpg)
+
+<use fig/s23errvstol2k10.jpg>
+Package pdftex.def Info: fig/s23errvstol2k10.jpg used on input line 241.
+(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
+ [23 <./fig/s20antvstol1k.jpg> <./fig/s21antvstol2k.jpg> <./fig/s20antvstol1k10
+.jpg> <./fig/s21antvstol2k10.jpg>])
+Underfull \hbox (badness 10000) in paragraph at lines 247--49
+
+ []
+
+[24 <./fig/s22errvstol1k.jpg> <./fig/s23errvstol2k.jpg> <./fig/s22errvstol1k10.
+jpg> <./fig/s23errvstol2k10.jpg>]
 \openout2 = `chapter06.aux'.
 
  (./chapter06.tex
@@ -1542,42 +1617,39 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 2.
 
-<fig/p1conv1.jpg, id=469, 562.1pt x 421.575pt>
+<fig/p1conv1.jpg, id=477, 562.1pt x 421.575pt>
 File: fig/p1conv1.jpg Graphic file (type jpg)
  <use fig/p1conv1.jpg>
 Package pdftex.def Info: fig/p1conv1.jpg used on input line 13.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
 
-<fig/p2conv2.jpg, id=470, 562.1pt x 421.575pt>
+<fig/p2conv2.jpg, id=478, 562.1pt x 421.575pt>
 File: fig/p2conv2.jpg Graphic file (type jpg)
  <use fig/p2conv2.jpg>
 Package pdftex.def Info: fig/p2conv2.jpg used on input line 20.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
- [24
+ [25
 
 
 
  <./fig/p1conv1.jpg> <./fig/p2conv2.jpg>]
-<fig/u1para1.jpg, id=478, 570.13pt x 422.57875pt>
+<fig/u1para1.jpg, id=486, 570.13pt x 422.57875pt>
 File: fig/u1para1.jpg Graphic file (type jpg)
  <use fig/u1para1.jpg>
 Package pdftex.def Info: fig/u1para1.jpg used on input line 34.
 (pdftex.def)             Requested size: 212.41261pt x 157.43495pt.
 
-<fig/u2para2.jpg, id=479, 562.1pt x 421.575pt>
+<fig/u2para2.jpg, id=487, 562.1pt x 421.575pt>
 File: fig/u2para2.jpg Graphic file (type jpg)
  <use fig/u2para2.jpg>
 Package pdftex.def Info: fig/u2para2.jpg used on input line 41.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
-LaTeX Font Info:    Try loading font information for U+mvs on input line 54.
-
-(/usr/lib/texlive/texmf-dist/tex/latex/marvosym/umvs.fd) [25 <./fig/u1para1.jpg
-> <./fig/u2para2.jpg>]
+ [26 <./fig/u1para1.jpg> <./fig/u2para2.jpg>]
 Underfull \hbox (badness 10000) in paragraph at lines 94--95
 
  []
 
-<fig/comp2.jpg, id=491, 570.13pt x 422.57875pt>
+<fig/comp2.jpg, id=499, 570.13pt x 422.57875pt>
 File: fig/comp2.jpg Graphic file (type jpg)
  <use fig/comp2.jpg>
 Package pdftex.def Info: fig/comp2.jpg used on input line 104.
@@ -1587,7 +1659,7 @@ File: fig/comp2.jpg Graphic file (type jpg)
 <use fig/comp2.jpg>
 Package pdftex.def Info: fig/comp2.jpg used on input line 110.
 (pdftex.def)             Requested size: 212.41261pt x 157.43495pt.
- [26]
+ [27]
 Underfull \hbox (badness 10000) in paragraph at lines 116--117
 
  []
@@ -1597,7 +1669,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 118--119
 
  []
 
-) [27 <./fig/comp2.jpg>]
+) [28 <./fig/comp2.jpg>]
 \openout2 = `chapter07.aux'.
 
  (./chapter07.tex
@@ -1620,13 +1692,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 28--29
 
  []
 
-[28
+[29
 
 
 
-] [29] [30
+] [30] [31
 
-] [31
+] [32
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 56--60
@@ -1641,7 +1713,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 56--60
  []
 
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 99.
-[32
+[33
 
 ]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 99.
@@ -1652,18 +1724,22 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 99.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 99.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
 (rerunfilecheck)             Checksum: 95675C12E2048EF2676027FBBA936B89;1902.
+
+
+LaTeX Warning: There were undefined references.
+
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 99.
  ) )
 (\end occurred when \iftrue on line 51 was incomplete)
 (\end occurred when \ifnum on line 51 was incomplete) 
 Here is how much of TeX's memory you used:
- 10981 strings out of 493089
- 157551 string characters out of 6137984
- 256228 words of memory out of 5000000
- 13974 multiletter control sequences out of 15000+600000
- 85855 words of font info for 119 fonts, out of 8000000 for 9000
+ 11037 strings out of 493089
+ 158912 string characters out of 6137984
+ 257104 words of memory out of 5000000
+ 14022 multiletter control sequences out of 15000+600000
+ 85434 words of font info for 118 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,15n,43p,669b,676s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,15n,43p,666b,676s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/lib/texlive/texmf-di
 st/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/lib/texlive/texmf-dist/fonts/
 enc/dvips/base/8r.enc}</usr/lib/texlive/texmf-dist/fonts/type1/public/fourier/f
@@ -1672,18 +1748,17 @@ cl.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/fourier/fourier-mex.pfb>
 </usr/lib/texlive/texmf-dist/fonts/type1/public/fourier/fourier-ml.pfb></usr/li
 b/texlive/texmf-dist/fonts/type1/public/fourier/fourier-mlit.pfb></usr/lib/texl
 ive/texmf-dist/fonts/type1/public/fourier/fourier-ms.pfb></usr/lib/texlive/texm
-f-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/lib/texlive/texmf-d
-ist/fonts/type1/adobe/utopia/putb8a.pfb></usr/lib/texlive/texmf-dist/fonts/type
-1/adobe/utopia/putr8a.pfb></usr/lib/texlive/texmf-dist/fonts/type1/adobe/utopia
-/putr8a.pfb></usr/lib/texlive/texmf-dist/fonts/type1/adobe/utopia/putri8a.pfb><
-/usr/lib/texlive/texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb></usr/lib/
-texlive/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb></usr/lib/texlive/t
-exmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/lib/texlive/texmf-dist
-/fonts/type1/public/wasy2-ps/wasy10.pfb>
-Output written on thesis.pdf (37 pages, 796089 bytes).
+f-dist/fonts/type1/adobe/utopia/putb8a.pfb></usr/lib/texlive/texmf-dist/fonts/t
+ype1/adobe/utopia/putr8a.pfb></usr/lib/texlive/texmf-dist/fonts/type1/adobe/uto
+pia/putr8a.pfb></usr/lib/texlive/texmf-dist/fonts/type1/adobe/utopia/putri8a.pf
+b></usr/lib/texlive/texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb></usr/l
+ib/texlive/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb></usr/lib/texliv
+e/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/lib/texlive/texmf-d
+ist/fonts/type1/public/wasy2-ps/wasy10.pfb>
+Output written on thesis.pdf (38 pages, 981475 bytes).
 PDF statistics:
- 617 PDF objects out of 1000 (max. 8388607)
- 531 compressed objects within 6 object streams
- 144 named destinations out of 1000 (max. 500000)
- 361 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 623 PDF objects out of 1000 (max. 8388607)
+ 529 compressed objects within 6 object streams
+ 147 named destinations out of 1000 (max. 500000)
+ 401 words of extra memory for PDF output out of 10000 (max. 10000000)
 

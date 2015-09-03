@@ -23,7 +23,7 @@
 \contentsline {section}{\numberline {5.4}Computation time with different $\rho $}{20}{section.5.4}
 \contentsline {section}{\numberline {5.5}Computation time with different $k$}{20}{section.5.5}
 \contentsline {section}{\numberline {5.6}Comparing $\delta $, $\gamma $ and $\epsilon $ }{21}{section.5.6}
-\contentsline {chapter}{\numberline {6}Results for non separable $p$}{24}{chapter.6}
-\contentsline {section}{\numberline {6.1}Convergence}{24}{section.6.1}
-\contentsline {section}{\numberline {6.2}Speedup}{25}{section.6.2}
-\contentsline {section}{\numberline {6.3}Comparison}{27}{section.6.3}
+\contentsline {chapter}{\numberline {6}Results for non separable $p$}{25}{chapter.6}
+\contentsline {section}{\numberline {6.1}Convergence}{25}{section.6.1}
+\contentsline {section}{\numberline {6.2}Speedup}{26}{section.6.2}
+\contentsline {section}{\numberline {6.3}Comparison}{28}{section.6.3}

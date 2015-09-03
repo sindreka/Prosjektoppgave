@@ -112,37 +112,69 @@ With larger $n$ I expect that all method would follow the helpline.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Comparing $\delta$, $\gamma$ and $\epsilon$ } \label{sec:div}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Remember that $\gamma$ is the number of restarts, $\delta$ is tolerance, and $\epsilon$ is our measure for the error.
 \begin{figure}[H]
         \centering
         \begin{subfigure}[b]{0.45\textwidth}
                 \includegraphics[width=\textwidth]{fig/s13antvstol1m}
                 \caption{function \texttt{P1}}
-                \label{fig:errant1}
+                \label{fig:gammadelta1}
         \end{subfigure}
 ~
         \begin{subfigure}[b]{0.45\textwidth}
                 \includegraphics[width=\textwidth]{fig/s14antvstol2m}
                 \caption{ function \texttt{P2}}
-                \label{fig:errant2}
+                \label{fig:gammadelta2}
         \end{subfigure}
         
         \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{fig/s13antvstol1m10}
+                \caption{function \texttt{P1}}
+                \label{fig:gammadelta3}
+        \end{subfigure}
+~
+        \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{fig/s14antvstol2m10}
+                \caption{ function \texttt{P2}}
+                \label{fig:gammadelta4}
+        \end{subfigure}
+        
+        \caption{A plot of $\gamma$ as a function of $\delta$, with several $\rho$ and $n$.} \label{fig:gammadelta}
+\end{figure}
+!!!!!!!!!!!!!!!!!Skriv masse om bildet over her!!!!!!!!!!!!!!!!!!!!!!!!!\\
+We see from figure \ref{fig:gammadelta} that $\gamma$ changes significantly with $\rho$, the constant part with $ 10^-5<\delta< 10^0 $ shows that the precision with very few iterations of KPM$(1)$ and KPM$(10)$ is about $10^-4$. The figure also show a log linear dependence between $\gamma$ and $\delta$. It also shows that $\gamma \propto 1/n^2$. 
+\begin{figure}[H]
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
                 \includegraphics[width=\textwidth]{fig/s15errvstol1m}
                 \caption{function \texttt{P1}}
-                \label{fig:errtol1}
+                \label{fig:epsilondelta1}
         \end{subfigure}
 ~
         \begin{subfigure}[b]{0.45\textwidth}
                 \includegraphics[width=\textwidth]{fig/s16errvstol2m}
                 \caption{ function \texttt{P2}}
-                \label{fig:errtol2}
+                \label{fig:epsilondelta2}
         \end{subfigure}
         
-        \caption{A plot of the error, $\epsilon$ and the number of restarts, $\gamma$ as a function of tolerance, $\delta$, with several $\rho$.} \label{fig:errant}
+        \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{fig/s15errvstol1m10}
+                \caption{function \texttt{P1}}
+                \label{fig:epsilondelta3}
+        \end{subfigure}
+~
+        \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{fig/s16errvstol2m10}
+                \caption{ function \texttt{P2}}
+                \label{fig:epsilondelta4}
+        \end{subfigure}
+        
+        \caption{A plot of $\epsilon$ as a function of $\delta$, with several $\rho$ and $n$.} \label{fig:epsilondelta}
 \end{figure}
-Remember that $\gamma$ is the number of restarts, $\delta$ is tolerance, and $\epsilon$ is our measure for the error.\\
+!!!!!!!!!!!!!!!!!Skriv masse om bildet over her!!!!!!!!!!!!!!!!!!!!!!!!!\\
 
-We see from figure \ref{fig:errant1} and \ref{fig:errant2} that $\gamma$ changes significantly with $\rho$, the constant part with $ 10^-5<\delta< 10^0 $ shows that the precision with very few iterations of KPM$(1)$ is about $10^-4$. Figure \ref{fig:anttol1k} and \ref{fig:anttol2k} shows that $\gamma$ is nearly independent of $k$. The figures also shows a log linear dependence between $\delta$ and $\epsilon$. \\
+
+
 
 Figure \ref{fig:errtol1} and \ref{fig:errtol2} shows $\epsilon$ as a function of $\delta$. We see that there is no gain in precision with increasing one of either $\rho$ or $k$ or decreasing $\delta$ without changing the others appropriately. In figure \ref{fig:errtol1} all graphs has obtained the threshold precision possible with $k=40$. 
 Figure \ref{fig:errtol2} shows the precision possible with the different $\rho$. Before the constant part, $\epsilon$ is decided by $\delta$ alone. In all cases a lot of time can be saved by choosing $\delta$ appropriate. If $\delta$ is to large we get inaccurate answers, if $\delta$ is to small we perform to many restarts to use the algorithm efficiently. There does not seam to be a simple rule to choose $\delta$, since the results for \textbf{P1} and \textbf{P2} differs, the rule I will use is to start at $\delta=10^-3$ and decrease $\delta$ with one order of magnitude each time you double $k$ and $\rho$. \\
@@ -160,24 +192,56 @@ There is no reason this was not performed with other than $n = 1$ except for laz
         \begin{subfigure}[b]{0.45\textwidth}
                 \includegraphics[width=\textwidth]{fig/s20antvstol1k}
                 \caption{function \texttt{P1}}
-                \label{fig:anttol1k}
+                \label{fig:gammadeltak1}
         \end{subfigure}
 ~
         \begin{subfigure}[b]{0.45\textwidth}
                 \includegraphics[width=\textwidth]{fig/s21antvstol2k}
                 \caption{ function \texttt{P2}}
-                \label{fig:anttol2k}
+                \label{fig:gammadeltak2}
         \end{subfigure}
                 \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{fig/s20antvstol1k10}
+                \caption{function \texttt{P1}}
+                \label{fig:gammadeltak3}
+        \end{subfigure}
+~
+        \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{fig/s21antvstol2k10}
+                \caption{ function \texttt{P2}}
+                \label{fig:gammadeltak4}
+        \end{subfigure}
+        \caption{A plot of $\gamma$ as a function of $\delta$, with several $k$ and $n$.} \label{fig:gammadeltak}
+\end{figure}
+!!!!!!!!!!!!!!!!!Skriv masse om bildet over her!!!!!!!!!!!!!!!!!!!!!!!!!\\
+Figure \ref{fig:gammadeltak} shows that $\gamma$ is nearly independent of $k$. The figures also shows a log linear dependence between $\delta$ and $\epsilon$. \\
+
+
+
+\begin{figure}[H]
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
                 \includegraphics[width=\textwidth]{fig/s22errvstol1k}
                 \caption{function \texttt{P1}}
-                \label{fig:errtol1k}
+                \label{fig:anttol1k}
         \end{subfigure}
 ~
         \begin{subfigure}[b]{0.45\textwidth}
                 \includegraphics[width=\textwidth]{fig/s23errvstol2k}
                 \caption{ function \texttt{P2}}
+                \label{fig:anttol2k}
+        \end{subfigure}
+                \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{fig/s22errvstol1k10}
+                \caption{function \texttt{P1}}
+                \label{fig:errtol1k}
+        \end{subfigure}
+~
+        \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{fig/s23errvstol2k10}
+                \caption{ function \texttt{P2}}
                 \label{fig:errtol2k}
         \end{subfigure}
-        \caption{A plot of the error, $\epsilon$ and the number of restarts, $\gamma$ as a function of tolerance, $\delta$, with several $k$.} \label{fig:errtolk}
+        \caption{A plot of $\epsilon$ as a function of $\delta$, with several $k$ and $n$.} \label{fig:errtolk}
 \end{figure}
+!!!!!!!!!!!!!!!!!Skriv masse om bildet over her!!!!!!!!!!!!!!!!!!!!!!!!!\\
