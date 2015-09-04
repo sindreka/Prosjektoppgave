@@ -12,17 +12,21 @@
 \item speedup
 \item Sammenligningen mellom de to metoder
 \end{itemize}
-Theoretically all methods perform about the same when $p$ is separable. If $p$ is not separable DM has a clear advantage. If we assume $\gamma \propto m^2/n^2$, which we concluded in section \ref{sec:rrest}.
+Theoretically all methods perform about the same when $p$ is separable. If $p$ is not separable DM has a clear advantage. If we assume $\gamma \propto m^2/n^2$, which we concluded in section \ref{sec:rrest}, and use $n = \rho$ as suggested in section \ref{sec:restvar}, we get that KPM$(\rho)$ has the same complexity as DM and KPM if $p$ is separable. If $p$ is not separable DM has a clear advantage over KPM and KPM$(n)$. \\
 
+Table \ref{tab:mr} shows that KPM$(\rho)$ uses the least amount of memory. This is one of the reasons to use KPM instead of DM on this type of problems. \\
 
-%Regarding convergence all methods can perform equally well, the drawback is the need to choose an appropriate $\delta$ for KPM and KPM$(n)$. With a larger $\delta$ KPM and KPM$(n)$ is less accurate, but with smaller $\delta$ we might restart too many times, making the methods inefficient. 
+%Regarding convergence all methods perform equally well. 
 
+Regarding convergence all methods can perform equally well, the drawback is the need to choose an appropriate $\delta$ for KPM and KPM$(n)$. With a larger $\delta$ KPM and KPM$(n)$ is less accurate, but with smaller $\delta$ we restart too many times, making the methods inefficient. \\
 
-%The theoretical results shows that the only real candidate to outperform DM is KPM$(n)$, KPM is only near when $p$ is separable. This also holds for memory requirements. In practice it is much the same. KPM did perform overall worst, while KPM$(n)$ and DM was close to each other. KPM$(n)$ is asymptotically better if $\rho$ is large, $n$ is chosen appropriate and $p$ is separable. If $p$ was not separable DM was better.
+When $p$ is separable, the results from section \ref{sec:stimem} and \ref{sec:stimek} shows that KPM$(n)$ is faster and asymptotically better than DM. This contradicts the results from theoretical complexity, but might be due to the smaller memory demand. \\
 
-%It seams that the optimal restart variable is when $n = \rho$. If $\gamma \propto m^2/n^2$ then KPM$(\rho)$ and DM has the same asymptotic complexity, but KPM$(\rho)$ uses less memory. Solving KPM$(n)$ with separable $p$ is faster than solving DM, so with several processing units KPM$(\rho)$ will be better because KPM$(n)$ works very well with many processing units. 
+%The optimal restart variable seams to be when $n = \rho$. If $\gamma \propto m^2/n^2$ then KPM$(\rho)$ and DM has the same asymptotic complexity, but KPM$(\rho)$ uses less memory. Solving KPM$(n)$ with separable $p$ is faster than solving DM, so with several processing units KPM$(\rho)$ will be better because KPM$(n)$ works very well with many processing units. 
 
-The reason for the high parallel performance is the natural independence in the method. The only communication needed between processors is when adding results, this can be done in $\log_2(\texttt{nP})$ additions. Note that a good restart variable is also a good value to use with parallel computations. \\
+The reason for the high parallel performance in section \ref{sec:para} is the natural independence in the method. The only communication needed between processors is when adding results, this can be done in $\log_2(\texttt{nP})$ additions. Note that a good restart variable is also a good value to use with parallel computations. \\
+
+In section \ref{sec:compare} we used what we had learned about $\gamma$, $n$ and $\delta$ to make KPM$(n)$ run as fast as possible with $p$ non separable. DM was faster than KPM$(\rho)$, but not asymptotically, as suggested by table \ref{tab:cc}. With more processors KPM$(n)$ would have been faster because of the high parallel efficiency and the low cost of solving each of the $m$ independent problems.
 
 It is worth noting that DM did not work when $\rho>300$ due to memory shortage, while KPM$(n)$ had no problem with $\rho = 1000$ and $n = 40$. \\
 
@@ -32,9 +36,10 @@ It is worth noting that DM did not work when $\rho>300$ due to memory shortage, 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter*{Further work}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-To obtain better results KPM should be implemented in a more parallel friendly language, as for example \texttt{C}. It would also be a benefit to use a large computer to get data with larger $\rho$.
+To obtain better results KPM should be implemented in a more parallel friendly language, as for example \texttt{C}. It would also be a benefit to use a large computer an get data with larger $\rho$.
 %KPM should be implement in a more parallel friendly language, like \texttt{C}, with a larger computer to get better results regarding parallel computations and larger systems. 
-KPM should also be implemented for other function than the heat equation. 
+%KPM should also be tested for other function than the heat equation. 
+It would also be interesting to see how KPM could be used to solve other equations than the heat equation.
 %There should also be a test where $\delta$ and $ n $ increases with $\rho$ or $k$ to see how this impacts the results.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter*{My code}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
