@@ -93,7 +93,7 @@ KPM$(100)$ & 1.0042  &  0.9655 & 0.9719&    0.9591\\
 
 From figure \ref{fig:speed} together with table \ref{tab:speedup} and \ref{tab:eff} we can observe the gain by using several processing units. Parallel efficiency and speedup is high for all cases of KPM tested here, it is definitely efficient to use several processing units on this type of problem. \\%All values of $n < m$ seams to give good parallel gain. \\
 
-These experiments was only done with $m = k = 40$, this is because the experiments took a long time with this computer. I see no reason why parallel gain should change significantly with other $m$ or $k$. 
+These experiments was only done with $m = k = 40$, this is because the experiments took much time on this computer. I see no reason why parallel gain should change significantly with other $m$ or $k$. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Comparison} \label{sec:compare}
@@ -111,9 +111,9 @@ These experiments was only done with $m = k = 40$, this is because the experimen
                 \caption{function \texttt{P3}}
                 \label{fig:c2comp2m}
         \end{subfigure}
-        \caption{A plot of the computation times KPM$(n)$ and DM. We have used the values $n = \rho = k$, $\delta = 10^{-3}$ for the first point, and decreases with an order of magnitude for each additional point. Assume $\texttt{nP} = 4$ for KPM$(n)$ and $\texttt{nP} = 1$ for DM. These values are choosen to make KPM$(n)$ perform as efficiently as possible. The helpline increases with $\rho^6 = m^3$.}\label{fig:comp}
+        \caption{A plot of the computation times KPM$(n)$ and DM. We have used the values $n = \rho = k$. $\delta = 10^{-3}$ for the first point, and decreases with an order of magnitude for each additional point. Assume $\texttt{nP} = 4$ for KPM$(n)$ and $\texttt{nP} = 1$ for DM. These values are choosen to make KPM$(n)$ perform as efficiently as possible. The helpline increases with $\rho^6 = m^3$.}\label{fig:comp}
 \end{figure}
-From figure \ref{fig:comp} it is clear that DM is better in all cases simulated, but KPM$(n)$ is not far behind. We know from section \ref{sec:stimem} and\ref{sec:stimek} that one iteration of KPM$(n)$ is faster than DM, we therefore conclude that with enough processing units KPM$(\rho)$ would have been faster than DM. \\
+From figure \ref{fig:comp} it is clear that DM is better in all cases simulated, but KPM$(n)$ is not far behind. We know from section \ref{sec:stimem} and \ref{sec:stimek} that one iteration of KPM$(n)$ is faster than DM, we therefore conclude that with enough processing units KPM$(\rho)$ would have been faster than DM. \\
 
 The other important thing to note here is that computation time for KPM$(n)$ does not increase faster than for DM. It is difficult to say what would happen with larger $\rho$ or $k$, but they would probably follow the helpline.\\
 
