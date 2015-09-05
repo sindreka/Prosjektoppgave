@@ -3,7 +3,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %This section will be concerned with deriving KPM.
 \label{sec:krylov}
-This section will show the mathematics needed to obtain KPM.
+In this section the mathematics needed to obtain KPM will be shown.
 We present the Krylov subspace in section \ref{sec:subspace}, derive KPM for the heat equation in section \ref{sec:fullKPM} and \ref{sec:rest}. In section \ref{sec:nonsep} we show how we can use KPM when $p$ is not separable. 
  %in section \ref{sec:nonsep}.
 
@@ -12,11 +12,11 @@ We present the Krylov subspace in section \ref{sec:subspace}, derive KPM for the
 \section{Krylov subspace} \label{sec:subspace}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 The Krylov subspace is the space $W_n (A,v) = \{v,Av, \cdots, A^{n-1}v\} = \{v^1,v^2,\cdots v^n\} $, where $n \leq m$. %Define $\nu$ as the $W_\nu(A,v)$ span $A$. 
-The vectors $v_i$ together with $h_{i,j} = v_i^\top Av_j$, are found by using Arnoldi's algorithm, shown in algorithm \ref{alg:arnoldi}. Letting $V_n$ be the $m \times n$ matrix consisting of column vectors $\{v^1,v^2,\cdots,v^n \}$ and $H_n$ be the $n \times n$ upper Hessenberg matrix containing all elements $(h_{i,j})_{i,j=1,\cdots,n}$, the following holds \cite{saad}
+The vectors $v^i$ together with $h_{i,j} = v^i^\top Av^j$, are found by using Arnoldi's algorithm, shown in algorithm \ref{alg:arnoldi}. Letting $V_n$ be the $m \times n$ matrix consisting of column vectors $\{v^1,v^2,\cdots,v^n \}$ and $H_n$ be the $n \times n$ upper Hessenberg matrix containing all elements $(h_{i,j})_{i,j=1,\cdots,n}$, the following holds \cite{saad}
 \begin{align}\
 AV_n & = V_n H_n + h_{n+1,n}v_{n+1}e^\top_n \label{eqn:prop1} \\
 V^{\top}_n AV_n &= H_n \label{eqn:prop2} \\
-v_i^{\top} v_j &= \delta_{i,j} \label{eqn:prop3}
+v^i^{\top} v^j &= \delta_{i,j} \label{eqn:prop3}
 \end{align}
 Here, $e_n$ is the $n$th canonical vector in $\mathbb{R}^n$ and $\delta_{i,j}$ is Kronecker's delta.\\
 
@@ -25,7 +25,7 @@ Here, $e_n$ is the $n$th canonical vector in $\mathbb{R}^n$ and $\delta_{i,j}$ i
 
 \begin{algorithm} 
 \begin{algorithmic} \caption{Arnoldi's algorithm\cite{saad}} \label{alg:arnoldi}  
-\STATE Start with $A$, $v^1 = v/\|v \|_2$, n
+\STATE Start with $A$, $v^1 = v/\|v \|_2$ and $n$
 \FOR{$j = 1,2,\cdots n $} 
    \STATE Compute $h_{i,j} = \langle Av^j,v^i \rangle $ for $i = 1,2,\cdots j$
     \STATE Compute $w_j := A v^j - \Sigma_{i=1}^{j} h_{i,j}v^i $
@@ -107,14 +107,14 @@ Equation \eqref{eqn:restkry} is of the same form as equation \eqref{eqn:krylov}.
 We then get
 \begin{equation*}
 \begin{aligned}
- (V_m z-\tilde{V}_n \tilde{\zeta})'(t)-A (V_m z-\tilde{V}_n \tilde{\zeta})(t) &=  h_{n+1,n}e_n^\top \tilde{\zeta}(t) v_{n+1}  \\
+ (V_m z-\tilde{V}_n \tilde{\zeta})'(t)-A (V_m z-\tilde{V}_n \tilde{\zeta})(t) &=  h_{n+1,n}e_n^\top \tilde{\zeta}(t) v^{n+1}  \\
 (z-\tilde{\zeta})(0)& = 0 
 \end{aligned}
 \end{equation*}
 Multiplying by $V_m^{\top}$ and using equation \eqref{eqn:prop2} gives
 \begin{equation*}
 \begin{aligned}
- (z-\tilde{\zeta})'(t)-\tilde{H_n} (z-\tilde{\zeta})(t) &= V_m^\top h_{n+1,n}e_n^\top \tilde{\zeta}(t) v_{n+1}  \\
+ (z-\tilde{\zeta})'(t)-\tilde{H_n} (z-\tilde{\zeta})(t) &= V_m^\top h_{n+1,n}e_n^\top \tilde{\zeta}(t) v^{n+1}  \\
 (z-\tilde{\zeta})(0)& = 0
 \end{aligned}
 \end{equation*}
@@ -133,7 +133,7 @@ If we drop all except the $n$ first rows of $\tilde{\xi}(t)$ we are left with
 \end{aligned}
 \end{equation}
 
-Each restart we generate a new Krylov subspace $W_n(A,v^{n+1})$, solve equation \eqref{eqn:restkry2} for $\xi(t)$ and approximate the solution $q$ by $ q_n =  V_n\xi(t)$. By summing together $q_n$, we converge towards $q$. Note that the current value of $\zeta(t)$ equals the previous value of $\xi(t)$, and that $h_{n+1,n}$ is from the previous $H_n$. See algorithm \ref{alg:restkry} for a step by step description. We will call $n$ a restart variable, and denote the method with KPM$(n)$.
+Each time we restart we generate a new Krylov subspace $W_n(A,v^{n+1})$, solve equation \eqref{eqn:restkry2} for $\xi(t)$ and approximate the solution $q$ by $ q_n =  V_n\xi(t)$. By summing together $q_n$, we converge towards $q$. Note that the current value of $\zeta(t)$ equals the previous value of $\xi(t)$, and that $h_{n+1,n}$ is from the previous $H_n$. See algorithm \ref{alg:restkry} for a step by step description. We will call $n$ a restart variable, and denote the method with KPM$(n)$.
 \begin{algorithm}
 \begin{algorithmic} \caption{The Krylov projection method with restart} \label{alg:restkry} 
 \STATE Start with $A$,$f(t)$,$v$, $n$ and $i = 0$

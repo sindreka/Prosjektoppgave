@@ -9,7 +9,7 @@ In section \ref{sec:test} we state some test problems.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discretisation in space} \label{sec:space}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-We consider the square $[0,1] \times [0,1]$ and divide each spacial direction into $\rho+2$ piece, each piece having a length of $h_s = 1/(\rho+1)$. Since the boundary conditions are known, we will only calculate with $\rho$ numbers, leaving room on each side for the boundary. Let $x_i = h_s \cdot i$ and $y_j = h_s \cdot j$ , $i,j =1,2,\cdots, \rho + 1 $.  $v$ and $P(t)$ need to be found in an ordered fashion. We let  $v_{i+\rho j} = g(x_i, y_j)$, and 
+We consider the square $[0,1] \times [0,1]$ and divide each spacial direction into $\rho+2$ piece, with each piece having the length $h_s = 1/(\rho+1)$. Since the boundary conditions are known, we will only calculate with $\rho$ numbers, leaving room on each side for the boundary. Let $x_i = h_s \cdot i$ and $y_j = h_s \cdot j$, with $i,j =1,2,\cdots, \rho + 1 $.  $v$ and $P(t)$ need to be found in an ordered fashion. We let  $v_{i+\rho j} = g(x_i, y_j)$, and 
 $P(t)_{i+\rho j} = p(t,x_i, y_j)$, where $i,j = 1,2,\cdots, \rho+1$.
 The Laplacian will be approximated by the five point formula given in equation \eqref{eqn:fivepoint} as the matrix $A$. This is a second order approximation.
 \begin{equation} \label{eqn:fivepoint} 
@@ -44,8 +44,8 @@ Notice that $m = \rho ^2$.
 \section{Discretisation in time} \label{sec:time}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %!!!!!!!!!!!!!!!!!!!!!det må komme tydeldig fram at $P$ og slikt trenger størrelse $m \times k$ !!!!!!!!!!!!!\\
-We will consider the time domain $t \in [0,1] $, and divide it in $k$ pieces, giving each piece a length $h_t = 1/(k-1)$, let $t_l = h_t\cdot l$. We let $q^l=q(t_l)$, $P^l =P(t_l)$ and $f^l = f(t_l)$ for $l = 0,1,\cdots,k-1 $.
-Because of this discretion, $P(t)$ and $q(t)$ will be saved as $m \times k $ matrices, and $f(t)$ as an $1 \times k$ vector.
+We will consider the time domain $t \in [0,1] $, and divide it in $k$ pieces, giving each piece the length $h_t = 1/(k-1)$. Let $t_l = h_t\cdot l$, with $l = 0,1,\cdots,k-1 $.\\
+
 Algorithm \ref{alg:fullkry}, \ref{alg:restkry} and equation \ref{eqn:DI} all contain a differential equation in time,
 trapezoidal rule\cite{trap}, given in equation \eqref{eqn:trap} will be used to solve these equations. 
 \begin{equation} \label{eqn:trap}
@@ -53,7 +53,7 @@ trapezoidal rule\cite{trap}, given in equation \eqref{eqn:trap} will be used to 
 \end{equation}
 We will only derive the iteration scheme for equation \eqref{eqn:numheat}, but 
 this it is easily generalizable to the other differential equations discussed.
-To obtain the iteration scheme we write $q$ instead of $f$, use equation \eqref{eqn:heat} and insert the numerical simplifications from section \ref{sec:space} and \ref{sec:time}.
+To obtain the iteration scheme we write $q$ instead of $f$, use equation \eqref{eqn:heat}, and insert the numerical simplifications from earlier in this section and from section \ref{sec:space}.
 \begin{equation}
 q(t_{l+1}) - q(t_l) = \int \limits_{t_l}^{t_{l+1}} \frac{d q}{d t} dt \approx \frac{h}{2}(A q(t_{l+1})+f(t_{l+1})v +A q(t_l)+f(t_l) v) 
 \end{equation}
@@ -65,6 +65,10 @@ q(t_{l+1}) \approx (I-h_t/2 A)^{-1}(q(t_l) + \frac{h_t}{2}( A q(t_{l}) + f(t_l)v
 \end{aligned}
 \end{equation} 
 This is a second order method.
+Because of this discretion, $P(t)$ and $q(t)$ will be saved as $m \times k $ matrices, and $f(t)$ as an $1 \times k$ vector.
+%\\!!!!!!!!!!!!!!!!!!!!!!!!!!Skriv noe om hvordan $P(t)$ og slikt er lagret!!!!!!!!!!!!!!!!!!\\
+%Since computers are discrete, we need to store the functions depending on $t$
+%We let $q^l=q(t_l)$, $P^l =P(t_l)$ and $f^l = f(t_l)$ for
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Direct method} \label{sec:DM}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -96,11 +100,13 @@ and parallel efficiency as
 
 where $\tau_\texttt{nP}$ is run time with \texttt{nP} processors, $S_\texttt{nP}$ is speedup with \texttt{nP} processors, and $\eta_\texttt{nP}$ is parallel efficiency for \texttt{nP} processors. Speedup measures how much faster a program runs with \texttt{nP} processors, ideal speedup is when $S_\texttt{nP} = \texttt{nP}$. Parallel efficiency measures how well each processor is used. Perfect parallel efficiency occurs when $\eta_\texttt{nP} = 1$.\\
 
-We let KPM$(n)$ be the method where we perform the $n$ first iterations of Arnoldi's algorithm, and we let KPM be short for KPM$(m)$. We also denote $n$ as a restart variable. The number of restarts needed for convergence in algorithm \ref{alg:restkry} is denoted by $\gamma$. The convergence criterion used in algorithm \ref{alg:restkry} is to stop when the maximum absolute difference in $q_n$ is less than a given tolerance $\delta$. The error is denoted as $\epsilon$ and is defined as the largest absolute difference between the correct solution and the approximation. \\
- 
-For separable $p$, we will in general be looking at computation time and error, and how this scale with $\delta$. When $p$ is not separable we are still interested in convergence, and computation time, but also parallel gain. \\
+We let KPM$(n)$ be the method where we use the $n$ first iterations of Arnoldi's algorithm to obatin $V_n$ and $H_n$, and let KPM be short for KPM$(m)$. We call $n$ a restart variable. The number of restarts needed for convergence in algorithm \ref{alg:restkry} is denoted by $\gamma$. The convergence criterion used in algorithm \ref{alg:restkry} is to stop restarting when the maximum absolute difference in $q_n$ is less than a given tolerance $\delta$. The error is denoted as $\epsilon$ and is defined as the largest absolute difference between the correct solution and the approximation. \\
 
-If nothing else is stated, assume that $\rho =40$, $k = 40$, $n = 1$, $\delta = 10^{-15}$, these numbers was chosen as large as possible, while still giving an answer in a timely manner. All timed results are averaged over 2 runs, preferably this should have been higher, but that was too time consuming. $A$ was implemented as a sparse matrix.\\
+If nothing else is stated, assume that $\rho =40$, $k = 40$, $n = 1$, $\delta = 10^{-15}$, these numbers was chosen as large as possible, while still giving an answer in a timely manner. All timed results are averaged over 2 runs, preferably this should have been higher, but would be too time consuming. $A$ was implemented as a sparse matrix.\\
+ 
+For separable $p$, we will in general be looking at computation time and error, and how this scale with $\delta$. When $p$ is not separable we are interested in convergence, computation time and parallel gain. \\
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Test problems} \label{sec:test}
