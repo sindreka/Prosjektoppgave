@@ -3,8 +3,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %This section will be concerned with deriving KPM.
 \label{sec:krylov}
-In this section the mathematics needed to obtain KPM will be shown.
-We present the Krylov subspace in section \ref{sec:subspace}, derive KPM for the heat equation in section \ref{sec:fullKPM} and \ref{sec:rest}. In section \ref{sec:nonsep} we show how we can use KPM when $p$ is not separable. 
+In this section we will derive some solution techniques.
+We present the Krylov subspace in section \ref{sec:subspace}, derive KPM for the heat equation in section \ref{sec:fullKPM} and \ref{sec:rest}. In section \ref{sec:nonsep} we show how we can use KPM when $p$ is not separable, and introduce the method we will compare KPM to in section \ref{sec:DM}. 
  %in section \ref{sec:nonsep}.
 
 
@@ -139,7 +139,7 @@ Each time we restart we generate a new Krylov subspace $W_n(A,v^{n+1})$, solve e
 \STATE Start with $A$,$f(t)$,$v$, $n$ and $i = 0$
 \STATE Compute $[V_n,H_n,h_{n+1,n}^i,v^{n+1}] = \texttt{arnoldi}(A,v)$
 \STATE Solve $  z' = H_n z + f(t) \| v \|_2 e_1  $ for $z$
-\STATE $ q_n \leftarrow  V z $
+\STATE $ q_n \leftarrow  V_n z $
 \STATE $\xi_i \leftarrow z$
 \WHILE{convergence criterion not satisfied} 
     \STATE $i \leftarrow i + 1$
@@ -164,3 +164,12 @@ q(t) &= \sum \limits_{i = 1}^m q_j(t)
 \end{equation}
 where $e_j$ is the $j$th canonical vector in $\mathbb{R}^{m}$, we can solve the original equation without requiring separability. 
 An important thing to note here is the need for parallel processing power since we need to solve $m$ problems and not just one.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Direct method} \label{sec:DM}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+We need to compare KPM to a well known and easy to implement method. For this we will solve equation \eqref{eqn:DI} straight forward with trapezoidal rule.
+\begin{equation} \label{eqn:DI}
+q'(t) -A q(t) = P(t)
+\end{equation}
+Let $P(t)$ be as in section \ref{sec:nonsep}. We denote the method DM for direct method.
+%\newpage

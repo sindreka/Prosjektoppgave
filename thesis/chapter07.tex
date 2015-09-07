@@ -18,7 +18,7 @@ Table \ref{tab:mr} shows that KPM$(\rho)$ uses the least amount of memory. This 
 
 %Regarding convergence all methods perform equally well. 
 
-Regarding convergence all methods can perform equally well, the drawback is the need to choose an appropriate $\delta$ for KPM and KPM$(n)$. With a larger $\delta$ KPM and KPM$(n)$ is less accurate, but with smaller $\delta$ we restart too many times, making the methods inefficient, the rule of thumbs is start at $\delta=10^{-3}$ with $\rho = k = n = 10$, and decrease $\delta$ with one order of magnitude each time $\rho = k = n$ is doubled. \\
+Regarding convergence all methods can perform equally well, the drawback is the need to choose an appropriate $\delta$ for KPM$(n)$. With a larger $\delta$ KPM$(n)$ is less accurate, but with smaller $\delta$ we restart too many times, making the methods inefficient. The rule of thumbs is start at $\delta=10^{-3}$ with $\rho = k = n = 10$, and decrease $\delta$ with two orders of magnitude each time $\rho = k = n$ is doubled. \\
 
 When $p$ is separable, the results from section \ref{sec:stimem} and \ref{sec:stimek} shows that KPM$(n)$ is faster and asymptotically better than DM. This contradicts the results from theoretical complexity, and might be due to the smaller memory demand. \\
 
@@ -26,7 +26,7 @@ When $p$ is separable, the results from section \ref{sec:stimem} and \ref{sec:st
 
 The reason for the high parallel performance in section \ref{sec:speed} is the natural independence in the method. The only communication needed between processors is when adding results, this can be done in $\log_2(\texttt{nP})$ additions. Note that a good restart variable is also gives a good problem size to use with parallel computations. \\
 
-In section \ref{sec:compare} we used what we had learned about $\gamma$, $n$ and $\delta$ to make KPM$(n)$ run as fast as possible with $p$ non separable. DM was faster than KPM$(\rho)$, but not asymptotically, as suggested by table \ref{tab:cc}. With more processors KPM$(n)$ would have been faster because of the high parallel efficiency and the low cost of solving each of the $m$ independent problems.
+In section \ref{sec:compare} we used what we had learned about $\gamma$, $n$ and $\delta$ to make KPM$(n)$ run as fast as possible with $p$ non-separable. DM was faster than KPM$(\rho)$, but not asymptotically, as suggested by table \ref{tab:cc}. With more processors KPM$(n)$ would have been faster because of the high parallel efficiency and the low cost of solving each of the $m$ independent problems.
 
 It is worth noting that DM did not work when $\rho>300$ due to memory shortage, while KPM$(n)$ had no problem with $\rho = 1000$ and $n = 40$. \\
 

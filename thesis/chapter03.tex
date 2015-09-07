@@ -2,7 +2,7 @@
 \chapter{Implementation}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:imp}
-This section will explain the implementation of the methods. We start by discretizing space and time in section \ref{sec:space} and \ref{sec:time} respectively, and introduce the method we will compare KPM to in section \ref{sec:DM}. 
+This section will explain the implementation of the methods. We start by discretizing space and time in section \ref{sec:space} and \ref{sec:time} respectively.
 In section \ref{sec:not} we present what and how we want to measure interesting factors, together with some information about computers and programs used to generate data.
 In section \ref{sec:test} we state some test problems.
 
@@ -49,7 +49,7 @@ We will consider the time domain $t \in [0,1] $, and divide it in $k$ pieces, gi
 Algorithm \ref{alg:fullkry}, \ref{alg:restkry} and equation \ref{eqn:DI} all contain a differential equation in time,
 trapezoidal rule\cite{trap}, given in equation \eqref{eqn:trap} will be used to solve these equations. 
 \begin{equation} \label{eqn:trap}
-\int \limits_a^b f(t) dt \approx \frac{h}{2} \sum \limits_{l = 1}^N(f(t_{l+1})+f((t_l))
+\int \limits_a^b f(t) dt \approx \frac{h}{2} \sum \limits_{l = 1}^N(f(t_{l+1})+f(t_l))
 \end{equation}
 We will only derive the iteration scheme for equation \eqref{eqn:numheat}, but 
 this it is easily generalizable to the other differential equations discussed.
@@ -65,19 +65,11 @@ q(t_{l+1}) \approx (I-h_t/2 A)^{-1}(q(t_l) + \frac{h_t}{2}( A q(t_{l}) + f(t_l)v
 \end{aligned}
 \end{equation} 
 This is a second order method.
-Because of this discretion, $P(t)$ and $q(t)$ will be saved as $m \times k $ matrices, and $f(t)$ as an $1 \times k$ vector.
+Because of this discretion, $P(t)$ and $q(t)$ will be saved as $m \times k $ matrices, and $f(t)$ as a $k$ vector.
 %\\!!!!!!!!!!!!!!!!!!!!!!!!!!Skriv noe om hvordan $P(t)$ og slikt er lagret!!!!!!!!!!!!!!!!!!\\
 %Since computers are discrete, we need to store the functions depending on $t$
 %We let $q^l=q(t_l)$, $P^l =P(t_l)$ and $f^l = f(t_l)$ for
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Direct method} \label{sec:DM}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-We need to compare KPM to a well known and easy to implement method. For this we will solve equation \eqref{eqn:DI} straight forward with trapezoidal rule.
-\begin{equation} \label{eqn:DI}
-q'(t) -A q(t) = P(t)
-\end{equation}
-We denote it DM for direct method.
-%\newpage
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Measurements and computers} \label{sec:not}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -85,11 +77,11 @@ We denote it DM for direct method.
 %!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Skrive at vi bruker alle iterasjonene når vi bruker KPM!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\\
 Algorithm \ref{alg:arnoldi}, \ref{alg:fullkry}, \ref{alg:restkry}, together with equation \ref{eqn:DI} was implemented as solves for equation \ref{eqn:heat}, with varieties of equation \ref{eqn:trapscheme} solving the differential equations. 
 
-Each solver was implemented in two versions, one where $p$ was assumed separable, and one where $p$ was assumed to be non separable. Parallel computations was only implemented for $p$ non separable, because in this case we need solve $m$ independent problems.\\%, and not just one as when $p$ is separable. 
+Each solver was implemented in two versions, one where $p$ was assumed separable, and one where $p$ was assumed to be non-separable. Parallel computations was only implemented for $p$ non-separable, because in this case we need solve $m$ independent problems.\\%, and not just one as when $p$ is separable. 
 
 All solvers and problems were implemented in MATLAB R2014b. The computer used runs Ubuntu 14.04 LTS with intel  i7-4770 CPU, and has 16 GB ram. \\
 
-The parallel computations was implemented with MATLAB's commands \texttt{parpool} and \texttt{parfor}, see \cite{parpool} and \cite{parfor} for more information, \texttt{nP} denotes the number of processing units used. We will use speedup and parallel efficiency to investigate the gain by using processing units. Speedup is defined as
+The parallel computations was implemented with MATLAB's commands \texttt{parpool} and \texttt{parfor}, see \cite{parpool} and \cite{parfor} for more information, \texttt{nP} denotes the number of processing units used. We will use speedup and parallel efficiency to investigate the gain by using several processing units. Speedup is defined as
 \begin{align*}
 S_\texttt{nP} = \frac{\tau_1}{\tau_\texttt{nP}}
 \end{align*}
@@ -119,7 +111,7 @@ Two test problems are implemented for the separable case. Equation \eqref{eqn:se
  f_2(t) &= \frac{-t}{t+1} & g_2(x,y)& = 2x(x-1) +2y(y-1)
  \end{aligned}
 \end{equation}
-Equation \eqref{eqn:sep2} is not symmetric, and non separable for $x$ and $y$, it also has a combination of polynomials and exponential functions, just to make it test a more general case. 
+Equation \eqref{eqn:sep2} is not symmetric, and non-separable for $x$ and $y$, it also has a combination of polynomials and exponential functions, just to make it test a more general case. 
 This problem will be denoted as \texttt{P2}.\\
 \begin{equation} \label{eqn:sep2}
 \begin{aligned}
@@ -136,14 +128,14 @@ This problem will be denoted as \texttt{P2}.\\
 
 To obtain the solutions, we need to solve for $f_i(t) g_i(x,y)$, $i = 1,2 $ and add the solutions together. Clearly parallel computations could be used to solve these, but this will not be done in this text. The reason for this is that MATLAB uses a significant amount of time to prepare parallel computation, often much larger time than the computation itself.\\
 
-\texttt{P1} will also be used in the non separable case with $p(t) = f_1(t) g_1(x,y) + f_2(t) g_2(x,y)$.
-One additional test problem is implemented for non separable $p$, this is a symmetric problem consisting of both polynomial and exponential functions, it is given in equation \eqref{eqn:non1}, and will be denoted as \texttt{P3}.
+\texttt{P1} will also be used in the non-separable case with $p(t) = f_1(t) g_1(x,y) + f_2(t) g_2(x,y)$.
+One additional test problem is implemented for non-separable $p$, this is a symmetric problem consisting of both polynomial and exponential functions, it is given in equation \eqref{eqn:non1}, and will be denoted as \texttt{P3}.
 \begin{equation} \label{eqn:non1}
 \begin{aligned}
  u(t,x,y) = & \sin(x y t) (x-1) (y-1)\\
  p(t,x,y) = & t^2 (x-1) (y-1) y^2 \sin(t x y)\\ & -2 t (y-1) y \cos(t x y)+(x-1) x (y-1) y \cos(t x y)\\ & -t (x-1) x (2 \cos(t x y)-t x (y-1) \sin(t x y))
 \end{aligned}
 \end{equation}
-%There is no other reason the problems for non separable $p$ is not symmetric, except for laziness.
-Even though both the test problems for non separable $p$ are symmetric, the method works equally well with non symmetric problems. 
+%There is no other reason the problems for non-separable $p$ is not symmetric, except for laziness.
+Even though both the test problems for non-separable $p$ are symmetric, the method works equally well on non-symmetric problems. 
 %!!!!!!!!!!!!!!!Skrive at ting fungerer for ikke symetriske problemer også, og at det var tilfedligheter som gjorde at det ble slik det ble!!!!!!!!!!!!!!!!!!!!!!!!!!!\\

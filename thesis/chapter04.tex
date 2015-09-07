@@ -20,20 +20,20 @@ We will in section \ref{sec:cc} and \ref{sec:mr} briefly compare the computation
 \end{table}
 DM need to perform $k$ matrix vector multiplications with a sparse matrix, and one matrix inversion. \\
 
-KPM and KPM$(n)$ needs to perform $k$ matrix vector multiplications with a full matrix, and one matrix inversion. KPM and KPM$(n)$ also need to run Arnoldi's algorithm. If $p$ is non separable, all these operations need to be done $m$ times. If $p$ is separable, one time i enough. KPM$(n)$ uses smaller matrices and vectors, with size $n$. This reduces the cost of these operations, but the method needs to restart, remember that the number of restarts KPM$(n)$ need to converge is denoted as  $\gamma$. %we denote the number of restarts KPM$(n)$ need to converge as $\gamma$. \\
+KPM and KPM$(n)$ needs to perform $k$ matrix vector multiplications with a full matrix, and one matrix inversion. KPM and KPM$(n)$ also need to run Arnoldi's algorithm. If $p$ is non separable, all these operations need to be done $m$ times. If $p$ is separable, one time i enough. KPM$(n)$ uses smaller matrices and vectors, with size $n$. This reduces the cost of these operations, but the method needs to restart, remember that the number of restarts KPM$(n)$ need to converge is denoted as  $\gamma$.\\ %we denote the number of restarts KPM$(n)$ need to converge as $\gamma$. \\
 
 An overview over the computational cost of these operations is given in table \ref{tab:runtime}. A list of asymptotic computational complexity for the methods is given in table \ref{tab:cc}.
 \begin{table}[H]
 \centering
 \begin{tabular}{l | l l}
 
-Method & Separable $p$ & Non separable $p$ \\
+Method & Separable $p$ & Non-separable $p$ \\
 \hline
  DM & $\mathcal{O}(km+m^3)$ & $\mathcal{O}(km+m^3)$  \\
  KPM& $\mathcal{O}(km^2 +m^3)$ & $\mathcal{O}(km^3 +m^4)$ \\
  KPM$(n)$& $\mathcal{O}((kn^2 +n^2m+n^3)\gamma)$  & $\mathcal{O}((kn^2m +n^2m^2+n^3m)\gamma)$
 \end{tabular}
-\caption{Computational complexity for the methods discussed, $\gamma$ denotes the number of restarts needed to converge. Parallel computations will be done for non separable $p$.}
+\caption{Computational complexity for the methods discussed, $\gamma$ denotes the number of restarts needed to converge. Parallel computations will be done for non-separable $p$.}
 \label{tab:cc}
 \end{table}
 
@@ -59,14 +59,14 @@ Assume that KPM$(m)$ and KPM has the same complexity, so that $\gamma = 1$ when 
 \end{table}
 DM need to store $A$, $q$ ,$P$, and an inverted matrix with size $m \times m$.\\
 
-KPM and KPM$(n)$ needs to store $A$, $q$, $V_n$, $H_n$, and an inverted matrix, remember that for KPM $n = m$. If $p$ is separable we also need to store $v$ and $f$, if $p$ is non separable we need to store $P$ instead. \\
+KPM and KPM$(n)$ needs to store $A$, $q$, $V_n$, $H_n$, and an inverted matrix, remember that for KPM $n = m$. If $p$ is separable we also need to store $v$ and $f$, if $p$ is non-separable we need to store $P$ instead. \\
 
 An overview over the memory demand for the different variables is given in table \ref{tab:memreq}. A list of memory demand for the different methods is given in table \ref{tab:mr}.
 
 \begin{table}[H]
 \centering
 \begin{tabular}{l | l l}
-Method & Separable $p$ & Non separable $p$ \\
+Method & Separable $p$ & Non-separable $p$ \\
 \hline
 DM & $m^2+2mk+10m$ & $m^2+2mk + 10 m$ \\
 KPM & $mk+3m^2+11m+k$ & $2mk+3m^2+11m+k$ \\
@@ -78,4 +78,4 @@ KPM$(n)$ & $ mk +2n^2+k+11m+nm $ &  $ 2(mk + n^2)+k+11m+nm $
 
 %We see that KPM$(m)$ and KPM requires the same amount of memory.
 %!!!!!!!!!!!!!!!!!!!!!!!!!liten diskusjon her?!!!!!!!!!!!!!!!!!!!!!!!!!\\
-KPM and KPM$(m)$ has the same memory demand, which makes sense. For KPM$(1)$ the memory demand is proportional to $mk$, which is much lover than for the other methods. The difference in performance between separable and non separable $p$ is much smaller in this section than in section \ref{sec:cc}.
+KPM and KPM$(m)$ has the same memory demand, which makes sense. For KPM$(1)$ the memory demand is proportional to $mk$, which is much lover than for the other methods. The difference in performance between separable and non-separable $p$ is much smaller in this section than in section \ref{sec:cc}.

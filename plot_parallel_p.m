@@ -1,6 +1,6 @@
 % A tool for all figures made with p non separable
 
-if 1 % convergence function 1
+if 0 % convergence function 1
     j = 1;
     
     p = [4,8,12,16,20,40,100];
@@ -27,7 +27,7 @@ if 1 % convergence function 1
     set(h,'Location','Best');
 end
 %%% Done
-if 1 % convergence function 2
+if 0 % convergence function 2
     j = 1;
     
     p = [4,8,12,16,20,60,100];
@@ -114,7 +114,7 @@ if 0 % speedup function 1
 end
 
 
-if 1 % speedup function 2
+if 0 % speedup function 2
     p = [1,2,4];
     avg = 2;
     tol = 10^-15; m = 40;
@@ -175,7 +175,7 @@ end
 
 %compare
 
-avg = 2; k = 40; m = 40; p = [20,40,100,200]; para = 4;
+avg = 2; k = 40; m = 40; p = [20,40,100,200]; para = 4; tol = 10^-15;
 % parallel(m,k,n,prob,func,conv,para)
 
 if 1 % time vs m and m % bare for funksjon 1
@@ -189,7 +189,7 @@ if 1 % time vs m and m % bare for funksjon 1
             utdata2(j,:,a) = parallel( i,i,1 ,3,1,tol,1);
         end
         j = j + 1;
-        kkk = kkk+1;
+        kkk = kkk+2;
         
     end
     utdata1 = sum(utdata1,3)/avg;
@@ -219,7 +219,7 @@ if 1 % time vs m and m % bare for funksjon 2
             utdata2(j,:,a) = parallel( i,i,1 ,3,2,tol,1);
         end
         j = j + 1;
-        kkk = kkk + 1;
+        kkk = kkk + 2;
         
     end
     utdata1 = sum(utdata1,3)/avg;
