@@ -141,7 +141,6 @@ Remember that $\delta$ is tolerance, $\gamma$ is the number of restarts, and $\e
         \caption{A plot of $\gamma$ as a function of $\delta$, with several $\rho$ and $n$.} \label{fig:gammadelta}
 \end{figure}
 We see from figure \ref{fig:gammadelta} that $\gamma$ changes significantly with $\rho$. The figure show a log linear dependence between $\gamma$ and $\delta$, and that $\gamma \propto 1/n^2$. 
-%\\!!!!!!!!!!!!!!!!!!!!!!Settningen under virker feil!!!!!!!!!!!!!!!!!!!!!!!!!\\
 The constant part of the graph where $ 10^{-5}<\delta< {10^0} $ shows that KPM$(1)$ and KPM$(10)$ does too few restarts to gain any accuracy when $\delta$ is too large, this is confirmed by figure \ref{fig:epsilondelta}. 
 
 \begin{figure}[H]
@@ -173,7 +172,7 @@ The constant part of the graph where $ 10^{-5}<\delta< {10^0} $ shows that KPM$(
         \caption{A plot of $\epsilon$ as a function of $\delta$, with several $\rho$ and $n$.} \label{fig:epsilondelta}
 \end{figure}
 Figure \ref{fig:epsilondelta} shows $\epsilon$ as a function of $\delta$. In figure \ref{fig:epsilondelta1} and \ref{fig:epsilondelta3} all graphs has obtained the threshold precision possible with $k=40$. In
-figure \ref{fig:epsilondelta2} and \ref{fig:epsilondelta4} the precision possible with the different $\rho$-s are obtained. It seams that the maximum precision is attained faster with larger $n$, this makes sense because if $n = m$, we should not need to restart in order to get threshold precision. 
+figure \ref{fig:epsilondelta2} and \ref{fig:epsilondelta4} the precision possible with the different $\rho$-s are obtained. It seams that the maximum precision is attained faster with larger $n$, this makes sense because if $n = m$, we should not need to restart in order to get threshold precision. This was also confirmed by figure \ref{fig:gammadelta}, where KPM$(10)$ needed fewer restarts than KPM$(1)$ to converge. 
 %There is no reason this was not performed with other than $n = 1$ except for laziness. \\
 %!!!!!!!!!!!!!!!!!!!!!!!!!Arg, jeg må lage nye figurer for andre $n$!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\\
 %!!!!!!!!!!!!!!!!Her kan burde skrive noe om hvor bra KPM$(n)$ uten restart ville vært!!!!!!!!!!!!!!!!\\
