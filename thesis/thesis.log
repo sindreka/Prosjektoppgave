@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.6.17)  8 SEP 2015 11:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.6.17)  8 SEP 2015 13:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1253,40 +1253,34 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
  (./chapter03.tex
 Chapter 3.
+
+Underfull \hbox (badness 10000) in paragraph at lines 47--48
+
+ []
+
 [9
 
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 47--48
+Underfull \hbox (badness 10000) in paragraph at lines 81--82
 
  []
 
 
-Overfull \hbox (0.22498pt too wide) in paragraph at lines 49--51
-[]\T1/futs/m/n/12 Algorithm [][]2[][], [][]3[][] and equa-tion [][]2.9[][] all 
-con-tain a dif-fer-en-tial equa-tion in time, trape-zoidal rule([]),
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 80--81
+Underfull \hbox (badness 10000) in paragraph at lines 83--84
 
  []
 
 [10]
-Underfull \hbox (badness 10000) in paragraph at lines 82--83
-
- []
-
-
-Overfull \hbox (9.27255pt too wide) in paragraph at lines 84--85
+Overfull \hbox (9.27255pt too wide) in paragraph at lines 85--86
 []\T1/futs/m/n/12 The par-al-lel com-pu-ta-tions was im-ple-mented with MAT-LAB
 's com-mands \T1/cmtt/m/n/12 parpool \T1/futs/m/n/12 and \T1/cmtt/m/n/12 parfor
 \T1/futs/m/n/12 ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 93--94
+Underfull \hbox (badness 10000) in paragraph at lines 92--94
 
  []
 
@@ -1300,12 +1294,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 97--98
 
  []
 
-[11]
+
 Underfull \hbox (badness 10000) in paragraph at lines 99--100
 
  []
 
-
+[11]
 Underfull \hbox (badness 10000) in paragraph at lines 113--116
 
  []
@@ -1361,13 +1355,13 @@ LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
 (Font)              scaled to size 22.88956pt on input line 2.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
 (Font)              scaled to size 22.88956pt on input line 2.
-<fig/s1conv1.jpg, id=392, 562.1pt x 421.575pt>
+<fig/s1conv1.jpg, id=390, 562.1pt x 421.575pt>
 File: fig/s1conv1.jpg Graphic file (type jpg)
  <use fig/s1conv1.jpg>
 Package pdftex.def Info: fig/s1conv1.jpg used on input line 14.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
 
-<fig/s2conv2.jpg, id=393, 562.1pt x 421.575pt>
+<fig/s2conv2.jpg, id=391, 562.1pt x 421.575pt>
 File: fig/s2conv2.jpg Graphic file (type jpg)
  <use fig/s2conv2.jpg>
 Package pdftex.def Info: fig/s2conv2.jpg used on input line 20.
@@ -1377,13 +1371,13 @@ Package pdftex.def Info: fig/s2conv2.jpg used on input line 20.
 
 
  <./fig/s1conv1.jpg> <./fig/s2conv2.jpg>]
-<fig/s9rest1.jpg, id=402, 562.1pt x 421.575pt>
+<fig/s9rest1.jpg, id=400, 562.1pt x 421.575pt>
 File: fig/s9rest1.jpg Graphic file (type jpg)
  <use fig/s9rest1.jpg>
 Package pdftex.def Info: fig/s9rest1.jpg used on input line 33.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
 
-<fig/s10rest2.jpg, id=403, 562.1pt x 421.575pt>
+<fig/s10rest2.jpg, id=401, 562.1pt x 421.575pt>
 File: fig/s10rest2.jpg Graphic file (type jpg)
  <use fig/s10rest2.jpg>
 Package pdftex.def Info: fig/s10rest2.jpg used on input line 39.
@@ -1409,13 +1403,13 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 47.
 
-<fig/s3antvsm1.jpg, id=405, 570.13pt x 422.57875pt>
+<fig/s3antvsm1.jpg, id=403, 570.13pt x 422.57875pt>
 File: fig/s3antvsm1.jpg Graphic file (type jpg)
  <use fig/s3antvsm1.jpg>
 Package pdftex.def Info: fig/s3antvsm1.jpg used on input line 52.
 (pdftex.def)             Requested size: 212.41261pt x 157.43495pt.
 
-<fig/s4antvsm2.jpg, id=406, 570.13pt x 422.57875pt>
+<fig/s4antvsm2.jpg, id=404, 570.13pt x 422.57875pt>
 File: fig/s4antvsm2.jpg Graphic file (type jpg)
  <use fig/s4antvsm2.jpg>
 Package pdftex.def Info: fig/s4antvsm2.jpg used on input line 58.
@@ -1443,13 +1437,13 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 69.
 
-<fig/n5timevsm1.jpg, id=416, 562.1pt x 421.575pt>
+<fig/n5timevsm1.jpg, id=414, 562.1pt x 421.575pt>
 File: fig/n5timevsm1.jpg Graphic file (type jpg)
  <use fig/n5timevsm1.jpg>
 Package pdftex.def Info: fig/n5timevsm1.jpg used on input line 74.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
 
-<fig/n6timevsm2.jpg, id=417, 570.13pt x 422.57875pt>
+<fig/n6timevsm2.jpg, id=415, 570.13pt x 422.57875pt>
 File: fig/n6timevsm2.jpg Graphic file (type jpg)
  <use fig/n6timevsm2.jpg>
 Package pdftex.def Info: fig/n6timevsm2.jpg used on input line 80.
@@ -1464,13 +1458,13 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 89.
 
-<fig/n7timevsk1.jpg, id=424, 570.13pt x 422.57875pt>
+<fig/n7timevsk1.jpg, id=422, 570.13pt x 422.57875pt>
 File: fig/n7timevsk1.jpg Graphic file (type jpg)
  <use fig/n7timevsk1.jpg>
 Package pdftex.def Info: fig/n7timevsk1.jpg used on input line 94.
 (pdftex.def)             Requested size: 212.41261pt x 157.43495pt.
 
-<fig/n8timevsk2.jpg, id=425, 570.13pt x 422.57875pt>
+<fig/n8timevsk2.jpg, id=423, 570.13pt x 422.57875pt>
 File: fig/n8timevsk2.jpg Graphic file (type jpg)
  <use fig/n8timevsk2.jpg>
 Package pdftex.def Info: fig/n8timevsk2.jpg used on input line 100.
@@ -1514,28 +1508,28 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 112.
 
-<fig/s13antvstol1m.jpg, id=434, 562.1pt x 421.575pt>
+<fig/s13antvstol1m.jpg, id=432, 562.1pt x 421.575pt>
 File: fig/s13antvstol1m.jpg Graphic file (type jpg)
 
 <use fig/s13antvstol1m.jpg>
 Package pdftex.def Info: fig/s13antvstol1m.jpg used on input line 118.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
 
-<fig/s14antvstol2m.jpg, id=435, 562.1pt x 421.575pt>
+<fig/s14antvstol2m.jpg, id=433, 562.1pt x 421.575pt>
 File: fig/s14antvstol2m.jpg Graphic file (type jpg)
 
 <use fig/s14antvstol2m.jpg>
 Package pdftex.def Info: fig/s14antvstol2m.jpg used on input line 124.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
 
-<fig/s13antvstol1m10.jpg, id=436, 570.13pt x 422.57875pt>
+<fig/s13antvstol1m10.jpg, id=434, 570.13pt x 422.57875pt>
 File: fig/s13antvstol1m10.jpg Graphic file (type jpg)
 
 <use fig/s13antvstol1m10.jpg>
 Package pdftex.def Info: fig/s13antvstol1m10.jpg used on input line 130.
 (pdftex.def)             Requested size: 212.41261pt x 157.43495pt.
 
-<fig/s14antvstol2m10.jpg, id=437, 562.1pt x 421.575pt>
+<fig/s14antvstol2m10.jpg, id=435, 562.1pt x 421.575pt>
 File: fig/s14antvstol2m10.jpg Graphic file (type jpg)
 
 <use fig/s14antvstol2m10.jpg>
@@ -1543,56 +1537,56 @@ Package pdftex.def Info: fig/s14antvstol2m10.jpg used on input line 136.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
  [21 <./fig/s13antvstol1m.jpg> <./fig/s14antvstol2m.jpg> <./fig/s13antvstol1m10
 .jpg> <./fig/s14antvstol2m10.jpg>]
-<fig/s15errvstol1m.jpg, id=445, 562.1pt x 421.575pt>
+<fig/s15errvstol1m.jpg, id=443, 562.1pt x 421.575pt>
 File: fig/s15errvstol1m.jpg Graphic file (type jpg)
 
 <use fig/s15errvstol1m.jpg>
 Package pdftex.def Info: fig/s15errvstol1m.jpg used on input line 149.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
 
-<fig/s16errvstol2m.jpg, id=446, 562.1pt x 421.575pt>
+<fig/s16errvstol2m.jpg, id=444, 562.1pt x 421.575pt>
 File: fig/s16errvstol2m.jpg Graphic file (type jpg)
 
 <use fig/s16errvstol2m.jpg>
 Package pdftex.def Info: fig/s16errvstol2m.jpg used on input line 155.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
 
-<fig/s15errvstol1m10.jpg, id=447, 562.1pt x 421.575pt>
+<fig/s15errvstol1m10.jpg, id=445, 562.1pt x 421.575pt>
 File: fig/s15errvstol1m10.jpg Graphic file (type jpg)
 
 <use fig/s15errvstol1m10.jpg>
 Package pdftex.def Info: fig/s15errvstol1m10.jpg used on input line 161.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
 
-<fig/s16errvstol2m10.jpg, id=448, 562.1pt x 421.575pt>
+<fig/s16errvstol2m10.jpg, id=446, 562.1pt x 421.575pt>
 File: fig/s16errvstol2m10.jpg Graphic file (type jpg)
 
 <use fig/s16errvstol2m10.jpg>
 Package pdftex.def Info: fig/s16errvstol2m10.jpg used on input line 167.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
 
-<fig/s20antvstol1k.jpg, id=455, 562.1pt x 421.575pt>
+<fig/s20antvstol1k.jpg, id=453, 562.1pt x 421.575pt>
 File: fig/s20antvstol1k.jpg Graphic file (type jpg)
 
 <use fig/s20antvstol1k.jpg>
 Package pdftex.def Info: fig/s20antvstol1k.jpg used on input line 187.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
 
-<fig/s21antvstol2k.jpg, id=456, 570.13pt x 422.57875pt>
+<fig/s21antvstol2k.jpg, id=454, 570.13pt x 422.57875pt>
 File: fig/s21antvstol2k.jpg Graphic file (type jpg)
 
 <use fig/s21antvstol2k.jpg>
 Package pdftex.def Info: fig/s21antvstol2k.jpg used on input line 193.
 (pdftex.def)             Requested size: 212.41261pt x 157.43495pt.
 
-<fig/s20antvstol1k10.jpg, id=457, 562.1pt x 421.575pt>
+<fig/s20antvstol1k10.jpg, id=455, 562.1pt x 421.575pt>
 File: fig/s20antvstol1k10.jpg Graphic file (type jpg)
 
 <use fig/s20antvstol1k10.jpg>
 Package pdftex.def Info: fig/s20antvstol1k10.jpg used on input line 198.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
 
-<fig/s21antvstol2k10.jpg, id=458, 562.1pt x 421.575pt>
+<fig/s21antvstol2k10.jpg, id=456, 562.1pt x 421.575pt>
 File: fig/s21antvstol2k10.jpg Graphic file (type jpg)
 
 <use fig/s21antvstol2k10.jpg>
@@ -1604,28 +1598,28 @@ Underfull \hbox (badness 10000) in paragraph at lines 210--211
 
  []
 
-<fig/s22errvstol1k.jpg, id=465, 562.1pt x 421.575pt>
+<fig/s22errvstol1k.jpg, id=463, 562.1pt x 421.575pt>
 File: fig/s22errvstol1k.jpg Graphic file (type jpg)
 
 <use fig/s22errvstol1k.jpg>
 Package pdftex.def Info: fig/s22errvstol1k.jpg used on input line 217.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
 
-<fig/s23errvstol2k.jpg, id=466, 562.1pt x 421.575pt>
+<fig/s23errvstol2k.jpg, id=464, 562.1pt x 421.575pt>
 File: fig/s23errvstol2k.jpg Graphic file (type jpg)
 
 <use fig/s23errvstol2k.jpg>
 Package pdftex.def Info: fig/s23errvstol2k.jpg used on input line 223.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
 
-<fig/s22errvstol1k10.jpg, id=467, 562.1pt x 421.575pt>
+<fig/s22errvstol1k10.jpg, id=465, 562.1pt x 421.575pt>
 File: fig/s22errvstol1k10.jpg Graphic file (type jpg)
 
 <use fig/s22errvstol1k10.jpg>
 Package pdftex.def Info: fig/s22errvstol1k10.jpg used on input line 228.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
 
-<fig/s23errvstol2k10.jpg, id=468, 562.1pt x 421.575pt>
+<fig/s23errvstol2k10.jpg, id=466, 562.1pt x 421.575pt>
 File: fig/s23errvstol2k10.jpg Graphic file (type jpg)
 
 <use fig/s23errvstol2k10.jpg>
@@ -1656,13 +1650,13 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 2.
 
-<fig/p1conv1.jpg, id=493, 562.1pt x 421.575pt>
+<fig/p1conv1.jpg, id=491, 562.1pt x 421.575pt>
 File: fig/p1conv1.jpg Graphic file (type jpg)
  <use fig/p1conv1.jpg>
 Package pdftex.def Info: fig/p1conv1.jpg used on input line 13.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
 
-<fig/p2conv2.jpg, id=494, 562.1pt x 421.575pt>
+<fig/p2conv2.jpg, id=492, 562.1pt x 421.575pt>
 File: fig/p2conv2.jpg Graphic file (type jpg)
  <use fig/p2conv2.jpg>
 Package pdftex.def Info: fig/p2conv2.jpg used on input line 20.
@@ -1672,13 +1666,13 @@ Package pdftex.def Info: fig/p2conv2.jpg used on input line 20.
 
 
  <./fig/p1conv1.jpg> <./fig/p2conv2.jpg>]
-<fig/u1para1.jpg, id=503, 570.13pt x 422.57875pt>
+<fig/u1para1.jpg, id=501, 570.13pt x 422.57875pt>
 File: fig/u1para1.jpg Graphic file (type jpg)
  <use fig/u1para1.jpg>
 Package pdftex.def Info: fig/u1para1.jpg used on input line 34.
 (pdftex.def)             Requested size: 212.41261pt x 157.43495pt.
 
-<fig/u2para2.jpg, id=504, 562.1pt x 421.575pt>
+<fig/u2para2.jpg, id=502, 562.1pt x 421.575pt>
 File: fig/u2para2.jpg Graphic file (type jpg)
  <use fig/u2para2.jpg>
 Package pdftex.def Info: fig/u2para2.jpg used on input line 41.
@@ -1688,7 +1682,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 94--95
 
  []
 
-<fig/comp2.jpg, id=515, 570.13pt x 422.57875pt>
+<fig/comp2.jpg, id=513, 570.13pt x 422.57875pt>
 File: fig/comp2.jpg Graphic file (type jpg)
  <use fig/comp2.jpg>
 Package pdftex.def Info: fig/comp2.jpg used on input line 104.
@@ -1764,7 +1758,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 89.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 89.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 89.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 28CEDF425A40DA98C242FA0D60DF9FCD;1902.
+(rerunfilecheck)             Checksum: 642989059483CAECFBE078D6B9B578B4;1902.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 89.
  ) )
 (\end occurred when \iftrue on line 51 was incomplete)
@@ -1792,10 +1786,10 @@ b></usr/lib/texlive/texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb></usr/l
 ib/texlive/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb></usr/lib/texliv
 e/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/lib/texlive/texmf-d
 ist/fonts/type1/public/wasy2-ps/wasy10.pfb>
-Output written on thesis.pdf (39 pages, 977485 bytes).
+Output written on thesis.pdf (39 pages, 977473 bytes).
 PDF statistics:
- 643 PDF objects out of 1000 (max. 8388607)
- 548 compressed objects within 6 object streams
+ 641 PDF objects out of 1000 (max. 8388607)
+ 546 compressed objects within 6 object streams
  143 named destinations out of 1000 (max. 500000)
  401 words of extra memory for PDF output out of 10000 (max. 10000000)
 

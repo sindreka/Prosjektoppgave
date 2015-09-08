@@ -11,7 +11,7 @@ We present the Krylov subspace in section \ref{sec:subspace}, derive KPM for the
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Krylov subspace} \label{sec:subspace}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-The Krylov subspace is the space $W_n (A,v) = \{v,Av, \cdots, A^{n-1}v\} = \{v^1,v^2,\cdots v^n\} $, where $n \leq m$. %Define $\nu$ as the $W_\nu(A,v)$ span $A$. 
+The Krylov subspace is the space $W_n (A,v) = \{v,Av, \cdots, A^{n-1}v\} = \{v^1,v^2,\cdots,v^n\} $, where $n \leq m$. %Define $\nu$ as the $W_\nu(A,v)$ span $A$. 
 The vectors $v^i$ together with $h_{i,j} = v^i^\top Av^j$, are found by using Arnoldi's algorithm, shown in algorithm \ref{alg:arnoldi}. Letting $V_n$ be the $m \times n$ matrix consisting of column vectors $\{v^1,v^2,\cdots,v^n \}$ and $H_n$ be the $n \times n$ upper Hessenberg matrix containing all elements $(h_{i,j})_{i,j=1,\cdots,n}$, the following holds \cite{saad}
 \begin{align}\
 AV_n & = V_n H_n + h_{n+1,n}v_{n+1}e^\top_n \label{eqn:prop1} \\
@@ -167,9 +167,9 @@ An important thing to note here is the need for parallel processing power since 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Direct method} \label{sec:DM}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-We need to compare KPM to a well known and easy to implement method. For this we will solve equation \eqref{eqn:DI} straight forward with trapezoidal rule.
+We need to compare KPM to a well known and easy to implement method. For this we will solve 
 \begin{equation} \label{eqn:DI}
 q'(t) -A q(t) = P(t)
 \end{equation}
-Let $P(t)$ be as in section \ref{sec:nonsep}. We denote the method DM for direct method.
+straight forward with trapezoidal rule. Let $P(t)$ be as in section \ref{sec:nonsep}. We denote the method DM for direct method.
 %\newpage

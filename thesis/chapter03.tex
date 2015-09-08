@@ -3,13 +3,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:imp}
 This section will explain the implementation of the methods. We start by discretizing space and time in section \ref{sec:space} and \ref{sec:time} respectively.
-In section \ref{sec:not} we present what and how we want to measure interesting factors, together with some information about computers and programs used to generate data.
+In section \ref{sec:not} we present what we want to measure, and how, together with some information about computers and programs used to generate data.
 In section \ref{sec:test} we state some test problems.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Discretisation in space} \label{sec:space}
+\section{Discretization in space} \label{sec:space}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-We consider the square $[0,1] \times [0,1]$ and divide each spacial direction into $\rho+2$ piece, with each piece having the length $h_s = 1/(\rho+1)$. Since the boundary conditions are known, we will only calculate with $\rho$ numbers, leaving room on each side for the boundary. Let $x_i = h_s \cdot i$ and $y_j = h_s \cdot j$, with $i,j =1,2,\cdots, \rho + 1 $.  $v$ and $P(t)$ need to be found in an ordered fashion. We let  $v_{i+\rho j} = g(x_i, y_j)$, and 
+We consider the square $[0,1] \times [0,1]$ and divide each spacial direction into $\rho+2$ pieces, with each piece having the length $h_s = 1/(\rho+1)$. Since the boundary conditions are known, we will only calculate with $\rho$ numbers, leaving room on each side for the boundary. Let $x_i = h_s \cdot i$ and $y_j = h_s \cdot j$, with $i,j =1,2,\cdots, \rho + 1 $. We need to find $v$ and $P(t)$ in an ordered fashion. Let  $v_{i+\rho j} = g(x_i, y_j)$, and 
 $P(t)_{i+\rho j} = p(t,x_i, y_j)$, where $i,j = 1,2,\cdots, \rho+1$.
 The Laplacian will be approximated by the five point formula given in equation \eqref{eqn:fivepoint} as the matrix $A$. This is a second order approximation.
 \begin{equation} \label{eqn:fivepoint} 
@@ -46,18 +46,19 @@ Notice that $m = \rho ^2$.
 %!!!!!!!!!!!!!!!!!!!!!det må komme tydeldig fram at $P$ og slikt trenger størrelse $m \times k$ !!!!!!!!!!!!!\\
 We will consider the time domain $t \in [0,1] $, and divide it in $k$ pieces, giving each piece the length $h_t = 1/(k-1)$. Let $t_l = h_t\cdot l$, with $l = 0,1,\cdots,k-1 $.\\
 
-Algorithm \ref{alg:fullkry}, \ref{alg:restkry} and equation \ref{eqn:DI} all contain a differential equation in time,
-trapezoidal rule\cite{trap}, given in equation \eqref{eqn:trap} will be used to solve these equations. 
+Algorithm \ref{alg:fullkry}, \ref{alg:restkry} and equation \ref{eqn:DI} all contain a differential equation in time.
+The trapezoidal rule\cite{trap}, 
 \begin{equation} \label{eqn:trap}
 \int \limits_a^b f(t) dt \approx \frac{h}{2} \sum \limits_{l = 1}^N(f(t_{l+1})+f(t_l))
 \end{equation}
+will be used to solve these equations. 
 We will only derive the iteration scheme for equation \eqref{eqn:numheat}, but 
 this it is easily generalizable to the other differential equations discussed.
-To obtain the iteration scheme we write $q$ instead of $f$, use equation \eqref{eqn:heat}, and insert the numerical simplifications from earlier in this section and from section \ref{sec:space}.
+To obtain the iteration scheme we write $q$ instead of $f$, use equation \eqref{eqn:heat}, and insert the numerical simplifications from earlier in this section and from section \ref{sec:space}, that is
 \begin{equation}
 q(t_{l+1}) - q(t_l) = \int \limits_{t_l}^{t_{l+1}} \frac{d q}{d t} dt \approx \frac{h}{2}(A q(t_{l+1})+f(t_{l+1})v +A q(t_l)+f(t_l) v) 
 \end{equation}
-Solving for $q(t_{l+1})$ gives the Crank-Nicholson scheme for the heat equation.
+Solving for $q(t_{l+1})$ gives the Crank-Nicholson scheme for the heat equation:
 \begin{equation} \label{eqn:trapscheme}
 \begin{aligned}
 q(t_{l+1}) \approx (I-h_t/2 A)^{-1}(q(t_l) + \frac{h_t}{2}( A q(t_{l}) + f(t_l)v+f(t_{l+1})v))\\
@@ -65,7 +66,7 @@ q(t_{l+1}) \approx (I-h_t/2 A)^{-1}(q(t_l) + \frac{h_t}{2}( A q(t_{l}) + f(t_l)v
 \end{aligned}
 \end{equation} 
 This is a second order method.
-Because of this discretion, $P(t)$ and $q(t)$ will be saved as $m \times k $ matrices, and $f(t)$ as a $k$ vector.
+Because of this discretizing, $P(t)$ and $q(t)$ will be saved as $m \times k $ matrices, and $f(t)$ as a $k$ vector.
 %\\!!!!!!!!!!!!!!!!!!!!!!!!!!Skriv noe om hvordan $P(t)$ og slikt er lagret!!!!!!!!!!!!!!!!!!\\
 %Since computers are discrete, we need to store the functions depending on $t$
 %We let $q^l=q(t_l)$, $P^l =P(t_l)$ and $f^l = f(t_l)$ for
@@ -75,7 +76,7 @@ Because of this discretion, $P(t)$ and $q(t)$ will be saved as $m \times k $ mat
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %!!!!!!!!!!!!!!!!!!!Skrive mer om hva vi er på jakt etter av resultater i forhold til $p$!!!!!!!!!!!!!!!!!!!\\
 %!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Skrive at vi bruker alle iterasjonene når vi bruker KPM!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\\
-Algorithm \ref{alg:arnoldi}, \ref{alg:fullkry}, \ref{alg:restkry}, together with equation \ref{eqn:DI} was implemented as solves for equation \ref{eqn:heat}, with varieties of equation \ref{eqn:trapscheme} solving the differential equations. 
+Algorithms \ref{alg:arnoldi}, \ref{alg:fullkry}, \ref{alg:restkry}, together with equation \ref{eqn:DI} was implemented as solvers for equation \ref{eqn:heat}, with varieties of equation \ref{eqn:trapscheme} solving the differential equations. 
 
 Each solver was implemented in two versions, one where $p$ was assumed separable, and one where $p$ was assumed to be non-separable. Parallel computations was only implemented for $p$ non-separable, because in this case we need solve $m$ independent problems.\\%, and not just one as when $p$ is separable. 
 
@@ -89,7 +90,6 @@ and parallel efficiency as
 \begin{align*}
 \eta_\texttt{nP} = \frac{S_\texttt{nP}}{\texttt{nP}}
 \end{align*}
-
 where $\tau_\texttt{nP}$ is run time with \texttt{nP} processors, $S_\texttt{nP}$ is speedup with \texttt{nP} processors, and $\eta_\texttt{nP}$ is parallel efficiency for \texttt{nP} processors. Speedup measures how much faster a program runs with \texttt{nP} processors, ideal speedup is when $S_\texttt{nP} = \texttt{nP}$. Parallel efficiency measures how well each processor is used. Perfect parallel efficiency occurs when $\eta_\texttt{nP} = 1$.\\
 
 Remember that KPM$(n)$ is the method where we use the $n$ first iterations of Arnoldi's algorithm to obtain $V_n$ and $H_n$, and KPM is short for KPM$(m)$. We call $n$ a restart variable. The number of restarts needed for convergence in algorithm \ref{alg:restkry} is denoted by $\gamma$. The convergence criterion used in algorithm \ref{alg:restkry} is to stop restarting when the maximum absolute difference in $q_n$ is less than a given tolerance $\delta$. The error is denoted as $\epsilon$ and is defined as the largest absolute difference between the correct solution and the approximation. \\
@@ -107,7 +107,7 @@ Two test problems are implemented for the separable case. Equation \eqref{eqn:se
 \begin{equation} \label{eqn:sep1}
 \begin{aligned}
  u(t,x,y)&= \frac{t}{t+1} x(x-1)y(y-1) \\
- f_1(t)&=\frac{1}{t+1^2} & g_1(x,y)&= x(x-1)y(y-1) \\
+ f_1(t)&=\frac{1}{(t+1)^2} & g_1(x,y)&= x(x-1)y(y-1) \\
  f_2(t) &= \frac{-t}{t+1} & g_2(x,y)& = 2x(x-1) +2y(y-1)
  \end{aligned}
 \end{equation}
