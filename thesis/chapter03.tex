@@ -2,16 +2,17 @@
 \chapter{Implementation}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:imp}
-This section will explain the implementation of the methods. We start by discretizing space and time in section \ref{sec:space} and \ref{sec:time} respectively.
-In section \ref{sec:not} we present what we want to measure, and how, together with some information about computers and programs used to generate data.
-In section \ref{sec:test} we state some test problems.
+In this chapter the implementation of the methods will be explained. Discretizing in space and time will be done in section \ref{sec:space} and \ref{sec:time} respectively.
+In section \ref{sec:not} we present what to measure, and how, together with some information about computers and programs used to generate data.
+In section \ref{sec:test} some test problems are stared.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discretization in space} \label{sec:space}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-We consider the square $[0,1] \times [0,1]$ and divide each spacial direction into $\rho+2$ pieces, with each piece having the length $h_s = 1/(\rho+1)$. Since the boundary conditions are known, we will only calculate with $\rho$ numbers, leaving room on each side for the boundary. Let $x_i = h_s \cdot i$ and $y_j = h_s \cdot j$, with $i,j =1,2,\cdots, \rho + 1 $. We need to find $v$ and $P(t)$ in an ordered fashion. Let  $v_{i+\rho j} = g(x_i, y_j)$, and 
-$P(t)_{i+\rho j} = p(t,x_i, y_j)$, where $i,j = 1,2,\cdots, \rho+1$.
-The Laplacian will be approximated by the five point formula given in equation \eqref{eqn:fivepoint} as the matrix $A$. This is a second order approximation.
+Consider the spacial square $[0,1] \times [0,1]$ and divide each direction into $\rho+2$ pieces, with each piece having the length $h_s = 1/(\rho+1)$. Since the boundary conditions are known, there are only $\rho$ unknown numbers in each direction. Let $x_i = h_s \cdot i$ and $y_j = h_s \cdot j$, with $i,j =1,2,\cdots, \rho + 1 $. 
+%We need to find $v$ and $P(t)$ in an ordered fashion. 
+Let  $v_{i+\rho j} = g(x_i, y_j)$, and $P(t)_{i+\rho j} = p(t,x_i, y_j)$, where $i,j = 1,2,\cdots, \rho+1$.
+The Laplacian will be approximated by the five point formula given as the matrix $A$, 
 \begin{equation} \label{eqn:fivepoint} 
 \begin{aligned} 
 A = \frac{1}{h_s^2} 
@@ -36,15 +37,15 @@ I &=
 & \ddots & \\
 & & 1 \\
 \end{bmatrix}
-\end{aligned}
+\end{aligned} \cite{fivepoint}.
 \end{equation}
+This is a second order approximation.
 Notice that $m = \rho ^2$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discretisation in time} \label{sec:time}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%!!!!!!!!!!!!!!!!!!!!!det må komme tydeldig fram at $P$ og slikt trenger størrelse $m \times k$ !!!!!!!!!!!!!\\
-We will consider the time domain $t \in [0,1] $, and divide it in $k$ pieces, giving each piece the length $h_t = 1/(k-1)$. Let $t_l = h_t\cdot l$, with $l = 0,1,\cdots,k-1 $.\\
+Consider the time domain $t \in [0,1] $, and divide it in $k$ pieces, giving each piece the length $h_t = 1/(k-1)$. Let $t_l = h_t\cdot l$, with $l = 0,1,\cdots,k-1 $.\\
 
 Algorithm \ref{alg:fullkry}, \ref{alg:restkry} and equation \ref{eqn:DI} all contain a differential equation in time.
 The trapezoidal rule\cite{trap}, 
@@ -52,9 +53,9 @@ The trapezoidal rule\cite{trap},
 \int \limits_a^b f(t) dt \approx \frac{h}{2} \sum \limits_{l = 1}^N(f(t_{l+1})+f(t_l))
 \end{equation}
 will be used to solve these equations. 
-We will only derive the iteration scheme for equation \eqref{eqn:numheat}, but 
+The iteration scheme will only be derived for equation \eqref{eqn:numheat}, but 
 this it is easily generalizable to the other differential equations discussed.
-To obtain the iteration scheme we write $q$ instead of $f$, use equation \eqref{eqn:heat}, and insert the numerical simplifications from earlier in this section and from section \ref{sec:space}, that is
+To obtain the iteration scheme, write $q$ instead of $f$, use equation \eqref{eqn:heat}, and insert the numerical simplifications from earlier in this section and from section \ref{sec:space}, that is
 \begin{equation}
 q(t_{l+1}) - q(t_l) = \int \limits_{t_l}^{t_{l+1}} \frac{d q}{d t} dt \approx \frac{h}{2}(A q(t_{l+1})+f(t_{l+1})v +A q(t_l)+f(t_l) v) 
 \end{equation}
@@ -78,11 +79,11 @@ Because of this discretizing, $P(t)$ and $q(t)$ will be saved as $m \times k $ m
 %!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Skrive at vi bruker alle iterasjonene når vi bruker KPM!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\\
 Algorithms \ref{alg:arnoldi}, \ref{alg:fullkry}, \ref{alg:restkry}, together with equation \ref{eqn:DI} was implemented as solvers for equation \ref{eqn:heat}, with varieties of equation \ref{eqn:trapscheme} solving the differential equations. 
 
-Each solver was implemented in two versions, one where $p$ was assumed separable, and one where $p$ was assumed to be non-separable. Parallel computations was only implemented for $p$ non-separable, because in this case we need solve $m$ independent problems.\\%, and not just one as when $p$ is separable. 
+Each solver was implemented in two versions, one where $p$ was assumed separable, and one where $p$ was assumed to be non-separable. Parallel computations was only implemented for $p$ non-separable, because in this case we needed to solve $m$ independent problems.\\%, and not just one as when $p$ is separable. 
 
 All solvers and problems were implemented in MATLAB R2014b. The computer used runs Ubuntu 14.04 LTS with intel  i7-4770 CPU, and has 16 GB ram. \\
 
-The parallel computations was implemented with MATLAB's commands \texttt{parpool} and \texttt{parfor}, see \cite{parpool} and \cite{parfor} for more information, \texttt{nP} denotes the number of processing units used. We will use speedup and parallel efficiency to investigate the gain by using several processing units. Speedup is defined as
+The parallel computations was implemented with MATLAB's commands \texttt{parpool} and \texttt{parfor}, see \cite{parpool} and \cite{parfor} for more information, \texttt{nP} denotes the number of processing units used. Speedup and parallel efficiency will be used to investigate the gain by using several processing units. Speedup is defined as
 \begin{align*}
 S_\texttt{nP} = \frac{\tau_1}{\tau_\texttt{nP}}
 \end{align*}
@@ -92,18 +93,18 @@ and parallel efficiency as
 \end{align*}
 where $\tau_\texttt{nP}$ is run time with \texttt{nP} processors, $S_\texttt{nP}$ is speedup with \texttt{nP} processors, and $\eta_\texttt{nP}$ is parallel efficiency for \texttt{nP} processors. Speedup measures how much faster a program runs with \texttt{nP} processors, ideal speedup is when $S_\texttt{nP} = \texttt{nP}$. Parallel efficiency measures how well each processor is used. Perfect parallel efficiency occurs when $\eta_\texttt{nP} = 1$.\\
 
-Remember that KPM$(n)$ is the method where we use the $n$ first iterations of Arnoldi's algorithm to obtain $V_n$ and $H_n$, and KPM is short for KPM$(m)$. We call $n$ a restart variable. The number of restarts needed for convergence in algorithm \ref{alg:restkry} is denoted by $\gamma$. The convergence criterion used in algorithm \ref{alg:restkry} is to stop restarting when the maximum absolute difference in $q_n$ is less than a given tolerance $\delta$. The error is denoted as $\epsilon$ and is defined as the largest absolute difference between the correct solution and the approximation. \\
+Remember that KPM$(n)$ is the method where the $n$ first iterations of Arnoldi's algorithm is used to obtain $V_n$ and $H_n$, and KPM is short for KPM$(m)$. Let $n$ be called a restart variable. The number of restarts needed for convergence in algorithm \ref{alg:restkry} is denoted by $\gamma$. The convergence criterion used in algorithm \ref{alg:restkry} is to stop restarting when the maximum absolute difference in $q_n$ is less than a given tolerance $\delta$. The error is denoted as $\epsilon$ and is defined as the largest absolute difference between the correct solution and the approximation. \\
 
 If nothing else is stated, assume that $\rho =40$, $k = 40$, $n = 1$, $\delta = 10^{-15}$, these numbers was chosen as large as possible, while still giving an answer in a timely manner. All timed results are averaged over 2 runs, preferably this should have been higher, but would be too time consuming. $A$ was implemented as a sparse matrix.\\
  
-For separable $p$, we will in general be looking at computation time and error, and how this scale with $\delta$. When $p$ is not separable we are interested in convergence, computation time and parallel gain. \\
+For separable $p$, computation time and error and how this scale with $\delta$ will be of interest. When $p$ is not separable convergence, computation time and parallel gain is of interest. \\
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Test problems} \label{sec:test}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Two test problems are implemented for the separable case. Equation \eqref{eqn:sep1} is a symmetric problem, and separable for each variable, we will denote it as \texttt{P1}. 
+Two test problems are implemented for the separable case. Equation \eqref{eqn:sep1} is a symmetric problem, and separable for each variable. It is denote as \texttt{P1}. 
 \begin{equation} \label{eqn:sep1}
 \begin{aligned}
  u(t,x,y)&= \frac{t}{t+1} x(x-1)y(y-1) \\
@@ -126,7 +127,7 @@ This problem will be denoted as \texttt{P2}.\\
  \end{aligned}
 \end{equation*}
 
-To obtain the solutions, we need to solve for $f_i(t) g_i(x,y)$, $i = 1,2 $ and add the solutions together. Clearly parallel computations could be used to solve these, but this will not be done in this text. The reason for this is that MATLAB uses a significant amount of time to prepare parallel computation, often much larger time than the computation itself.\\
+To obtain the solutions, solve for $f_i(t) g_i(x,y)$, $i = 1,2 $ and add the solutions together. Clearly parallel computations could be used to solve these, but this will not be done in this text. The reason for this is that MATLAB uses a significant amount of time to prepare parallel computation, often much larger time than the computation itself.\\
 
 \texttt{P1} will also be used in the non-separable case with $p(t) = f_1(t) g_1(x,y) + f_2(t) g_2(x,y)$.
 One additional test problem is implemented for non-separable $p$, this is a symmetric problem consisting of both polynomial and exponential functions, it is given in equation \eqref{eqn:non1}, and will be denoted as \texttt{P3}.

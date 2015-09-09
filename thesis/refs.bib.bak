@@ -2,9 +2,20 @@
 % Encoding: UTF-8
 
 
+@Article{trap,
+  Title                    = {SHARP ERROR BOUNDS FOR THE TRAPEZOIDAL RULE AND SIMPSON’S RULE},
+  Author                   = {D., CRUZ-URIBE and C.J., NEUGEBAUER},
+  Journal                  = {Journal of Inequalities in Pure and Applied Mathematics,},
+  Year                     = {2002},
+  Volume                   = {Volume 3, Issue 4, Article 49},
+
+  Owner                    = {sindreka},
+  Timestamp                = {2015.09.09}
+}
+
 @Article{elena,
   Title                    = {A Krylov projection method for system of ODEs},
-  Author                   = {E. Celledoni, I. Moret},
+  Author                   = {E., Celledoni and I., Moret},
   Journal                  = {Applied Numerical Mathematics 23 (1997) 365-378},
   Year                     = {1997},
 
@@ -12,75 +23,44 @@
   Timestamp                = {2015.09.03}
 }
 
-@Article{lundteigen08,
-  Title                    = {Spurious activation of safety instrumented systems in the oil and gas industry: Basic concepts and formulas},
-  Author                   = {Lundteigen, Mary Ann and Rausand, Marvin},
-  Journal                  = {Reliability Engineering and System Safety},
-  Year                     = {2008},
-  Pages                    = {1208--1217},
-  Volume                   = {93},
-
-  Date-added               = {2011-06-16 13:34:45 +0200},
-  Date-modified            = {2011-06-16 13:34:45 +0200}
-}
-
-@Book{rausand14,
-  Title                    = {Reiability of Safety-Critical Systems: Theory and Applications},
-  Author                   = {Rausand, Marvin},
-  Publisher                = {Wiley},
-  Year                     = {2014},
-
-  Address                  = {Hoboken, NJ},
-
-  Date-added               = {2014-08-12 08:32:25 +0000},
-  Date-modified            = {2014-08-12 08:33:48 +0000}
-}
-
-@Book{rausand04,
-  Title                    = {System Reliability Theory: Models, Statistical Methods, and Applications},
-  Author                   = {Rausand, Marvin and H{\o}yland, Arnljot},
-  Publisher                = {Wiley},
-  Year                     = {2004},
-
-  Address                  = {Hoboken, NJ},
-  Edition                  = {2nd},
-
-  Date-added               = {2011-06-16 11:53:55 +0200},
-  Date-modified            = {2011-06-16 11:55:09 +0200}
-}
-
-@Book{saad,
-  Title                    = {Iterative Methods for Sparse Linear Systems},
-  Author                   = {Yousef Saad},
-  Publisher                = {siam},
-  Year                     = {2003},
-  Volume                   = {SECOND EDITION}
-}
-
-@Article{,
-  Title                    = {Iterative Methods for Sparse Linear Systems},
-  Author                   = {Iterative Methods for Sparse Linear Systemss},
-  Year                     = {2003},
+@Article{complex,
+  Title                    = {Group-theoretic Algorithms for Matrix Multiplication},
+  Author                   = {Henry, Cohn and Robert, Kleinberg and Bal azs, Szegedy and Christopher, Umans},
+  Journal                  = {Proceedings of the 46th Annual Symposium on Foundations of Computer Science, 23-25 October 2005, Pittsburgh, PA, IEEE Computer Society, pp. 379-388},
+  Year                     = {2005},
 
   Owner                    = {sindreka},
   Timestamp                = {2015.09.03}
 }
 
-@Electronic{parfor,
-  Url                      = {http://se.mathworks.com/help/distcomp/parpool.html},
+@Book{saad,
+  Title                    = {Iterative Methods for Sparse Linear Systems},
+  Author                   = {Yousef, Saad},
+  Publisher                = {Siam},
+  Year                     = {2003},
+  Volume                   = {SECOND EDITION}
+}
 
+@Electronic{parfor,
+  Title                    = {http://se.mathworks.com/help/matlab/ref/parfor.html},
+  Month                    = {september},
+  Organization             = {MATLAB},
+  Url                      = {http://se.mathworks.com/help/matlab/ref/parfor.html},
+  Year                     = {2015},
+
+  Key                      = {parfor},
   Owner                    = {sindreka},
   Timestamp                = {2015.09.03}
 }
 
 @Electronic{parpool,
-  Url                      = {http://se.mathworks.com/help/matlab/ref/parfor.html},
+  Title                    = {http://se.mathworks.com/help/distcomp/parpool.html},
+  Month                    = {september},
+  Organization             = {MATLAB},
+  Url                      = {http://se.mathworks.com/help/distcomp/parpool.html},
+  Year                     = {2015},
 
-  Owner                    = {sindreka},
-  Timestamp                = {2015.09.03}
-}
-
-@Other{,
+  Key                      = {parpool},
   Owner                    = {sindreka},
   Timestamp                = {2015.09.03}
 }
