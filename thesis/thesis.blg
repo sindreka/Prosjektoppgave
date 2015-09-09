@@ -11,51 +11,53 @@ A level-1 auxiliary file: chapter03.aux
 A level-1 auxiliary file: chapter04.aux
 A level-1 auxiliary file: chapter05.aux
 A level-1 auxiliary file: chapter06.aux
+A level-1 auxiliary file: chapter07.aux
 The style file: plain.bst
 Database file #1: refs.bib
 Warning--entry type for "parfor" isn't style-file defined
---line 44 of file refs.bib
+--line 57 of file refs.bib
 Warning--entry type for "parpool" isn't style-file defined
---line 56 of file refs.bib
-You've used 6 entries,
+--line 69 of file refs.bib
+Warning--empty journal in fivepoint
+You've used 7 entries,
             2118 wiz_defined-function locations,
-            536 strings with 4937 characters,
-and the built_in function-call counts, 1340 in all, are:
-= -- 120
-> -- 58
+            542 strings with 5056 characters,
+and the built_in function-call counts, 1594 in all, are:
+= -- 145
+> -- 71
 < -- 1
-+ -- 25
-- -- 18
-* -- 73
-:= -- 226
-add.period$ -- 14
-call.type$ -- 6
-change.case$ -- 28
++ -- 30
+- -- 22
+* -- 88
+:= -- 273
+add.period$ -- 18
+call.type$ -- 7
+change.case$ -- 33
 chr.to.int$ -- 0
-cite$ -- 6
-duplicate$ -- 56
-empty$ -- 120
-format.name$ -- 18
-if$ -- 280
+cite$ -- 8
+duplicate$ -- 66
+empty$ -- 137
+format.name$ -- 22
+if$ -- 330
 int.to.chr$ -- 0
-int.to.str$ -- 6
-missing$ -- 5
-newline$ -- 29
-num.names$ -- 8
-pop$ -- 38
+int.to.str$ -- 7
+missing$ -- 6
+newline$ -- 35
+num.names$ -- 10
+pop$ -- 42
 preamble$ -- 1
-purify$ -- 23
+purify$ -- 27
 quote$ -- 0
-skip$ -- 49
+skip$ -- 58
 stack$ -- 0
-substring$ -- 31
+substring$ -- 36
 swap$ -- 7
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 22
-warning$ -- 0
-while$ -- 8
-width$ -- 7
-write$ -- 56
-(There were 2 warnings)
+type$ -- 26
+warning$ -- 1
+while$ -- 10
+width$ -- 8
+write$ -- 68
+(There were 3 warnings)

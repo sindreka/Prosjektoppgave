@@ -18,11 +18,17 @@ Cohn Henry, Kleinberg Robert, Szegedy Bal~azs, and Umans Christopher.
   Computer Science, 23-25 October 2005, Pittsburgh, PA, IEEE Computer Society,
   pp. 379-388}, 2005.
 
+\bibitem{fivepoint}
+Abramowitz Milton and Stegun Irene~A.
+\newblock Handbook of mathematical functions.
+\newblock Tenth Printing, December 1972.
+\newblock with corrections.
+
 \bibitem{parfor}
-http://se.mathworks.com/help/matlab/ref/parfor.html, september 2015.
+http://se.mathworks.com/help/matlab/ref/parfor.html, September 2015.
 
 \bibitem{parpool}
-http://se.mathworks.com/help/distcomp/parpool.html, september 2015.
+http://se.mathworks.com/help/distcomp/parpool.html, September 2015.
 
 \bibitem{saad}
 Saad Yousef.

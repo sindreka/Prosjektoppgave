@@ -33,6 +33,19 @@
   Timestamp                = {2015.09.03}
 }
 
+@Article{fivepoint,
+  Title                    = {Handbook of Mathematical Functions},
+  Author                   = {Milton, Abramowitz and Irene A.,Stegun},
+  Year                     = {1972},
+
+  Month                    = {December},
+  Note                     = {with corrections},
+  Volume                   = {Tenth Printing},
+
+  Owner                    = {sindreka},
+  Timestamp                = {2015.09.09}
+}
+
 @Book{saad,
   Title                    = {Iterative Methods for Sparse Linear Systems},
   Author                   = {Yousef, Saad},
@@ -43,7 +56,7 @@
 
 @Electronic{parfor,
   Title                    = {http://se.mathworks.com/help/matlab/ref/parfor.html},
-  Month                    = {september},
+  Month                    = {September},
   Organization             = {MATLAB},
   Url                      = {http://se.mathworks.com/help/matlab/ref/parfor.html},
   Year                     = {2015},
@@ -55,7 +68,7 @@
 
 @Electronic{parpool,
   Title                    = {http://se.mathworks.com/help/distcomp/parpool.html},
-  Month                    = {september},
+  Month                    = {September},
   Organization             = {MATLAB},
   Url                      = {http://se.mathworks.com/help/distcomp/parpool.html},
   Year                     = {2015},
