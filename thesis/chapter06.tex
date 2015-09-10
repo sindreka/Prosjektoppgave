@@ -3,9 +3,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %We will now use what we learned from the previous section in a parallel setting with $p$ non-separable and see if we can make KPM outperform DM.
 
-We now assume that $p$ is non-separable, so that we need to solve $m$ independent problems. We will make use of several processing units, together with what we learned in section \ref{sec:} to see if we can make KPM outperform DM.
+We now assume that $p$ is non-separable, so that we need to solve $m$ independent problems when using KPM. Several processing units will be used when possible. \\% . We will make use of several processing units, together with what we learned in section \ref{sec:seri} to see if we can make KPM outperform DM.
 
-We start by showing convergence in section \ref{sec:pconv}, and proceed with looking into speedup and parallel efficiency in section \ref{sec:speed}. We end by investigating how computation time for the best possible case of KPM compares to DM, in section \ref{sec:compare}. 
+We start by showing correctness of the methods with a convergence plot in section \ref{sec:pconv}, and proceed with looking into speedup and parallel efficiency in section \ref{sec:speed}. We end by investigating how computation time for the best possible case of KPM compares to DM in section \ref{sec:compare}. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Convergence} \label{sec:pconv}
@@ -114,7 +114,7 @@ These experiments was only done with $m = k = 40$, this is because the experimen
                 \caption{function \texttt{P3}}
                 \label{fig:c2comp2m}
         \end{subfigure}
-        \caption{A plot of the computation time for KPM$(n)$ and DM. We have used the values $n = \rho = k$. $\delta = 10^{-3}$ for the first point, and decreases with two orders of magnitude for each additional point. Assume $\texttt{nP} = 4$ for KPM$(n)$ and $\texttt{nP} = 1$ for DM. These values are choosen to make KPM$(n)$ perform as efficiently as possible. The helpline increases with $\rho^6 = m^3$.}\label{fig:comp}
+        \caption{A plot of the computation time for KPM$(n)$ and DM. We have used the values $n = \rho = k$. $\delta = 10^{-3}$ for the first point and decreases with two orders of magnitude for each additional point. Assume $\texttt{nP} = 4$ for KPM$(n)$ and $\texttt{nP} = 1$ for DM. These values are choosen to make KPM$(n)$ perform as efficiently as possible. The helpline increases with $\rho^6 = m^3$.}\label{fig:comp}
 \end{figure}
 From figure \ref{fig:comp} it is clear that DM is better in all cases simulated, but KPM$(n)$ is not far behind. We know from section \ref{sec:stimem} and \ref{sec:stimek} that one iteration of KPM$(n)$ is faster than DM, we therefore conclude that with enough processing units KPM$(\rho)$ would have been faster than DM. \\
 

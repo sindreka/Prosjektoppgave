@@ -4,7 +4,7 @@
 \label{sec:imp}
 In this chapter the implementation of the methods will be explained. Discretizing in space and time will be done in section \ref{sec:space} and \ref{sec:time} respectively.
 In section \ref{sec:not} we present what to measure, and how, together with some information about computers and programs used to generate data.
-In section \ref{sec:test} some test problems are stared.
+In section \ref{sec:test} some test problems are stated.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discretization in space} \label{sec:space}
@@ -57,7 +57,7 @@ The iteration scheme will only be derived for equation \eqref{eqn:numheat}, but
 this it is easily generalizable to the other differential equations discussed.
 To obtain the iteration scheme, write $q$ instead of $f$, use equation \eqref{eqn:heat}, and insert the numerical simplifications from earlier in this section and from section \ref{sec:space}, that is
 \begin{equation}
-q(t_{l+1}) - q(t_l) = \int \limits_{t_l}^{t_{l+1}} \frac{d q}{d t} dt \approx \frac{h}{2}(A q(t_{l+1})+f(t_{l+1})v +A q(t_l)+f(t_l) v) 
+q(t_{l+1}) - q(t_l) = \int \limits_{t_l}^{t_{l+1}} \frac{d q}{d t} dt \approx \frac{h}{2}(A q(t_{l+1})+f(t_{l+1})v +A q(t_l)+f(t_l) v) .
 \end{equation}
 Solving for $q(t_{l+1})$ gives the Crank-Nicholson scheme for the heat equation:
 \begin{equation} \label{eqn:trapscheme}
@@ -79,7 +79,7 @@ Because of this discretizing, $P(t)$ and $q(t)$ will be saved as $m \times k $ m
 %!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Skrive at vi bruker alle iterasjonene når vi bruker KPM!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\\
 Algorithms \ref{alg:arnoldi}, \ref{alg:fullkry}, \ref{alg:restkry}, together with equation \ref{eqn:DI} was implemented as solvers for equation \ref{eqn:heat}, with varieties of equation \ref{eqn:trapscheme} solving the differential equations. 
 
-Each solver was implemented in two versions, one where $p$ was assumed separable, and one where $p$ was assumed to be non-separable. Parallel computations was only implemented for $p$ non-separable, because in this case we needed to solve $m$ independent problems.\\%, and not just one as when $p$ is separable. 
+Each solver was implemented in two versions, one where $p$ was assumed separable, and one where $p$ was assumed to be non-separable. Parallel computations was only implemented for $p$ non-separable, because in this case we needed to solve $m$ independent problems, and not just one.\\ %as is the case when $p$ is separable. \\
 
 All solvers and problems were implemented in MATLAB R2014b. The computer used runs Ubuntu 14.04 LTS with intel  i7-4770 CPU, and has 16 GB ram. \\
 
@@ -93,7 +93,7 @@ and parallel efficiency as
 \end{align*}
 where $\tau_\texttt{nP}$ is run time with \texttt{nP} processors, $S_\texttt{nP}$ is speedup with \texttt{nP} processors, and $\eta_\texttt{nP}$ is parallel efficiency for \texttt{nP} processors. Speedup measures how much faster a program runs with \texttt{nP} processors, ideal speedup is when $S_\texttt{nP} = \texttt{nP}$. Parallel efficiency measures how well each processor is used. Perfect parallel efficiency occurs when $\eta_\texttt{nP} = 1$.\\
 
-Remember that KPM$(n)$ is the method where the $n$ first iterations of Arnoldi's algorithm is used to obtain $V_n$ and $H_n$, and KPM is short for KPM$(m)$. Let $n$ be called a restart variable. The number of restarts needed for convergence in algorithm \ref{alg:restkry} is denoted by $\gamma$. The convergence criterion used in algorithm \ref{alg:restkry} is to stop restarting when the maximum absolute difference in $q_n$ is less than a given tolerance $\delta$. The error is denoted as $\epsilon$ and is defined as the largest absolute difference between the correct solution and the approximation. \\
+Remember that KPM$(n)$ is the method where the $n$ first iterations of Arnoldi's algorithm is used to obtain $V_n$ and $H_n$, and that KPM is short for KPM$(m)$. Let $n$ be called a restart variable. The number of restarts needed for convergence in algorithm \ref{alg:restkry} is denoted by $\gamma$. The convergence criterion used in algorithm \ref{alg:restkry} is to stop restarting when the maximum absolute difference in $q_n$ is less than a given tolerance $\delta$. The error is denoted as $\epsilon$ and is defined as the largest absolute difference between the correct solution and the approximation. \\
 
 If nothing else is stated, assume that $\rho =40$, $k = 40$, $n = 1$, $\delta = 10^{-15}$, these numbers was chosen as large as possible, while still giving an answer in a timely manner. All timed results are averaged over 2 runs, preferably this should have been higher, but would be too time consuming. $A$ was implemented as a sparse matrix.\\
  
@@ -127,7 +127,7 @@ This problem will be denoted as \texttt{P2}.\\
  \end{aligned}
 \end{equation*}
 
-To obtain the solutions, solve for $f_i(t) g_i(x,y)$, $i = 1,2 $ and add the solutions together. Clearly parallel computations could be used to solve these, but this will not be done in this text. The reason for this is that MATLAB uses a significant amount of time to prepare parallel computation, often much larger time than the computation itself.\\
+To obtain the solutions, solve for $f_i(t) g_i(x,y)$, $i = 1,2 $ and add the solutions together. Clearly parallel computations could be used to solve these, but this will not be done in this text. The reason for this is that MATLAB uses a significant amount of time to prepare parallel computation, often much more time than the computation itself.\\
 
 \texttt{P1} will also be used in the non-separable case with $p(t) = f_1(t) g_1(x,y) + f_2(t) g_2(x,y)$.
 One additional test problem is implemented for non-separable $p$, this is a symmetric problem consisting of both polynomial and exponential functions, it is given in equation \eqref{eqn:non1}, and will be denoted as \texttt{P3}.

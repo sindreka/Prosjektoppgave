@@ -7,7 +7,7 @@ KPM is an orthogonal projection technique, the method is explained in detail in 
 
 %We use Arnoldi's method which allows us to construct an orthonormal basis for a given Krylov subspace, this gives rise to two slightly different methods, presented in detail in section \ref{sec:fullKPM} and \ref{sec:rest} respectively.
 
-In this report the heat equation will be solved with KPM, convergence and computational time will be compared with an alternative solution technique, the alternative will be presented in section \ref{sec:DM}.
+In this report the heat equation will be solved with KPM, convergence and computational time will be compared with an alternative solution technique. The alternative will be presented in section \ref{sec:DM}.
 The heat equation will be stated here with boundary conditions for future references. \\
 %The heat equation is 
 \begin{equation} \label{eqn:heat}
@@ -31,6 +31,6 @@ q(0) &= 0
 where $A$ is an $m \times m$ matrix assumed to be time independent, $f(t)$ is continuous on $[0,T]$, $v \in \mathbb{R}^m$, $q(t)$ is the sought solution vector on $[0,T]$. Note also that $f(t)$ is a scalar function, so that $f(t) v = [f(t)v_1,f(t)v_2, \cdots,f(t) v_m] $.
 The solution is 
 \begin{equation*}
-q(t) = \int \limits_0^t \exp(A(t-s))f(s)v ds
+q(t) = \int \limits_0^t \exp(A(t-s))f(s)v ds.
 \end{equation*}
 More details about $A$, $x_i$, $y_i$ and $q(t)$ will be given in section \ref{sec:imp}.

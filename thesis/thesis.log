@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.6.17)  9 SEP 2015 16:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.6.17)  10 SEP 2015 13:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1217,17 +1217,17 @@ LaTeX Font Info:    Try loading font information for T1+cmtt on input line 72.
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 ) [5] [6]
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 15.89755pt on input line 154.
+(Font)              scaled to size 15.89755pt on input line 153.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 15.89755pt on input line 154.
+(Font)              scaled to size 15.89755pt on input line 153.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 154.
+(hyperref)                removing `math shift' on input line 153.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 154.
+(hyperref)                removing `math shift' on input line 153.
 
 [7]) [8]
 \openout2 = `chapter03.aux'.
@@ -1248,12 +1248,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 82--83
 
  []
 
-
+[10]
 Underfull \hbox (badness 10000) in paragraph at lines 84--85
 
  []
 
-[10]
+
 Overfull \hbox (9.27255pt too wide) in paragraph at lines 86--87
 []\T1/futs/m/n/12 The par-al-lel com-pu-ta-tions was im-ple-mented with MAT-LAB
 's com-mands \T1/cmtt/m/n/12 parpool \T1/futs/m/n/12 and \T1/cmtt/m/n/12 parfor
@@ -1275,12 +1275,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 98--99
 
  []
 
-
+[11]
 Underfull \hbox (badness 10000) in paragraph at lines 100--101
 
  []
 
-[11]
+
 Underfull \hbox (badness 10000) in paragraph at lines 114--117
 
  []
@@ -1632,7 +1632,9 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 2.
 
 
-LaTeX Warning: Reference `sec:' on page 26 undefined on input line 6.
+Underfull \hbox (badness 10000) in paragraph at lines 6--7
+
+ []
 
 <fig/p1conv1.jpg, id=494, 562.1pt x 421.575pt>
 File: fig/p1conv1.jpg Graphic file (type jpg)
@@ -1692,6 +1694,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 121--122
  (./chapter07.tex
 Chapter 7.
 
+Underfull \hbox (badness 10000) in paragraph at lines 5--6
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 11--12
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 13--14
+
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 15--16
 
  []
@@ -1701,27 +1718,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 17--18
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 21--22
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 23--24
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 27--28
-
- []
-
 [30
 
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 31--32
+Underfull \hbox (badness 10000) in paragraph at lines 21--22
 
  []
 
@@ -1744,20 +1746,16 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 69.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 69.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
 (rerunfilecheck)             Checksum: 642989059483CAECFBE078D6B9B578B4;1902.
-
-
-LaTeX Warning: There were undefined references.
-
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 69.
  ) 
 Here is how much of TeX's memory you used:
- 11009 strings out of 493089
- 158501 string characters out of 6137984
- 257712 words of memory out of 5000000
- 13999 multiletter control sequences out of 15000+600000
+ 11008 strings out of 493089
+ 158499 string characters out of 6137984
+ 257736 words of memory out of 5000000
+ 13998 multiletter control sequences out of 15000+600000
  84970 words of font info for 116 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,15n,43p,658b,676s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,15n,43p,663b,676s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/lib/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/l
 ib/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/lib/texlive/texmf-dist/
 fonts/type1/public/fourier/fourier-bb.pfb></usr/lib/texlive/texmf-dist/fonts/ty
@@ -1772,10 +1770,10 @@ ype1/adobe/utopia/putri8a.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/c
 m-super/sftt0900.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/cm-super/s
 ftt1095.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/cm-super/sftt1200.p
 fb></usr/lib/texlive/texmf-dist/fonts/type1/public/wasy2-ps/wasy10.pfb>
-Output written on thesis.pdf (39 pages, 978975 bytes).
+Output written on thesis.pdf (39 pages, 978798 bytes).
 PDF statistics:
- 644 PDF objects out of 1000 (max. 8388607)
- 549 compressed objects within 6 object streams
+ 645 PDF objects out of 1000 (max. 8388607)
+ 550 compressed objects within 6 object streams
  144 named destinations out of 1000 (max. 500000)
  401 words of extra memory for PDF output out of 10000 (max. 10000000)
 
