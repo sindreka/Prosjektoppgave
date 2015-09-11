@@ -79,7 +79,7 @@ Because of this discretizing, $P(t)$ and $q(t)$ will be saved as $m \times k $ m
 %!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Skrive at vi bruker alle iterasjonene når vi bruker KPM!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\\
 Algorithms \ref{alg:arnoldi}, \ref{alg:fullkry}, \ref{alg:restkry}, together with equation \ref{eqn:DI} was implemented as solvers for equation \ref{eqn:heat}, with varieties of equation \ref{eqn:trapscheme} solving the differential equations. 
 
-Each solver was implemented in two versions, one where $p$ was assumed separable, and one where $p$ was assumed to be non-separable. Parallel computations was only implemented for $p$ non-separable, because in this case we needed to solve $m$ independent problems, and not just one.\\ %as is the case when $p$ is separable. \\
+Each solver was implemented in two versions, one where $p$ was assumed separable, and one where $p$ was assumed to be non-separable. Parallel computations was only implemented for KPM and KPM$(n)$ with $p$ non-separable, because in this case we needed to solve $m$ independent problems, and not just one.\\ %as is the case when $p$ is separable. \\
 
 All solvers and problems were implemented in MATLAB R2014b. The computer used runs Ubuntu 14.04 LTS with intel  i7-4770 CPU, and has 16 GB ram. \\
 
@@ -97,7 +97,7 @@ Remember that KPM$(n)$ is the method where the $n$ first iterations of Arnoldi's
 
 If nothing else is stated, assume that $\rho =40$, $k = 40$, $n = 1$, $\delta = 10^{-15}$, these numbers was chosen as large as possible, while still giving an answer in a timely manner. All timed results are averaged over 2 runs, preferably this should have been higher, but would be too time consuming. $A$ was implemented as a sparse matrix.\\
  
-For separable $p$, computation time and error and how this scale with $\delta$ will be of interest. When $p$ is not separable convergence, computation time and parallel gain is of interest. \\
+For separable $p$, computation time and error and how this scale with $\delta$ will be of interest. When $p$ is not separable; convergence, computation time and parallel gain is of interest. \\
 
 
 
