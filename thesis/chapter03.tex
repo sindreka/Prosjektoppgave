@@ -67,17 +67,24 @@ q(t_{l+1}) \approx (I-h_t/2 A)^{-1}(q(t_l) + \frac{h_t}{2}( A q(t_{l}) + f(t_l)v
 \end{aligned}
 \end{equation} 
 This is a second order method.
-Because of this discretizing, $P(t)$ and $q(t)$ will be saved as $m \times k $ matrices, and $f(t)$ as a $k$ vector.
-%\\!!!!!!!!!!!!!!!!!!!!!!!!!!Skriv noe om hvordan $P(t)$ og slikt er lagret!!!!!!!!!!!!!!!!!!\\
-%Since computers are discrete, we need to store the functions depending on $t$
-%We let $q^l=q(t_l)$, $P^l =P(t_l)$ and $f^l = f(t_l)$ for
+Because of this discretizing, $P(t)$ and $q(t)$ will be saved as $m \times k $ matrices, and $f(t)$ as a $k$ vector. An implementation of equation \eqref{eqn:trapscheme} is given in algorithm \ref{alg:integrate}.
+\begin{algorithm} 
+\begin{algorithmic} \caption{Integration} \label{alg:integrate}  
+\STATE Start with $A$, $f$, $v$, $h_t$ and $k$
+\STATE $invmat = (I-h_t/(2A))^{-1}$
+\STATE $q(t_1) = invmat \cdot (h_t/2 \cdot (f(t_1)+f(t_0)))$
+\FOR{$l = 1,2,\cdots k $} 
+\STATE $q(t_{l+1}) = invmat \cdot (q(t_l) + h_t/2( A q(t_{l}) + f(t_l)v+f(t_{l+1})v))$
+\ENDFOR
+\end{algorithmic} 
+\end{algorithm}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Measurements and computers} \label{sec:not}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %!!!!!!!!!!!!!!!!!!!Skrive mer om hva vi er på jakt etter av resultater i forhold til $p$!!!!!!!!!!!!!!!!!!!\\
 %!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Skrive at vi bruker alle iterasjonene når vi bruker KPM!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\\
-Algorithms \ref{alg:arnoldi}, \ref{alg:fullkry}, \ref{alg:restkry}, together with equation \ref{eqn:DI} was implemented as solvers for equation \ref{eqn:heat}, with varieties of equation \ref{eqn:trapscheme} solving the differential equations. 
+Algorithms \ref{alg:arnoldi}, \ref{alg:fullkry}, \ref{alg:restkry}, together with equation \ref{eqn:DI} was implemented as solvers for equation \ref{eqn:heat}, with varieties of algorithm \ref{alg:integrate} solving the differential equations. 
 
 Each solver was implemented in two versions, one where $p$ was assumed separable, and one where $p$ was assumed to be non-separable. Parallel computations was only implemented for KPM and KPM$(n)$ with $p$ non-separable, because in this case we needed to solve $m$ independent problems, and not just one.\\ %as is the case when $p$ is separable. \\
 
