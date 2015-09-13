@@ -20,7 +20,8 @@
   Year                     = {1997},
 
   Owner                    = {sindreka},
-  Timestamp                = {2015.09.03}
+  Timestamp                = {2015.09.03},
+  Url                      = {http://www.sciencedirect.com/science/article/pii/S0168927497000330}
 }
 
 @Article{complex,
@@ -44,6 +45,47 @@
 
   Owner                    = {sindreka},
   Timestamp                = {2015.09.09}
+}
+
+@InBook{arnold,
+  Title                    = {Iterative Methods for Sparse Linear Systems},
+  Author                   = {Yousef, Saad},
+  Chapter                  = {6.3.1},
+  Pages                    = {154},
+  Publisher                = {Siam},
+  Year                     = {2003},
+  Note                     = {Algorithm 6.1},
+  Volume                   = {SECOND EDITION},
+
+  Owner                    = {sindreka},
+  Timestamp                = {2015.09.13}
+}
+
+@InBook{krycomplex,
+  Title                    = {Iterative Methods for Sparse Linear Systems},
+  Author                   = {Yousef, Saad},
+  Chapter                  = {6.4.1},
+  Pages                    = {160-161},
+  Publisher                = {Siam},
+  Year                     = {2003},
+  Volume                   = {SECOND EDITION},
+
+  Owner                    = {sindreka},
+  Timestamp                = {2015.09.13}
+}
+
+@InBook{kryprop,
+  Title                    = {Iterative Methods for Sparse Linear Systems},
+  Author                   = {Yousef, Saad},
+  Chapter                  = {6.3.1},
+  Pages                    = {154-155},
+  Publisher                = {Siam},
+  Year                     = {2003},
+  Note                     = {Proposition 6.5},
+  Volume                   = {SECOND EDITION},
+
+  Owner                    = {sindreka},
+  Timestamp                = {2015.09.13}
 }
 
 @Book{saad,
