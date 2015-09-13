@@ -619,8 +619,6 @@ if 1 % k = m = n, tol = 10^-3 and decreasing % function 1
     set(findall(gcf,'-property','FontSize'), 'Fontsize',18)
     set(h,'Location','Best');
     drawnow; print -djpeg c1comp1m
-    h = get(0,'children');
-    saveas(h(end),'c1comp1m','fig');
 end
 
 
@@ -649,6 +647,4 @@ if 1 % k = m = n, tol = 10^-3 and decreasing % function 2
     set(findall(gcf,'-property','FontSize'), 'Fontsize',18)
     set(h,'Location','Best');
     drawnow; print -djpeg c2comp2m
-    h = get(0,'children');
-    saveas(h(end),'c2comp2m','fig');
 end
