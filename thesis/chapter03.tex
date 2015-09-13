@@ -55,7 +55,7 @@ The trapezoidal rule,
 will be used to solve these equations. 
 The iteration scheme will only be derived for equation \eqref{eqn:numheat}, but 
 this it is easily generalizable to the other differential equations discussed.
-To obtain the iteration scheme, write $q$ instead of $f$, use equation \eqref{eqn:heat}, and insert the numerical simplifications from earlier in this section and from section \ref{sec:space}, that is
+To obtain the iteration scheme, write $q(t)$ instead of $f(t)$, use equation \eqref{eqn:heat}, and insert the numerical simplifications from earlier in this section and from section \ref{sec:space}, that is
 \begin{equation}
 q(t_{l+1}) - q(t_l) = \int \limits_{t_l}^{t_{l+1}} \frac{d q}{d t} dt \approx \frac{h}{2}(A q(t_{l+1})+f(t_{l+1})v +A q(t_l)+f(t_l) v) .
 \end{equation}
@@ -67,13 +67,13 @@ q(t_{l+1}) \approx (I-h_t/2 A)^{-1}(q(t_l) + \frac{h_t}{2}( A q(t_{l}) + f(t_l)v
 \end{aligned}
 \end{equation} 
 This is a second order method.
-Because of this discretizing, $P(t)$ and $q(t)$ will be saved as $m \times k $ matrices, and $f(t)$ as a $k$ vector, in the points $t_l$ with $l = 0,1,\cdots,k-1 $ . An implementation of equation \eqref{eqn:trapscheme} is given in algorithm \ref{alg:integrate}.\\
+Because of this discretizing, $P(t)$ and $q(t)$ will be saved as $m \times k $ matrices, $\xi$ as an $n \times k$ matrix, and $f(t)$ as a $k$ vector, in the points $t_l$ with $l = 0,1,\cdots,k-1 $. An implementation of equation \eqref{eqn:trapscheme} is given in algorithm \ref{alg:integrate}.\\
 \begin{algorithm} 
 \begin{algorithmic} \caption{Integration} \label{alg:integrate}  
 \STATE Start with $A$, $f(t)$, $v$, $h_t$ and $k$
 \STATE $invmat = (I-h_t/(2A))^{-1}$
 \STATE $q(t_1) = invmat \cdot (h_t/2 \cdot (f(t_1)+f(t_0)))$
-\FOR{$l = 1,2,\cdots k $} 
+\FOR{$l = 1,2,\cdots, k $} 
 \STATE $q(t_{l+1}) = invmat \cdot (q(t_l) + h_t/2( A q(t_{l}) + f(t_l)v+f(t_{l+1})v))$
 \ENDFOR
 \end{algorithmic} 

@@ -47,7 +47,7 @@ Assume that \texttt{KPM}$(m)$ and \texttt{KPM} has the same complexity, so that 
 \begin{tabular}{r|l}
  $A$    & $ \sim 10 m$ \\
  $q(t)$    & $ m\times k$ \\
- $z(t)$ or $\xi(t)$ or $\zeta(t)$	& $n \times k$ \\
+$\xi(t)$ 	& $n \times k$ \\
  $P(t)$ & $ m \times k$ \\
  $f(t)$ & $ k $ \\
  $v$    & $ m$ \\
@@ -60,7 +60,7 @@ Assume that \texttt{KPM}$(m)$ and \texttt{KPM} has the same complexity, so that 
 \end{table}
 \texttt{DM} need to store $A$, $q(t)$ ,$P(t)$, and an inverted matrix with size $m \times m$.\\
 
-KPM needs to store $A$, $q(t)$, $z(t)$, $V_n$, $H_n$, and an inverted matrix, remember that for \texttt{KPM}; $n = m$. If $p$ is separable we also need to store $v$ and $f(t)$, if $p$ is non-separable we need to store $P(t)$ instead. \\
+KPM needs to store $A$, $q(t)$, $\xi(t)$, $V_n$, $H_n$, and an inverted matrix, remember that for \texttt{KPM}; $n = m$. If $p$ is separable we also need to store $v$ and $f(t)$, if $p$ is non-separable we need to store $P(t)$ instead. \\
 
 An overview over the memory demand for the different variables is given in table \ref{tab:memreq}. A list over memory demand for the different methods is given in table \ref{tab:mr}.
 

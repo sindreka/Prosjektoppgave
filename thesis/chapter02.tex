@@ -26,9 +26,9 @@ Here, $e_n$ is the $n$th canonical vector in $\mathbb{R}^n$ and $\delta_{i,j}$ i
 \begin{algorithm} 
 \begin{algorithmic} \caption{Arnoldi's algorithm\cite{arnold}} \label{alg:arnoldi}  
 \STATE Start with $A$, $v^1 = v/\|v \|_2$ and $n$
-\FOR{$j = 1,2,\cdots n $} 
-   \STATE Compute $h_{i,j} = \langle Av^j,v^i \rangle $ for $i = 1,2,\cdots j$
-    \STATE Compute $w_j := A v^j - \Sigma_{i=1}^{j} h_{i,j}v^i $
+\FOR{$j = 1,2,\cdots, n $} 
+   \STATE Compute $h_{i,j} = \langle Av^j,v^i \rangle $ for $i = 1,2,\cdots, j$
+    \STATE Compute $w_j = A v^j - \Sigma_{i=1}^{j} h_{i,j}v^i $
     \STATE $h_{j+1,j} = \| w_j \|_2$
     \IF{$h_{j+1,j} = 0$} 
         \STATE\textbf{STOP}
@@ -70,8 +70,8 @@ The method will be denoted \texttt{KPM}.\\
 \begin{algorithmic} \caption{The Krylov projection method} \label{alg:fullkry} 
 \STATE Start with $A$,$f(t)$ and $v$.
 \STATE Compute $[V_m ,H_m] = \texttt{arnoldi}(A,v)$
-\STATE Solve $  z'(t) = H_m z(t) + f(t) \| v \|_2 e_1  $ for $z(t)$
-\STATE $ q_m (t) \leftarrow  V_m z(t) $
+\STATE Solve $  \xi'(t) = H_m \xi(t) + f(t) \| v \|_2 e_1  $ for $\xi(t)$
+\STATE $ q_m (t) \leftarrow  V_m \xi(t) $
 \end{algorithmic} 
 \end{algorithm}
 
@@ -94,7 +94,7 @@ Since $h_{n+1,n} = 0$ for some $n \leq m$, this shows the finite termination of 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Restarting the Krylov projection method} \label{sec:rest}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-If $n < m$ so that $h_{n+1,n} \neq 0$, we need to restart the procedure described above. Consider first the following equation
+If $n < m$ so that $h_{n+1,n} \neq 0$, we can to restart the procedure described above. Consider first the following equation
 \begin{equation}\label{eqn:restkry}
 \begin{aligned}
  (q-q_n)'(t) -A (q-q_n)(t) &= r_n(t) \\
@@ -103,8 +103,8 @@ If $n < m$ so that $h_{n+1,n} \neq 0$, we need to restart the procedure describe
 \end{equation}
 where $r_n(t)$ is as in equation \eqref{eqn:rn}. Solving this equation for $(q-q_n)(t)$ can improve the approximation of $q(t)$ via iterative refinement.
 Equation \eqref{eqn:restkry} is of the same form as equation \eqref{eqn:krylov}. We derive KPM as before, by writing $q(t) = V_m z(t)$ and $q_n(t) = \tilde{V}_n \tilde{\zeta}(t) $.
-%Let $\tilde{V}_n$/$\tilde{\zeta}(t)$ be as $V_n$/$\zeta(t)$, with zeros columns/rows added to make it the same size as $V_m$/$z(t)$. \\
-Let $\tilde{V}_n$ be equal to $V_n$, but with zeros-columns added to make it the same size as $V_m$. 
+Let $\tilde{V}_n$/$\tilde{\zeta}(t)$ be as $V_n$/$\zeta(t)$, with zeros columns/rows added to make it the same size as $V_m$/$z(t)$. \\
+%Let $\tilde{V}_n$ be equal to $V_n$, but with zeros-columns added to make it the same size as $V_m$. 
 %Let $\tilde{V}_n$ be the $m \times m$ matrix with the first $n$ columns equal to the first $n$ columns of $V_m$, and all additional elements equal to zero. The first $n$ rows of  $\tilde{\zeta}(t)$ is equal to $\zeta(t)$, where $q_n(t) = V_n \zeta(t)$. The rest of the elements in $\tilde{\zeta}(t)$ are equal to zero.
 We then get
 \begin{equation*}
@@ -140,9 +140,9 @@ Each restart we generate a new Krylov subspace $W_n(A,v^{n+1})$, solve equation 
 \begin{algorithmic} \caption{The Krylov projection method with restart} \label{alg:restkry} 
 \STATE Start with $A$,$f(t)$,$v$, $n$ and $i = 0$
 \STATE Compute $[V_n,H_n,h_{n+1,n}^i,v^{n+1}] = \texttt{arnoldi}(A,v)$
-\STATE Solve $  z'(t) = H_n z(t) + f(t) \| v \|_2 e_1  $ for $z(t)$
-\STATE $ q_n(t) \leftarrow  V_n z(t) $
-\STATE $\xi_i(t) \leftarrow z(t)$
+\STATE Solve $  \xi_i'(t) = H_n \xi_i(t) + f(t) \| v \|_2 e_1  $ for $\xi_i(t)$
+\STATE $ q_n(t) \leftarrow  V_n \xi_i(t) $
+%\STATE $\xi_i(t) \leftarrow z(t)$
 \WHILE{convergence criterion not satisfied} 
     \STATE $i \leftarrow i + 1$
     \STATE Compute $[V_n,H_n,h_{n+1,n}^i,v^{n+1}] = \texttt{arnoldi}(A,v^{n+1},n)$
