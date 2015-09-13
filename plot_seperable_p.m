@@ -64,7 +64,7 @@ if 0 %restartvariabel function 1
     utdata4  = zeros(length(p),3,avg);
     for i = p
         for a = 1:avg
-            if 10^2 >= i
+            if 00^2 >= i
                 utdata1(j,:,a) = seriell( 10,k,i,1,1);
             end
             utdata2(j,:,a) = seriell( 50,k,i,1,1);
@@ -370,7 +370,7 @@ if 0 % time vs k %  function 2
 end
 
 n = 10;
-if 1 %convergencekriteria: ant vs tol for different m, function 1 % Merkelig
+if 0 %convergencekriteria: ant vs tol for different m, function 1 % Merkelig
     p = [1,10^-1,10^-2,10^-3,10^-5,10^-7,10^-9,10^-11,10^-13,10^-15];
 
     k = 40;
@@ -397,7 +397,7 @@ if 1 %convergencekriteria: ant vs tol for different m, function 1 % Merkelig
     set(h,'Location','Best');
 end
 
-if 1 %convergencekriteria: ant vs tol for different m, function 2
+if 0 %convergencekriteria: ant vs tol for different m, function 2
     p = [1,10^-1,10^-2,10^-3,10^-5,10^-7,10^-9,10^-11,10^-13,10^-15];
 
     k = 40;
@@ -425,7 +425,7 @@ if 1 %convergencekriteria: ant vs tol for different m, function 2
     set(h,'Location','Best');
 end
 
-if 1 %convergencekriteria: err vs tol for different m, function 1
+if 0 %convergencekriteria: err vs tol for different m, function 1
     p = [1,10^-1,10^-2,10^-3,10^-5,10^-7,10^-9,10^-11,10^-13,10^-15];
 
     k = 40;
@@ -453,7 +453,7 @@ if 1 %convergencekriteria: err vs tol for different m, function 1
     set(h,'Location','Best');
 end
 
-if 1 %convergencekriteria: err vs tol for different m, function 2
+if 0 %convergencekriteria: err vs tol for different m, function 2
     p = [1,10^-1,10^-2,10^-3,10^-5,10^-7,10^-9,10^-11,10^-13,10^-15];
 
     k = 40;
@@ -481,7 +481,7 @@ if 1 %convergencekriteria: err vs tol for different m, function 2
     set(h,'Location','Best');
 end
 
-if 1 %convergencekriteria: ant vs tol for different k, function 1 % Merkelig
+if 0 %convergencekriteria: ant vs tol for different k, function 1 % Merkelig
     p = [1,10^-1,10^-2,10^-3,10^-5,10^-7,10^-9,10^-11,10^-13,10^-15];
     
     m = 40;
@@ -509,7 +509,7 @@ if 1 %convergencekriteria: ant vs tol for different k, function 1 % Merkelig
 end
 
 %%% Done
-if 1 %convergencekriteria: ant vs tol for different k, function 2
+if 0 %convergencekriteria: ant vs tol for different k, function 2
     p = [1,10^-1,10^-2,10^-3,10^-5,10^-7,10^-9,10^-11,10^-13,10^-15];
     
     k = 40;
@@ -538,7 +538,7 @@ if 1 %convergencekriteria: ant vs tol for different k, function 2
 end
 
 
-if 1 %convergencekriteria: err vs tol for different k, function 1
+if 0 %convergencekriteria: err vs tol for different k, function 1
     p = [1,10^-1,10^-2,10^-3,10^-5,10^-7,10^-9,10^-11,10^-13,10^-15];
     
     m = 40;
@@ -566,7 +566,7 @@ if 1 %convergencekriteria: err vs tol for different k, function 1
     set(h,'Location','Best');
 end
 
-if 1 %convergencekriteria: err vs tol for different k, function 2
+if 0 %convergencekriteria: err vs tol for different k, function 2
     p = [1,10^-1,10^-2,10^-3,10^-5,10^-7,10^-9,10^-11,10^-13,10^-15];
     
     m = 40;
@@ -592,4 +592,63 @@ if 1 %convergencekriteria: err vs tol for different k, function 2
     legend('KPM(1), k = 10','KPM(1), k = 50','KPM(1), k = 100')
     h = set(findall(gcf,'-property','FontSize'), 'Fontsize',18);
     set(h,'Location','Best');
+end
+
+p = [10,20,40,80]; %tol = 10^-15
+
+if 1 % k = m = n, tol = 10^-3 and decreasing % function 1
+    j = 1;
+    utdata1 = zeros(length(p),3);
+    utdata2 = zeros(length(p),3);
+    kkk = 3;
+    for i = p
+            utdata1(j,:) = seriell( i,i,ceil(sqrt(i)),1,1,10^-kkk);
+            utdata2(j,:) = seriell( i,i,1 ,3,1);
+
+        j = j + 1;
+        kkk = kkk+2;
+        
+    end
+    figure(600)
+    loglog(p,utdata1(:,3),'k:o')
+    hold on
+    plot(p,utdata2(:,3),'k:+')
+    plot(p,0.1./p.^2,'k-')
+    h = legend('KPM(n)','DM','Helpline');
+    xlabel('\rho = k = n'); ylabel('\epsilon');
+    set(findall(gcf,'-property','FontSize'), 'Fontsize',18)
+    set(h,'Location','Best');
+    drawnow; print -djpeg c1comp1m
+    h = get(0,'children');
+    saveas(h(end),'c1comp1m','fig');
+end
+
+
+
+if 1 % k = m = n, tol = 10^-3 and decreasing % function 2
+    j = 1;
+    utdata1 = zeros(length(p),3);
+    utdata2 = zeros(length(p),3);
+    kkk = 3;
+    for i = p
+        %for a = 1:avg
+            utdata1(j,:) = seriell( i,i,ceil(sqrt(i)),1,2,10^-kkk);
+            utdata2(j,:) = seriell( i,i,1,3,2);
+        %end
+        j = j + 1;
+        kkk = kkk + 2;
+        
+    end
+    figure(601)
+    loglog(p,utdata1(:,3),'k:o')
+    hold on
+    plot(p,utdata2(:,3),'k:+')
+    plot(p,0.1./p.^2,'k-')
+    h = legend('KPM(n)','DM','Helpline');
+    xlabel('\rho = k = n'); ylabel('\epsilon');
+    set(findall(gcf,'-property','FontSize'), 'Fontsize',18)
+    set(h,'Location','Best');
+    drawnow; print -djpeg c2comp2m
+    h = get(0,'children');
+    saveas(h(end),'c2comp2m','fig');
 end

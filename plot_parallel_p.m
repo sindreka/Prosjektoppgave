@@ -178,7 +178,7 @@ end
 avg = 2; k = 40; m = 40; p = [20,40,100,200]; para = 4; tol = 10^-15;
 % parallel(m,k,n,prob,func,conv,para)
 
-if 1 % time vs m and m % bare for funksjon 1
+if 1 % time vs m and m % function 1
     j = 1;
     utdata1 = zeros(length(p),3,avg);
     utdata2 = zeros(length(p),3,avg);
@@ -208,7 +208,7 @@ if 1 % time vs m and m % bare for funksjon 1
     saveas(h(end),'c1comp1m','fig');
 end
 
-if 1 % time vs m and m % bare for funksjon 2
+if 1 % time vs m and m % function 2
     j = 1;
     utdata1 = zeros(length(p),3,avg);
     utdata2 = zeros(length(p),3,avg);

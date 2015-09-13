@@ -243,4 +243,21 @@ Threshold precision for $\rho = 40$ is obtained in figure \ref{fig:epsilondelta2
 We see that there is no gain in precision with increasing one of either $\rho$ or $k$ or decreasing $\delta$ without changing the others appropriately. \\
 
 %Before the constant part, $\epsilon$ is decided by $\delta$ alone. 
-In all cases a lot of time can be saved by choosing $\delta$ appropriate. If $\delta$ is to large we get inaccurate answers, if $\delta$ is to small we perform to many restarts to use the algorithm efficiently. There does not seam to be a simple rule to choose $\delta$, since the results for \texttt{P1} and \texttt{P2} differs. The rule we will use is to start at $\delta=10^{-3}$, with $\rho = k = 10$ and decrease $\delta$ with two order of magnitude each time $k$ and $\rho$ is doubled, the reason for this rule is perhaps easier to understand when looking at figure \ref{fig:conv}.
+In all cases a lot of time can be saved by choosing $\delta$ appropriate. If $\delta$ is to large we get inaccurate answers, if $\delta$ is to small we perform to many restarts to use the algorithm efficiently. There does not seam to be a simple rule to choose $\delta$, since the results for \texttt{P1} and \texttt{P2} differs. The rule we will use is to start at $\delta=10^{-3}$ with $\rho = k = 10$, and decrease $\delta$ with two order of magnitude each time $k$ and $\rho$ is doubled. The reason for this rule is perhaps easier to understand when looking at figure \ref{fig:conv}. The reason that $\delta$ decreases two orders of magnitude each time $m$ and $k$ is doubled is that $A$ and trapezoidal rule are second order approximations. Figure \ref{fig:siste} shows how the error converges when this is the case, clearly this rule assures that $\delta$ is small enough.
+
+\begin{figure}[H]
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{fig/sisteplot1}
+                \caption{function \texttt{P1}}
+                \label{fig:siste1}
+        \end{subfigure}
+~
+        \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{fig/sisteplot2}
+                \caption{ function \texttt{P2}}
+                \label{fig:siste2}
+        \end{subfigure}
+        \caption{A plot of $\epsilon$ where $\delta$, $k$, $\rho$ and $n$ follows this rule: Start with $\delta=10^{-3}$, $\rho = k = n = 10$ and decrease $\delta$ with two order of magnitude each time $k$, $\rho$ and $n$ is doubled. \texttt{DM} Shows how it converged when $\delta = 10^{-15}$. The helpline shows quadratic convergence.} \label{fig:siste}
+\end{figure}
+
