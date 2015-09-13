@@ -103,8 +103,8 @@ If $n < m$ so that $h_{n+1,n} \neq 0$, we can to restart the procedure described
 \end{equation}
 where $r_n(t)$ is as in equation \eqref{eqn:rn}. Solving this equation for $(q-q_n)(t)$ can improve the approximation of $q(t)$ via iterative refinement.
 Equation \eqref{eqn:restkry} is of the same form as equation \eqref{eqn:krylov}. We derive KPM as before, by writing $q(t) = V_m z(t)$ and $q_n(t) = \tilde{V}_n \tilde{\zeta}(t) $.
-Let $\tilde{V}_n$/$\tilde{\zeta}(t)$ be as $V_n$/$\zeta(t)$, with zeros columns/rows added to make it the same size as $V_m$/$z(t)$. \\
-%Let $\tilde{V}_n$ be equal to $V_n$, but with zeros-columns added to make it the same size as $V_m$. 
+%Let $\tilde{V}_n$/$\tilde{\zeta}(t)$ be as $V_n$/$\zeta(t)$, with zeros columns/rows added to make it the same size as $V_m$/$z(t)$. \\
+Let $\tilde{V}_n$ be equal to $V_n$, but with zeros-columns added to make it the same size as $V_m$. 
 %Let $\tilde{V}_n$ be the $m \times m$ matrix with the first $n$ columns equal to the first $n$ columns of $V_m$, and all additional elements equal to zero. The first $n$ rows of  $\tilde{\zeta}(t)$ is equal to $\zeta(t)$, where $q_n(t) = V_n \zeta(t)$. The rest of the elements in $\tilde{\zeta}(t)$ are equal to zero.
 We then get
 \begin{equation*}
