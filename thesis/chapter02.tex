@@ -135,7 +135,7 @@ Drop all except the $n$ first rows of $\tilde{\xi}(t)$, and we are left with
 \end{aligned}
 \end{equation}
 
-Each restart we generate a new Krylov subspace $W_n(A,v^{n+1})$, solve equation \eqref{eqn:restkry2} for $\xi(t)$ and obtain $ q_n(t) =  V_n\xi(t)$. By summing together $q_n(t)$, we converge towards $q(t)$. Note that the current value of $\zeta(t)$ equals the previous value of $\xi(t)$, and that $h_{n+1,n}$ is from the previous $H_n$. See algorithm \ref{alg:restkry} for a step by step description. We will call $n$ a restart variable, and denote the method with \texttt{KPM}$(n)$.
+Each restart we generate a new Krylov subspace $W_n(A,v^{n+1})$, solve equation \eqref{eqn:restkry2} for $\xi(t)$ and obtain $ q_n(t) =  V_n\xi(t)$. By summing together $q_n(t)$, we converge towards $q(t)$\cite{elenaconv}. Note that the current value of $\zeta(t)$ equals the previous value of $\xi(t)$, and that $h_{n+1,n}$ is from the previous $H_n$. See algorithm \ref{alg:restkry} for a step by step description. We will call $n$ a restart variable, and denote the method with \texttt{KPM}$(n)$.
 \begin{algorithm}
 \begin{algorithmic} \caption{The Krylov projection method with restart} \label{alg:restkry} 
 \STATE Start with $A$,$f(t)$,$v$, $n$ and $i = 0$

@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{trap}
 CRUZ-URIBE D. and NEUGEBAUER C.J.
@@ -10,6 +10,12 @@ CRUZ-URIBE D. and NEUGEBAUER C.J.
 Celledoni E. and Moret I.
 \newblock A krylov projection method for system of odes.
 \newblock {\em Applied Numerical Mathematics 23 (1997) 365-378}, 1997.
+
+\bibitem{elenaconv}
+Celledoni E. and Moret I.
+\newblock A krylov projection method for system of odes.
+\newblock {\em Applied Numerical Mathematics 23 (1997) 365-378}, page 372,
+  1997.
 
 \bibitem{complex}
 Cohn Henry, Kleinberg Robert, Szegedy Bal~azs, and Umans Christopher.
