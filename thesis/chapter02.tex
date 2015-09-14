@@ -79,7 +79,7 @@ Consider the residual of equation \eqref{eqn:numheat} at $q_n(t) = V_n z (t)$, t
 \begin{equation*}
 r_n(t) = f(t) v - q_n'(t) +Aq_n(t).
 \end{equation*}
-Since
+Because
 \begin{equation*}
 r_n(t) = f(t)v -V_n z'(t) + A V_n z(t)
 \end{equation*}
@@ -88,13 +88,13 @@ using equation \eqref{eqn:prop1} and \eqref{eqn:krylov} we get
 r_n(t) = h_{n+1,n}e_n^\top z(t) v_{n+1}.
 \end{equation}
 
-Since $h_{n+1,n} = 0$ for some $n \leq m$, this shows the finite termination of the procedure. %Note that this means that $q_n$ is an approximation to $q$.
+Because $h_{n+1,n} = 0$ for some $n \leq m$, this shows the finite termination of the procedure. %Note that this means that $q_n$ is an approximation to $q$.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Restarting the Krylov projection method} \label{sec:rest}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-If $n < m$ so that $h_{n+1,n} \neq 0$, we can to restart the procedure described above. Consider first the following equation
+If $n < m$ so that $h_{n+1,n} \neq 0$, we can restart the procedure described above. Consider first the following equation
 \begin{equation}\label{eqn:restkry}
 \begin{aligned}
  (q-q_n)'(t) -A (q-q_n)(t) &= r_n(t) \\

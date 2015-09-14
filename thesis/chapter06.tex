@@ -46,7 +46,7 @@ As can be seen from figure \ref{fig:convp}, all methods converges quadratically 
                 \caption{function \texttt{P3}}
                 \label{fig:speed2}
         \end{subfigure}
-        \caption{Computation time plotted against different number of processors, for several methods. The helpline shows perfect speedup.}\label{fig:speed}
+        \caption{Computation time plotted against different number of processors, for several cases of KPM. The helpline shows perfect speedup.}\label{fig:speed}
 
 \end{figure}
 
@@ -66,7 +66,7 @@ As can be seen from figure \ref{fig:convp}, all methods converges quadratically 
 $\neptune$ %$\Neptune$
 %$\llcorner$
  &\texttt{P1} & & \texttt{P3} & \\
-&\texttt{nP = 2} & \texttt{nP = 4} & \texttt{nP = 2} & \texttt{nP = 4} \\
+&\texttt{nP}$=2$ & \texttt{nP}$=4$ & \texttt{nP}$=2$ & \texttt{nP}$=2$ \\
 \hline
 \texttt{KPM} & 1.8556  &  3.5234 & 1.7702&    3.3193\\
 \texttt{KPM}$(1)$ & 1.9858  &  3.3740 & 1.9725&    3.3924\\
@@ -82,7 +82,7 @@ $\neptune$ %$\Neptune$
 \centering
 \begin{tabular}{l | l l | l l}
 &\texttt{P1} & & \texttt{P3} & \\
-&\texttt{nP = 2} & \texttt{nP = 4} & \texttt{nP = 2} & \texttt{nP = 4} \\
+&\texttt{nP}$=2$ & \texttt{nP}$=4$ & \texttt{nP}$=2$ & \texttt{nP}$=4$ \\
 \hline
 \texttt{KPM} & 0.9278  &  0.8809 & 0.8851&    0.8298\\
 \texttt{KPM}$(1)$ &  0.9929  &  0.8435 & 0.9862 &   0.8481\\
@@ -114,7 +114,7 @@ These experiments was only done with $m = k = 40$, this is because the experimen
                 \caption{function \texttt{P3}}
                 \label{fig:c2comp2m}
         \end{subfigure}
-        \caption{A plot of the computation time for \texttt{KPM}$(n)$ and \texttt{DM}. We have used the values $n = \rho = k$. $\delta = 10^{-3}$ for the first point and decreases with two orders of magnitude for each additional point. Assume $\texttt{nP} = 4$ for \texttt{KPM}$(n)$ and $\texttt{nP} = 1$ for \texttt{DM}. These values are choosen to make \texttt{KPM}$(n)$ perform as efficiently as possible. The helpline increases with $\rho^6 = m^3$.}\label{fig:comp}
+        \caption{A plot of the computation time for \texttt{KPM}$(n)$ and \texttt{DM}. We have used the values $n = \rho = k$. $\delta = 10^{-3}$ for the first point and decreases with one order of magnitude for each additional point. Assume $\texttt{nP} = 4$ for \texttt{KPM}$(n)$ and $\texttt{nP} = 1$ for \texttt{DM}. These values are choosen to make \texttt{KPM}$(n)$ perform as efficiently as possible. The helpline increases with $\rho^6 = m^3$.}\label{fig:comp}
 \end{figure}
 From figure \ref{fig:comp} it is clear that \texttt{DM} is better in all cases simulated, but \texttt{KPM}$(n)$ is not far behind. We know from section \ref{sec:stimem} and \ref{sec:stimek} that one iteration of \texttt{KPM}$(n)$ is faster than \texttt{DM}, we therefore conclude that with enough processing units \texttt{KPM}$(\rho)$ would have been faster than \texttt{DM}. \\
 

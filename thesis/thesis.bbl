@@ -17,6 +17,12 @@ Celledoni E. and Moret I.
 \newblock {\em Applied Numerical Mathematics 23 (1997) 365-378}, page 372,
   1997.
 
+\bibitem{heat}
+A.~Einstein.
+\newblock Über die von der molekularkinetischen theorie der wärme geforderte
+  bewegung von in ruhenden flüssigkeiten suspendierten teilchen.
+\newblock {\em Annalen der Physik, vol. 322, Issue 8, pp.549-560}, 1905.
+
 \bibitem{complex}
 Cohn Henry, Kleinberg Robert, Szegedy Bal~azs, and Umans Christopher.
 \newblock Group-theoretic algorithms for matrix multiplication.

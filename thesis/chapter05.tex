@@ -2,7 +2,7 @@
 \chapter{Results for separable $p$} \label{sec:seri}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 In this whole section it is assume that $p$ is separable, and that only one processing unit is used to obtain the results. 
-Section \ref{sec:sconv} will show correctness of the methods with a convergence plot. Section \ref{sec:rrest} will see if there is any correlation between $n$ and $\rho$.
+Section \ref{sec:sconv} will show correctness of the methods with a convergence plot. In section \ref{sec:rrest} we will see if there is any correlation between $n$ and $\rho$.
 Computation times for the different methods will be compared to each other and their predicted computational complexity in section \ref{sec:stimem} and \ref{sec:stimek}.
 How $\gamma$ and $\epsilon$ scales with $\delta$ will be examined in section \ref{sec:div}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -62,7 +62,7 @@ As can be see from figure \ref{fig:rest}, the optimal restart variable changes a
         \caption{The number of restarts, $\gamma$ needed for \texttt{KPM}$(n)$ to converge as a function of the restart variable $n$. The helpline follows $1/n^2$.}\label{fig:ant}
 \end{figure}
 
-The helpline from figure \ref{fig:ant} shows that the number of restarts is proportional to $1/n^2$ for all tested cases, if we put this together with the assumption from section \ref{sec:cc} we get that $\gamma$ is proportional to  $m^2/n^2$. Using table \ref{tab:cc} we get that \texttt{KPM}$(\rho)$ has a complexity of $\mathcal{O}(km^2 + m^3)$ for separable $p$, and $\mathcal{O}(km^3 + m^4)$ for non-separable $p$, which is the same as for \texttt{KPM}.\\
+The helpline from figure \ref{fig:ant} shows that the number of restarts is proportional to $1/n^2$ for all tested cases, if we put this together with the assumption from section \ref{sec:cc} we get that $\gamma$ is proportional to  $m^2/n^2$. Using table \ref{tab:cc} we get that \texttt{KPM}$(n)$ has a complexity of $\mathcal{O}(km^2 + m^3)$ for separable $p$, and $\mathcal{O}(km^3 + m^4)$ for non-separable $p$, which is the same as for \texttt{KPM}.\\
 
 We also see that the number of restarts decrease quickest when $n < \rho $, and slower when $n > \rho$. This is the gain we observed in section \ref{sec:restvar}. On each side of $n = \rho$ we can perform better, either by performing fewer restarts with larger matrices, or more restarts with smaller matrices. \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -107,7 +107,7 @@ As we can see from figure \ref{fig:timek}, the computation time for almost all t
 The exception is \texttt{KPM}$(1)$, which increases close to linear because relatively more work is done while integrating, due to several restarts. 
 We also see that \texttt{KPM}$(n)$ is faster than \texttt{DM} for some $n$, but not asymptotically.
 
-With larger $m$ it is expected that all methods would follow the helpline.
+With larger $k$ it is expected that all methods would follow the helpline.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Comparing $\delta$, $\gamma$ and $\epsilon$ } \label{sec:div}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -140,7 +140,10 @@ Remember that $\delta$ is tolerance, $\gamma$ is the number of restarts, and $\e
         
         \caption{A plot of $\gamma$ as a function of $\delta$, with several $\rho$ and $n$.} \label{fig:gammadelta}
 \end{figure}
-We see from figure \ref{fig:gammadelta} that $\gamma$ changes significantly with $\rho$. The figure show a log linear dependence between $\gamma$ and $\delta$, and that $\gamma$ is proportional to $1/n^2$. 
+%We see from figure \ref{fig:gammadelta} that $\gamma$ changes significantly with $\rho$. The figure show a log linear dependence between $\gamma$ and $\delta$, and that $\gamma$ is proportional to $1/n^2$. 
+
+We see from figure \ref{fig:gammadelta} that $\gamma$ changes significantly with $\rho$, that there is a log linear dependence between $\gamma$ and $\delta$, and that $\gamma$ is proportional to $1/n^2$. 
+
 The constant part of the graph where $ 10^{-5}<\delta< {10^0} $ shows that \texttt{KPM}$(1)$ and \texttt{KPM}$(10)$ does too few restarts to gain any accuracy when $\delta$ is too large, this is confirmed by figure \ref{fig:epsilondelta}. 
 
 \begin{figure}[H]
@@ -243,7 +246,8 @@ Threshold precision for $\rho = 40$ is obtained in figure \ref{fig:epsilondelta2
 We see that there is no gain in precision with increasing one of either $\rho$ or $k$ or decreasing $\delta$ without changing the others appropriately. \\
 
 %Before the constant part, $\epsilon$ is decided by $\delta$ alone. 
-In all cases a lot of time can be saved by choosing $\delta$ appropriate. If $\delta$ is to large we get inaccurate answers, if $\delta$ is to small we perform to many restarts to use the algorithm efficiently. There does not seam to be a simple rule to choose $\delta$, since the results for \texttt{P1} and \texttt{P2} differs. The rule we will use is to start at $\delta=10^{-3}$ with $\rho = k = 10$, and decrease $\delta$ with two order of magnitude each time $k$ and $\rho$ is doubled. The reason for this rule is perhaps easier to understand when looking at figure \ref{fig:conv}. The reason that $\delta$ decreases two orders of magnitude each time $m$ and $k$ is doubled is that $A$ and trapezoidal rule are second order approximations. Figure \ref{fig:siste} shows how the error converges when this is the case, clearly this rule assures that $\delta$ is small enough.
+In all cases a lot of time can be saved by choosing $\delta$ appropriate. If $\delta$ is to large we get inaccurate answers, if $\delta$ is to small we perform to many restarts to use the algorithm efficiently. There does not seam to be a simple rule to choose $\delta$, since the results for \texttt{P1} and \texttt{P2} differs. The rule we will use is to start at $\delta=10^{-3}$ with $\rho = k = 10$, and decrease $\delta$ with one order of magnitude each time $k$ and $\rho$ is doubled. %The reason for this rule is perhaps easier to understand when looking at figure \ref{fig:conv}. %The reason that $\delta$ decreases two orders of magnitude each time $m$ and $k$ is doubled is that $A$ and trapezoidal rule are second order approximations. 
+Figure \ref{fig:siste} shows how the error converges when this is the case. It is clear that that this rule should depend on the problem. For \texttt{P1}  the initial $\delta$ should be chosen a little smaller, for \texttt{P2} $\delta$ should decrease a little quicker, perhaps with 1.1 order of magnitude. This rule gives a little loss in accuracy, but a great increase in performance. Notice that the convergence is still quadratic.
 
 \begin{figure}[H]
         \centering
@@ -258,6 +262,6 @@ In all cases a lot of time can be saved by choosing $\delta$ appropriate. If $\d
                 \caption{ function \texttt{P2}}
                 \label{fig:siste2}
         \end{subfigure}
-        \caption{A plot of $\epsilon$ where $\delta$, $k$, $\rho$ and $n$ follows this rule: Start with $\delta=10^{-3}$, $\rho = k = n = 10$ and decrease $\delta$ with two order of magnitude each time $k$, $\rho$ and $n$ is doubled. \texttt{DM} Shows how it converged when $\delta = 10^{-15}$. The helpline shows quadratic convergence.} \label{fig:siste}
+        \caption{A plot of $\epsilon$ where $\delta$, $k$, $\rho$ and $n$ follows this rule: Start with $\delta=10^{-3}$, $\rho = k = n = 10$ and decrease $\delta$ with one order of magnitude each time $k$, $\rho$ and $n$ is doubled. \texttt{DM} Shows how it converged when $\delta = 10^{-15}$. The helpline shows quadratic convergence.} \label{fig:siste}
 \end{figure}
 

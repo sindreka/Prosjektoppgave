@@ -62,12 +62,12 @@ q(t_{l+1}) - q(t_l) = \int \limits_{t_l}^{t_{l+1}} \frac{d q}{d t} dt \approx \f
 Solving for $q(t_{l+1})$ gives the Crank-Nicholson scheme for the heat equation:
 \begin{equation} \label{eqn:trapscheme}
 \begin{aligned}
-q(t_{l+1}) \approx (I-h_t/2 A)^{-1}(q(t_l) + \frac{h_t}{2}( A q(t_{l}) + f(t_l)v+f(t_{l+1})v))\\
+q(t_{l+1}) \approx (I-h_t/2 A)^{-1}(q(t_l) + \frac{h_t}{2}( A q(t_{l}) + f(t_l)v+f(t_{l+1})v)).\\
 %U^{l+1} = (I-h_t/2 A)^{-1}(U^l + \frac{h_t}{2}( A U^l + G^l+G^{l+1}))
 \end{aligned}
 \end{equation} 
 This is a second order method.
-Because of this discretizing, $P(t)$ and $q(t)$ will be saved as $m \times k $ matrices, $\xi$ as an $n \times k$ matrix, and $f(t)$ as a $k$ vector, in the points $t_l$ with $l = 0,1,\cdots,k-1 $. An implementation of equation \eqref{eqn:trapscheme} is given in algorithm \ref{alg:integrate}.\\
+Because of this discretizing, $P(t)$ and $q(t)$ will be saved as $m \times k $ matrices, $\xi(t)$ as an $n \times k$ matrix, and $f(t)$ as a $k$ vector, in the points $t_l$ with $l = 0,1,\cdots,k-1 $. An implementation of equation \eqref{eqn:trapscheme} is given in algorithm \ref{alg:integrate}.\\
 \begin{algorithm} 
 \begin{algorithmic} \caption{Integration} \label{alg:integrate}  
 \STATE Start with $A$, $f(t)$, $v$, $h_t$ and $k$
@@ -79,7 +79,7 @@ Because of this discretizing, $P(t)$ and $q(t)$ will be saved as $m \times k $ m
 \end{algorithmic} 
 \end{algorithm}
 
-Note that we have used MATLAB's invertion algorithm, and not the "$\backslash$" operator. This is because performing one matrix inversion and $k$ matrix vector products was faster than using the "$\backslash$" operator $k$ times.
+
 %!!!!!!!!!!!!!!forklare hvorfor matrisen er invertert?!!!!!!!!!!!!!!!!!!!!!!!!\\
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -87,7 +87,7 @@ Note that we have used MATLAB's invertion algorithm, and not the "$\backslash$" 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %!!!!!!!!!!!!!!!!!!!Skrive mer om hva vi er på jakt etter av resultater i forhold til $p$!!!!!!!!!!!!!!!!!!!\\
 %!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Skrive at vi bruker alle iterasjonene når vi bruker KPM!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\\
-Algorithms \ref{alg:arnoldi}, \ref{alg:fullkry}, \ref{alg:restkry}, together with equation \ref{eqn:DI} was implemented as solvers for equation \ref{eqn:heat}, with varieties of algorithm \ref{alg:integrate} solving the differential equations. 
+Algorithms \ref{alg:fullkry}(\texttt{KPM}), \ref{alg:restkry}(\texttt{KPM}$(n)$), together with equation \ref{eqn:DI}(\texttt{DM}) was implemented as solvers for equation \ref{eqn:heat}, with varieties of algorithm \ref{alg:integrate} solving the differential equations. 
 
 Each solver was implemented in two versions, one where $p$ was assumed separable, and one where $p$ was assumed to be non-separable. Parallel computations was only implemented for KPM with $p$ non-separable, because in this case we needed to solve $m$ independent problems, and not just one.\\ %as is the case when $p$ is separable. \\
 
@@ -102,6 +102,8 @@ and parallel efficiency as
 \eta_\texttt{nP} = \frac{S_\texttt{nP}}{\texttt{nP}}
 \end{align*}
 where $\tau_\texttt{nP}$ is run time with \texttt{nP} processors, $S_\texttt{nP}$ is speedup with \texttt{nP} processors, and $\eta_\texttt{nP}$ is parallel efficiency for \texttt{nP} processors. Speedup measures how much faster a program runs with \texttt{nP} processors, ideal speedup is when $S_\texttt{nP} = \texttt{nP}$. Parallel efficiency measures how well each processor is used. Perfect parallel efficiency occurs when $\eta_\texttt{nP} = 1$.\\
+
+In Algorithm \ref{alg:integrate}, MATLAB's inversion algorithm is used, and not the "$\backslash$" operator. This is because performing one matrix inversion and $k$ matrix vector products was faster than using the "$\backslash$" operator $k$ times.
 
 Remember that \texttt{KPM}$(n)$ is the method where the $n$ first iterations of Arnoldi's algorithm is used to obtain $V_n$ and $H_n$, and that \texttt{KPM} is short for \texttt{KPM}$(m)$. Let $n$ be called a restart variable. The number of restarts needed for convergence in algorithm \ref{alg:restkry} is denoted by $\gamma$. The convergence criterion used in algorithm \ref{alg:restkry} is to stop restarting when the maximum absolute difference in $q_n(t)$ is less than a given tolerance $\delta$. The error is denoted as $\epsilon$ and is defined as the largest absolute difference between the correct solution and the approximation. \\
 
