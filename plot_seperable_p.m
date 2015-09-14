@@ -594,9 +594,9 @@ if 0 %convergencekriteria: err vs tol for different k, function 2
     set(h,'Location','Best');
 end
 
-p = [10,20,40,80]; %tol = 10^-15
+p = [10,20,40,80,160]; %tol = 10^-15
 
-if 1 % k = m = n, tol = 10^-3 and decreasing % function 1
+if 1 % k = m = n, tol = 10^-5 and decreasing % function 1
     j = 1;
     utdata1 = zeros(length(p),3);
     utdata2 = zeros(length(p),3);
@@ -606,7 +606,7 @@ if 1 % k = m = n, tol = 10^-3 and decreasing % function 1
             utdata2(j,:) = seriell( i,i,1 ,3,1);
 
         j = j + 1;
-        kkk = kkk+2;
+        kkk = kkk+1;
         
     end
     figure(600)
@@ -623,7 +623,7 @@ end
 
 
 
-if 1 % k = m = n, tol = 10^-3 and decreasing % function 2
+if 1 % k = m = n, tol = 10^-5 and decreasing % function 2
     j = 1;
     utdata1 = zeros(length(p),3);
     utdata2 = zeros(length(p),3);
@@ -634,7 +634,7 @@ if 1 % k = m = n, tol = 10^-3 and decreasing % function 2
             utdata2(j,:) = seriell( i,i,1,3,2);
         %end
         j = j + 1;
-        kkk = kkk + 2;
+        kkk = kkk + 1;
         
     end
     figure(601)
